@@ -1,0 +1,13 @@
+{
+  "name": "merkletree-tool",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "create-proof": "node ./src/create-proof.js"
+  },
+  "devDependencies": {
+    "ethers": "^6.6.4",
+    "merkletreejs": "^0.3.10"
+  }
+}
