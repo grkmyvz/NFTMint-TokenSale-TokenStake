@@ -7,6 +7,7 @@ import "../lib/openzeppelin-contracts/contracts/access/Ownable.sol";
 import "../lib/openzeppelin-contracts/contracts/utils/Counters.sol";
 import "../lib/openzeppelin-contracts/contracts/utils/Strings.sol";
 import "../lib/openzeppelin-contracts/contracts/utils/cryptography/MerkleProof.sol";
+import "../lib/openzeppelin-contracts/contracts/security/ReentrancyGuard.sol";
 
 // This is Remix IDE version
 // import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
@@ -14,12 +15,13 @@ import "../lib/openzeppelin-contracts/contracts/utils/cryptography/MerkleProof.s
 // import "@openzeppelin/contracts/utils/Counters.sol";
 // import "@openzeppelin/contracts/utils/Strings.sol";
 // import "@openzeppelin/contracts/utils/cryptography/MerkleProof.sol";
+// import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 
 /**
  * @title NFTName
  * @dev This is the main contract for the NFTName project.
  */
-contract NFTName is ERC721Enumerable, Ownable {
+contract NFTName is ERC721Enumerable, Ownable, ReentrancyGuard {
     using Counters for Counters.Counter;
     using Strings for uint256;
 
@@ -270,7 +272,7 @@ contract NFTName is ERC721Enumerable, Ownable {
      * @dev Only the contract owner can mint tokens using this function.
      * @param _qty Number of tokens to mint.
      */
-    function ownerMint(uint256 _qty) public onlyOwner {
+    function ownerMint(uint256 _qty) public onlyOwner nonReentrant {
         if (_qty <= 0) {
             revert("InvalidQuantity");
         }
@@ -296,7 +298,7 @@ contract NFTName is ERC721Enumerable, Ownable {
     function freeMint(
         bytes32[] calldata _merkleProof,
         uint256 _qty
-    ) public isFreeStart {
+    ) public isFreeStart nonReentrant {
         if (_qty <= 0) {
             revert("InvalidQuantity");
         }
@@ -331,7 +333,7 @@ contract NFTName is ERC721Enumerable, Ownable {
     function wlMint(
         bytes32[] calldata _merkleProof,
         uint256 _qty
-    ) public payable isWlStart {
+    ) public payable isWlStart nonReentrant {
         if (_qty <= 0) {
             revert("InvalidQuantity");
         }
@@ -364,7 +366,9 @@ contract NFTName is ERC721Enumerable, Ownable {
      * The minting can only be done during the specified public minting period.
      * @param _qty Number of tokens to mint.
      */
-    function publicMint(uint256 _qty) public payable isPublicStart {
+    function publicMint(
+        uint256 _qty
+    ) public payable isPublicStart nonReentrant {
         if (_qty <= 0) {
             revert("InvalidQuantity");
         }
@@ -394,7 +398,10 @@ contract NFTName is ERC721Enumerable, Ownable {
      * @param _to The address to which the tokens will be transferred.
      * @param _tokenIds An array containing the token IDs to be transferred.
      */
-    function multipleTransfer(address _to, uint256[] memory _tokenIds) public {
+    function multipleTransfer(
+        address _to,
+        uint256[] memory _tokenIds
+    ) public nonReentrant {
         if (_to == address(0) || _to == msg.sender) {
             revert("InvalidAddress");
         }
