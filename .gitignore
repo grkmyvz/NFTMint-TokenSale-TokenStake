@@ -1,6 +1,5 @@
 # Compiler files
 cache/
-out/
 
 # Ignores development broadcast logs
 !/broadcast
@@ -12,5 +11,10 @@ docs/
 
 # Dotenv file
 .env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
+# misc
 .DS_Store
