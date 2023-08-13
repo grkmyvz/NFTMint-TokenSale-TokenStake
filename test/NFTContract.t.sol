@@ -202,6 +202,7 @@ contract NFTContractTest is Test {
 
         emit log("-----> getTimes Test (OKAY)");
         tMaxSupply();
+        // tSetMintStop();
     }
 
     // Only owner test (okay)
@@ -211,7 +212,7 @@ contract NFTContractTest is Test {
     // All test (okay) //
     /* function tSetMintStop() public {
         vm.prank(contractOwner);
-        nftContract.setMintStop();
+        nftContract.setMintStop(true);
 
         vm.warp(6);
         bytes32[] memory proof = new bytes32[](4);

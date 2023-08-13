@@ -20,6 +20,7 @@ import "../lib/openzeppelin-contracts/contracts/security/ReentrancyGuard.sol";
 /**
  * @title NFTName
  * @dev This is the main contract for the NFTName project.
+ * @author --. --- .-. -.- . -- / -.-- .- ...- ..- --..
  */
 contract NFTName is ERC721Enumerable, Ownable, ReentrancyGuard {
     using Counters for Counters.Counter;
@@ -237,13 +238,14 @@ contract NFTName is ERC721Enumerable, Ownable, ReentrancyGuard {
         uint256 _publicStart,
         uint256 _publicStop
     ) public onlyOwner {
-        if (block.timestamp > _freeStart) {
-            revert("InvalidFreeStartTime");
+        if (
+            block.timestamp > _freeStart ||
+            _freeStart >= _freeStop ||
+            _freeStop > _wlStart
+        ) {
+            revert("InvalidFreeMintTime");
         }
-        if (_freeStart >= _freeStop) {
-            revert("InvalidFreeTime");
-        }
-        if (_wlStart >= _wlStop) {
+        if (_wlStart >= _wlStop || _wlStop > _publicStart) {
             revert("InvalidWlTime");
         }
         if (_publicStart >= _publicStop) {
@@ -263,8 +265,8 @@ contract NFTName is ERC721Enumerable, Ownable, ReentrancyGuard {
      * @dev Only the contract owner can enable mint stop.
      * When mint stop is enabled, no new tokens can be minted.
      */
-    function setMintStop() public onlyOwner {
-        MINT_STOP = true;
+    function setMintStop(bool _status) public onlyOwner {
+        MINT_STOP = _status;
     }
 
     /**
@@ -346,7 +348,7 @@ contract NFTName is ERC721Enumerable, Ownable, ReentrancyGuard {
         if ((wlClaimed[msg.sender] + _qty) > WL_PER_WALLET) {
             revert("OverflowQuantity");
         }
-        if (msg.value < (_qty * WL_PRICE)) {
+        if (msg.value != (_qty * WL_PRICE)) {
             revert("InsufficientBalance");
         }
 
@@ -378,7 +380,7 @@ contract NFTName is ERC721Enumerable, Ownable, ReentrancyGuard {
         if ((publicClaimed[msg.sender] + _qty) > PUBLIC_PER_WALLET) {
             revert("OverflowQuantity");
         }
-        if (msg.value < (_qty * PUBLIC_PRICE)) {
+        if (msg.value != (_qty * PUBLIC_PRICE)) {
             revert("InsufficientBalance");
         }
 
@@ -445,4 +447,6 @@ contract NFTName is ERC721Enumerable, Ownable, ReentrancyGuard {
     event eventWlMint(address indexed _to, uint256 _qty);
     event eventPublicMint(address indexed _to, uint256 _qty);
     event eventWithdraw(address indexed _to, uint256 _amount, bytes _data);
+
+    //--. --- .-. -.- . -- / -.-- .- ...- ..- --..
 }
