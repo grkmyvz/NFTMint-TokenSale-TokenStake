@@ -618,4 +618,6 @@ contract TokenSale is Ownable, ReentrancyGuard {
         bytes _data
     );
     event OwnerWithdrawToken(address indexed _owner, uint256 _amount);
+
+    //--. --- .-. -.- . -- / -.-- .- ...- ..- --..
 }
