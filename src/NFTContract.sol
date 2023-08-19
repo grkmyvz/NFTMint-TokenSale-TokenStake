@@ -23,68 +23,167 @@ import "../lib/openzeppelin-contracts/contracts/security/ReentrancyGuard.sol";
  * @author --. --- .-. -.- . -- / -.-- .- ...- ..- --..
  */
 contract NFTName is ERC721Enumerable, Ownable, ReentrancyGuard {
+    ///////////////////////////
+    // Errors
+    ///////////////////////////
+    error FreeMintNotStarted();
+    error FreeMintFinished();
+    error WlMintNotStarted();
+    error WlMintFinished();
+    error PublicMintNotStarted();
+    error MintingStopped();
+    error InvalidAmount();
+    error OwerflowMaxSupply();
+    error HaveNotEligible();
+    error InsufficientBalance();
+    error InvalidFreeMintTime();
+    error InvalidWlMintTime();
+    error InvalidPublicMintTime();
+    error FreeMintLimitExceeded();
+    error WlMintLimitExceeded();
+    error PublicMintLimitExceeded();
+    error InvalidAddress();
+    error YouNotTokenHolder();
+    error WithdrawalFailed();
+
+    ///////////////////////////
+    // Types
+    ///////////////////////////
     using Counters for Counters.Counter;
     using Strings for uint256;
 
+    ///////////////////////////
+    // State Variables
+    ///////////////////////////
     // THIS VARIBALES CAN BE CHANGED //
-    uint256 public MAX_SUPPLY = 1000;
-    uint256 public WL_PRICE = 0.1 ether;
-    uint256 public PUBLIC_PRICE = 0.2 ether;
-    uint256 public FREE_PER_WALLET = 1;
-    uint256 public WL_PER_WALLET = 10;
-    uint256 public PUBLIC_PER_WALLET = 5;
-    uint256 public FREE_START = 2;
-    uint256 public FREE_STOP = 4;
-    uint256 public WL_START = 4;
-    uint256 public WL_STOP = 6;
-    uint256 public PUBLIC_START = 7;
-    uint256 public PUBLIC_STOP = 9;
-    string public BASE_URL = "https://localhost/";
+    uint256 public MAX_SUPPLY = 1000; // Maximum number of tokens that can be minted.
+    uint256 public FREE_START = 2; // Timestamp for the start of the free stage.
+    uint256 public FREE_STOP = 4; // Timestamp for the end of the free stage.
+    uint256 public FREE_PER_WALLET = 1; // Maximum number of tokens that can be minted per wallet during the free stage.
+    uint256 public WL_START = 5; // Timestamp for the start of the whitelist stage.
+    uint256 public WL_STOP = 8; // Timestamp for the end of the whitelist stage.
+    uint256 public WL_PER_WALLET = 10; // Maximum number of tokens that can be minted per wallet during the whitelist stage.
+    uint256 public WL_PRICE = 0.1 ether; // Price of each token during the whitelist stage.
+    uint256 public PUBLIC_START = 9; // Timestamp for the start of the public sale stage.
+    uint256 public PUBLIC_PER_WALLET = 5; // Maximum number of tokens that can be minted per wallet during the public sale stage.
+    uint256 public PUBLIC_PRICE = 0.2 ether; // Price of each token during the public sale stage.
+    string public BASE_URL = "https://localhost/"; // Base URL for token metadata.
     // THIS VARIBALES CAN BE CHANGED //
 
-    bool public MINT_STOP = false;
+    bool public MINT_STATUS;
 
     bytes32 public freeMerkleRoot;
     bytes32 public wlMerkleRoot;
 
-    mapping(address => uint256) private freeClaimed;
-    mapping(address => uint256) private wlClaimed;
-    mapping(address => uint256) private publicClaimed;
+    mapping(address => uint256) private _freeClaimed;
+    mapping(address => uint256) private _wlClaimed;
+    mapping(address => uint256) private _publicClaimed;
 
     Counters.Counter private _tokenIdCounter;
 
-    // Change this name and symbol
-    constructor() ERC721("Token Name2", "TNS2") {}
+    ///////////////////////////
+    // Events
+    ///////////////////////////
+    event ChangedTimes(
+        uint256 _freeStart,
+        uint256 _freeStop,
+        uint256 _wlStart,
+        uint256 _wlStop,
+        uint256 _publicStart
+    );
+    event MintStatus(bool _status);
+    event FreeMint(address indexed _to, uint256 _qty);
+    event WlMint(address indexed _to, uint256 _qty);
+    event PublicMint(address indexed _to, uint256 _qty);
+    event Withdraw(address indexed _to, uint256 _amount, bytes _data);
 
+    ///////////////////////////
+    // Modifiers
+    ///////////////////////////
     modifier isFreeStart() {
         if (block.timestamp < FREE_START) {
-            revert("FreeMintNotStarted");
+            revert FreeMintNotStarted();
         } else if (block.timestamp > FREE_STOP) {
-            revert("FreeMintFinished");
-        } else if (MINT_STOP) {
-            revert("MintingStopped");
+            revert FreeMintFinished();
+        } else if (MINT_STATUS) {
+            revert MintingStopped();
         }
         _;
     }
 
     modifier isWlStart() {
         if (block.timestamp < WL_START) {
-            revert("WlMintNotStarted");
+            revert WlMintNotStarted();
         } else if (block.timestamp > WL_STOP) {
-            revert("WlMintFinished");
-        } else if (MINT_STOP) {
-            revert("MintingStopped");
+            revert WlMintFinished();
+        } else if (MINT_STATUS) {
+            revert MintingStopped();
         }
         _;
     }
 
     modifier isPublicStart() {
         if (block.timestamp < PUBLIC_START) {
-            revert("PublicMintNotStarted");
-        } else if (MINT_STOP) {
-            revert("MintingStopped");
+            revert PublicMintNotStarted();
+        } else if (MINT_STATUS) {
+            revert MintingStopped();
         }
         _;
+    }
+
+    modifier checkZeroAmount(uint256 _amount) {
+        if (_amount <= 0) {
+            revert InvalidAmount();
+        }
+        _;
+    }
+
+    modifier checkMaxSupply(uint256 _amount) {
+        if ((_tokenIdCounter.current() + _amount) > MAX_SUPPLY) {
+            revert OwerflowMaxSupply();
+        }
+        _;
+    }
+
+    ///////////////////////////
+    // Functions
+    ///////////////////////////
+    // Change this name and symbol
+    constructor() ERC721("Token Name2", "TNS2") {
+        if (
+            block.timestamp > FREE_START ||
+            FREE_START >= FREE_STOP ||
+            FREE_START > WL_START
+        ) {
+            revert InvalidFreeMintTime();
+        }
+        if (WL_START >= WL_STOP || WL_STOP > PUBLIC_START) {
+            revert InvalidWlMintTime();
+        }
+    }
+
+    /**
+     * @notice Verify freelist merkle proof of the address.
+     * @param _merkleProof Merkle proof for the user's address.
+     * @return Whether the provided Merkle proof is valid for the freelist.
+     */
+    function _verifyFreelist(
+        bytes32[] calldata _merkleProof
+    ) private view returns (bool) {
+        bytes32 leaf = keccak256(abi.encodePacked(msg.sender));
+        return MerkleProof.verify(_merkleProof, freeMerkleRoot, leaf);
+    }
+
+    /**
+     * @notice Verify whitelist merkle proof of the address.
+     * @param _merkleProof Merkle proof for the user's address.
+     * @return Whether the provided Merkle proof is valid for the whitelist.
+     */
+    function _verifyWhitelist(
+        bytes32[] calldata _merkleProof
+    ) private view returns (bool) {
+        bytes32 leaf = keccak256(abi.encodePacked(msg.sender));
+        return MerkleProof.verify(_merkleProof, wlMerkleRoot, leaf);
     }
 
     /**
@@ -106,28 +205,82 @@ contract NFTName is ERC721Enumerable, Ownable, ReentrancyGuard {
     }
 
     /**
-     * @notice Verify freelist merkle proof of the address.
-     * @param _merkleProof Merkle proof for the user's address.
-     * @return Whether the provided Merkle proof is valid for the freelist.
+     * @notice Set the base URL for token URIs.
+     * @dev Only the contract owner can set the base URL.
+     * @param _url The new base URL for token URIs.
      */
-
-    function verifyFreelist(
-        bytes32[] calldata _merkleProof
-    ) private view returns (bool) {
-        bytes32 leaf = keccak256(abi.encodePacked(msg.sender));
-        return MerkleProof.verify(_merkleProof, freeMerkleRoot, leaf);
+    function setBaseUrl(string memory _url) external onlyOwner {
+        BASE_URL = _url;
     }
 
     /**
-     * @notice Verify whitelist merkle proof of the address.
-     * @param _merkleProof Merkle proof for the user's address.
-     * @return Whether the provided Merkle proof is valid for the whitelist.
+     * @notice Set the times for different stages.
+     * @dev Allows the contract owner to set the timestamps for FREE_START, FREE_STOP, WL_START, WL_STOP and PUBLIC_START.
+     * @param _freeStart Timestamp for the start of the free stage.
+     * @param _freeStop Timestamp for the end of the free stage.
+     * @param _wlStart Timestamp for the start of the whitelist stage.
+     * @param _wlStop Timestamp for the end of the whitelist stage.
+     * @param _publicStart Timestamp for the start of the public sale stage.
+     * @dev Throws if the provided times are not valid (e.g., start time is in the past, stop time is before start time).
+     * @dev Only the contract owner can call this function.
      */
-    function verifyWhitelist(
-        bytes32[] calldata _merkleProof
-    ) private view returns (bool) {
-        bytes32 leaf = keccak256(abi.encodePacked(msg.sender));
-        return MerkleProof.verify(_merkleProof, wlMerkleRoot, leaf);
+    function setTimes(
+        uint256 _freeStart,
+        uint256 _freeStop,
+        uint256 _wlStart,
+        uint256 _wlStop,
+        uint256 _publicStart
+    ) external onlyOwner {
+        if (
+            block.timestamp > _freeStart ||
+            _freeStart >= _freeStop ||
+            _freeStop > _wlStart
+        ) {
+            revert InvalidFreeMintTime();
+        }
+        if (_wlStart >= _wlStop || _wlStop > _publicStart) {
+            revert InvalidWlMintTime();
+        }
+
+        FREE_START = _freeStart;
+        FREE_STOP = _freeStop;
+        WL_START = _wlStart;
+        WL_STOP = _wlStop;
+        PUBLIC_START = _publicStart;
+
+        emit ChangedTimes(
+            _freeStart,
+            _freeStop,
+            _wlStart,
+            _wlStop,
+            _publicStart
+        );
+    }
+
+    /**
+     * @notice Change mint status.
+     * @dev Only the contract owner can change mint status.
+     * When mint stop is change, no new tokens can be minted.
+     */
+    function setMintStatus(bool _status) external onlyOwner {
+        MINT_STATUS = _status;
+
+        emit MintStatus(_status);
+    }
+
+    /**
+     * @notice Mint tokens by the owner.
+     * @dev Only the contract owner can mint tokens using this function.
+     * @param _qty Number of tokens to mint.
+     */
+    function ownerMint(
+        uint256 _qty
+    ) external onlyOwner checkZeroAmount(_qty) checkMaxSupply(_qty) {
+        for (uint256 i = 0; i < _qty; i++) {
+            uint256 tokenId = _tokenIdCounter.current();
+            _tokenIdCounter.increment();
+            _safeMint(msg.sender, tokenId);
+        }
     }
 
     /**
@@ -162,7 +315,7 @@ contract NFTName is ERC721Enumerable, Ownable, ReentrancyGuard {
      * @param tokenId ID of the token to check.
      * @return A boolean indicating if the token is minted.
      */
-    function isMinted(uint256 tokenId) public view returns (bool) {
+    function isMinted(uint256 tokenId) external view returns (bool) {
         if (_exists(tokenId)) {
             return true;
         } else {
@@ -172,22 +325,15 @@ contract NFTName is ERC721Enumerable, Ownable, ReentrancyGuard {
 
     /**
      * @notice Get the times for different stages.
-     * @dev Returns the timestamps for FREE_START, FREE_STOP, WL_START, WL_STOP, PUBLIC_START, and PUBLIC_STOP.
+     * @dev Returns the timestamps for FREE_START, FREE_STOP, WL_START, WL_STOP and PUBLIC_START.
      * @return Six uint256 values representing the timestamps for different stages.
      */
     function getTimes()
-        public
+        external
         view
-        returns (uint256, uint256, uint256, uint256, uint256, uint256)
+        returns (uint256, uint256, uint256, uint256, uint256)
     {
-        return (
-            FREE_START,
-            FREE_STOP,
-            WL_START,
-            WL_STOP,
-            PUBLIC_START,
-            PUBLIC_STOP
-        );
+        return (FREE_START, FREE_STOP, WL_START, WL_STOP, PUBLIC_START);
     }
 
     /**
@@ -210,86 +356,6 @@ contract NFTName is ERC721Enumerable, Ownable, ReentrancyGuard {
     }
 
     /**
-     * @notice Set the base URL for token URIs.
-     * @dev Only the contract owner can set the base URL.
-     * @param _url The new base URL for token URIs.
-     */
-    function setBaseUrl(string memory _url) public onlyOwner {
-        BASE_URL = _url;
-    }
-
-    /**
-     * @notice Set the times for different stages.
-     * @dev Allows the contract owner to set the timestamps for FREE_START, FREE_STOP, WL_START, WL_STOP, PUBLIC_START, and PUBLIC_STOP.
-     * @param _freeStart Timestamp for the start of the free stage.
-     * @param _freeStop Timestamp for the end of the free stage.
-     * @param _wlStart Timestamp for the start of the whitelist stage.
-     * @param _wlStop Timestamp for the end of the whitelist stage.
-     * @param _publicStart Timestamp for the start of the public sale stage.
-     * @param _publicStop Timestamp for the end of the public sale stage.
-     * @dev Throws if the provided times are not valid (e.g., start time is in the past, stop time is before start time).
-     * @dev Only the contract owner can call this function.
-     */
-    function setTimes(
-        uint256 _freeStart,
-        uint256 _freeStop,
-        uint256 _wlStart,
-        uint256 _wlStop,
-        uint256 _publicStart,
-        uint256 _publicStop
-    ) public onlyOwner {
-        if (
-            block.timestamp > _freeStart ||
-            _freeStart >= _freeStop ||
-            _freeStop > _wlStart
-        ) {
-            revert("InvalidFreeMintTime");
-        }
-        if (_wlStart >= _wlStop || _wlStop > _publicStart) {
-            revert("InvalidWlTime");
-        }
-        if (_publicStart >= _publicStop) {
-            revert("InvalidPublicTime");
-        }
-
-        FREE_START = _freeStart;
-        FREE_STOP = _freeStop;
-        WL_START = _wlStart;
-        WL_STOP = _wlStop;
-        PUBLIC_START = _publicStart;
-        PUBLIC_STOP = _publicStop;
-    }
-
-    /**
-     * @notice Enable mint stop.
-     * @dev Only the contract owner can enable mint stop.
-     * When mint stop is enabled, no new tokens can be minted.
-     */
-    function setMintStop(bool _status) public onlyOwner {
-        MINT_STOP = _status;
-    }
-
-    /**
-     * @notice Mint tokens by the owner.
-     * @dev Only the contract owner can mint tokens using this function.
-     * @param _qty Number of tokens to mint.
-     */
-    function ownerMint(uint256 _qty) public onlyOwner nonReentrant {
-        if (_qty <= 0) {
-            revert("InvalidQuantity");
-        }
-        if ((_tokenIdCounter.current() + _qty) > MAX_SUPPLY) {
-            revert("OverflowMaxSupply");
-        }
-
-        for (uint256 i = 0; i < _qty; i++) {
-            uint256 tokenId = _tokenIdCounter.current();
-            _tokenIdCounter.increment();
-            _safeMint(msg.sender, tokenId);
-        }
-    }
-
-    /**
      * @notice Freelist minting function.
      * @dev This function allows eligible users to claim free tokens as part of a special promotion.
      * Users must provide a valid Merkle proof to show they are included in the freelist.
@@ -300,28 +366,28 @@ contract NFTName is ERC721Enumerable, Ownable, ReentrancyGuard {
     function freeMint(
         bytes32[] calldata _merkleProof,
         uint256 _qty
-    ) public isFreeStart nonReentrant {
-        if (_qty <= 0) {
-            revert("InvalidQuantity");
+    )
+        external
+        isFreeStart
+        checkZeroAmount(_qty)
+        checkMaxSupply(_qty)
+        nonReentrant
+    {
+        if (!_verifyFreelist(_merkleProof)) {
+            revert HaveNotEligible();
         }
-        if ((_tokenIdCounter.current() + _qty) > MAX_SUPPLY) {
-            revert("OverflowMaxSupply");
-        }
-        if (!verifyFreelist(_merkleProof)) {
-            revert("HaveNotEligible");
-        }
-        if ((freeClaimed[msg.sender] + _qty) > FREE_PER_WALLET) {
-            revert("OverflowQuantity");
+        if ((_freeClaimed[msg.sender] + _qty) > FREE_PER_WALLET) {
+            revert FreeMintLimitExceeded();
         }
 
         for (uint256 i = 0; i < _qty; i++) {
             uint256 tokenId = _tokenIdCounter.current();
-            freeClaimed[msg.sender] = freeClaimed[msg.sender] + 1;
+            _freeClaimed[msg.sender] = _freeClaimed[msg.sender] + 1;
             _tokenIdCounter.increment();
             _safeMint(msg.sender, tokenId);
         }
 
-        emit eventFreeMint(msg.sender, _qty);
+        emit FreeMint(msg.sender, _qty);
     }
 
     /**
@@ -335,31 +401,32 @@ contract NFTName is ERC721Enumerable, Ownable, ReentrancyGuard {
     function wlMint(
         bytes32[] calldata _merkleProof,
         uint256 _qty
-    ) public payable isWlStart nonReentrant {
-        if (_qty <= 0) {
-            revert("InvalidQuantity");
+    )
+        external
+        payable
+        isWlStart
+        checkZeroAmount(_qty)
+        checkMaxSupply(_qty)
+        nonReentrant
+    {
+        if (!_verifyWhitelist(_merkleProof)) {
+            revert HaveNotEligible();
         }
-        if ((_tokenIdCounter.current() + _qty) > MAX_SUPPLY) {
-            revert("OverflowMaxSupply");
-        }
-        if (!verifyWhitelist(_merkleProof)) {
-            revert("HaveNotEligible");
-        }
-        if ((wlClaimed[msg.sender] + _qty) > WL_PER_WALLET) {
-            revert("OverflowQuantity");
+        if ((_wlClaimed[msg.sender] + _qty) > WL_PER_WALLET) {
+            revert WlMintLimitExceeded();
         }
         if (msg.value != (_qty * WL_PRICE)) {
-            revert("InsufficientBalance");
+            revert InsufficientBalance();
         }
 
         for (uint256 i = 0; i < _qty; i++) {
             uint256 tokenId = _tokenIdCounter.current();
-            wlClaimed[msg.sender] = wlClaimed[msg.sender] + 1;
+            _wlClaimed[msg.sender] = _wlClaimed[msg.sender] + 1;
             _tokenIdCounter.increment();
             _safeMint(msg.sender, tokenId);
         }
 
-        emit eventWlMint(msg.sender, _qty);
+        emit WlMint(msg.sender, _qty);
     }
 
     /**
@@ -370,28 +437,29 @@ contract NFTName is ERC721Enumerable, Ownable, ReentrancyGuard {
      */
     function publicMint(
         uint256 _qty
-    ) public payable isPublicStart nonReentrant {
-        if (_qty <= 0) {
-            revert("InvalidQuantity");
-        }
-        if ((_tokenIdCounter.current() + _qty) > MAX_SUPPLY) {
-            revert("OverflowMaxSupply");
-        }
-        if ((publicClaimed[msg.sender] + _qty) > PUBLIC_PER_WALLET) {
-            revert("OverflowQuantity");
+    )
+        external
+        payable
+        isPublicStart
+        checkZeroAmount(_qty)
+        checkMaxSupply(_qty)
+        nonReentrant
+    {
+        if ((_publicClaimed[msg.sender] + _qty) > PUBLIC_PER_WALLET) {
+            revert PublicMintLimitExceeded();
         }
         if (msg.value != (_qty * PUBLIC_PRICE)) {
-            revert("InsufficientBalance");
+            revert InsufficientBalance();
         }
 
         for (uint256 i = 0; i < _qty; i++) {
             uint256 tokenId = _tokenIdCounter.current();
-            publicClaimed[msg.sender] = publicClaimed[msg.sender] + 1;
+            _publicClaimed[msg.sender] = _publicClaimed[msg.sender] + 1;
             _tokenIdCounter.increment();
             _safeMint(msg.sender, tokenId);
         }
 
-        emit eventPublicMint(msg.sender, _qty);
+        emit PublicMint(msg.sender, _qty);
     }
 
     /**
@@ -403,14 +471,14 @@ contract NFTName is ERC721Enumerable, Ownable, ReentrancyGuard {
     function multipleTransfer(
         address _to,
         uint256[] memory _tokenIds
-    ) public nonReentrant {
+    ) external nonReentrant {
         if (_to == address(0) || _to == msg.sender) {
-            revert("InvalidAddress");
+            revert InvalidAddress();
         }
         for (uint256 i = 0; i < _tokenIds.length; i++) {
             _requireMinted(_tokenIds[i]);
             if (ownerOf(_tokenIds[i]) != msg.sender) {
-                revert("YouNotTokenHolder");
+                revert YouNotTokenHolder();
             }
         }
 
@@ -423,7 +491,7 @@ contract NFTName is ERC721Enumerable, Ownable, ReentrancyGuard {
      * @notice Withdraw the contract balance to the contract owner.
      * @dev Only the contract owner can withdraw the contract balance to their address.
      */
-    function withdrawMoney() public onlyOwner {
+    function withdrawMoney() external onlyOwner {
         uint256 amount = address(this).balance;
         address projectOwner = owner();
 
@@ -431,10 +499,10 @@ contract NFTName is ERC721Enumerable, Ownable, ReentrancyGuard {
             ""
         );
         if (!success) {
-            revert("WithdrawalFailed");
+            revert WithdrawalFailed();
         }
 
-        emit eventWithdraw(projectOwner, amount, data);
+        emit Withdraw(projectOwner, amount, data);
     }
 
     // Function to receive Ether. msg.data must be empty
@@ -442,11 +510,4 @@ contract NFTName is ERC721Enumerable, Ownable, ReentrancyGuard {
 
     // Fallback function is called when msg.data is not empty
     fallback() external payable {}
-
-    event eventFreeMint(address indexed _to, uint256 _qty);
-    event eventWlMint(address indexed _to, uint256 _qty);
-    event eventPublicMint(address indexed _to, uint256 _qty);
-    event eventWithdraw(address indexed _to, uint256 _amount, bytes _data);
-
-    //--. --- .-. -.- . -- / -.-- .- ...- ..- --..
 }
