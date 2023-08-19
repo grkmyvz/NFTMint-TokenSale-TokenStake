@@ -1,0 +1,25 @@
+{
+  "merkleRoot": "0x449506d84ba1c28422e518ba1653f80ec291e2236d5b7e216ad9b16d7ff5d2ab",
+  "proofs": [
+    {
+      "address": "0x4af622b5079eb389aef90fb01ae2681971ca5af8",
+      "proof": [
+        "0xf9ff3bcd5ae7b826e9d51586d3a61d5edc6b8a8a5916c90b44b4172d4082fda9",
+        "0x2fa0b85315835788c20e90a54c4b0d74a53b0f06be6bc835b57fa2b44daf17c2"
+      ]
+    },
+    {
+      "address": "0xd5eadb13b849458ddf4ba98c2009059625868228",
+      "proof": [
+        "0x444c6da82af0f0b56a9357fd0933055f47c9c2c709a4e0a35235f1e141331d86",
+        "0x2fa0b85315835788c20e90a54c4b0d74a53b0f06be6bc835b57fa2b44daf17c2"
+      ]
+    },
+    {
+      "address": "0xAEb9A4587aC3f43c7f96412e08ccd62e32Ed27Fc",
+      "proof": [
+        "0xdc08ce24cf61970d70b83948e9e52cafdc078cb1fe79e0ccf89cae6af0fceb63"
+      ]
+    }
+  ]
+}
