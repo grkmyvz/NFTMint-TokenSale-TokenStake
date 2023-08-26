@@ -20,6 +20,7 @@ contract TokenSaleTest is Test {
     address public user8;
     address public user9;
     address public member1;
+    // Users public users;
 
     function setUp() public {
         contractOwner = vm.addr(1);
@@ -44,6 +45,20 @@ contract TokenSaleTest is Test {
         vm.deal(user8, 100 ether);
         vm.deal(user9, 100 ether);
         vm.deal(member1, 100 ether);
+
+        // users = Users({
+        //     airdrop1: createUser("airdrop1"),
+        //     airdrop2: createUser("airdrop2"),
+        //     seedSale1: createUser("seedSale1"),
+        //     seedSale2: createUser("seedSale2"),
+        //     preSale1: createUser("preSale1"),
+        //     preSale2: createUser("preSale2"),
+        //     publicSale1: createUser("publicSale1"),
+        //     publicSale2: createUser("publicSale2")
+        // });
+
+        // vm.prank(users.airdrop1);
+
         vm.startPrank(contractOwner);
         token = new MyToken();
         tokenSale = new TokenSale(address(token));
@@ -64,6 +79,23 @@ contract TokenSaleTest is Test {
         emit log_named_address("User 9", user9);
         emit log_named_address("Member 1", member1);
     }
+
+    // struct Users {
+    //     address airdrop1;
+    //     address airdrop2;
+    //     address seedSale1;
+    //     address seedSale2;
+    //     address preSale1;
+    //     address preSale2;
+    //     address publicSale1;
+    //     address publicSale2;
+    // }
+
+    // function createUser(string memory name) internal returns (address payable) {
+    //     address payable user = payable(makeAddr(name));
+    //     vm.deal({account: user, newBalance: 100 ether});
+    //     return user;
+    // }
 
     function testContract() public {
         assertTrue(address(this) != address(0));
@@ -91,10 +123,7 @@ contract TokenSaleTest is Test {
         assertTrue(address(user8).balance == 100000000000000000000);
         assertTrue(address(user9).balance == 100000000000000000000);
         assertTrue(address(member1).balance == 100000000000000000000);
-        assertTrue(
-            token.balanceOf(address(contractOwner)) ==
-                (1000000 * 10 ** 18) - (110 * 10 ** 18)
-        );
+        assertTrue(token.balanceOf(address(contractOwner)) == (1000000 * 10 ** 18) - (110 * 10 ** 18));
         assertTrue(token.balanceOf(address(tokenSale)) == 110 * 10 ** 18);
         assertTrue(tokenSale.isTokenBalanceOk() == true);
         assertTrue(tokenSale.isAirdropStarted() == false);
@@ -108,40 +137,20 @@ contract TokenSaleTest is Test {
 
     function tMerkleRoots() public {
         vm.startPrank(contractOwner);
-        tokenSale.setAirdropMerkleRoot(
-            bytes32(
-                0x1a22147bba2925efd48ca48b860220617600b681013c3f91680b51b082bed39f
-            )
-        );
-        tokenSale.setSeedsaleMerkleRoot(
-            bytes32(
-                0x073d9c846828def16f872ba1c3c9da0d9eda7d47d652658b3203daf28cb1f398
-            )
-        );
-        tokenSale.setPresaleMerkleRoot(
-            bytes32(
-                0x724188b029894cbd0e18f48c6bdbae3bc4a10d47cdb48eb6eeb9899975a3fcb3
-            )
-        );
+        tokenSale.setAirdropMerkleRoot(bytes32(0x1a22147bba2925efd48ca48b860220617600b681013c3f91680b51b082bed39f));
+        tokenSale.setSeedsaleMerkleRoot(bytes32(0x073d9c846828def16f872ba1c3c9da0d9eda7d47d652658b3203daf28cb1f398));
+        tokenSale.setPresaleMerkleRoot(bytes32(0x724188b029894cbd0e18f48c6bdbae3bc4a10d47cdb48eb6eeb9899975a3fcb3));
         vm.stopPrank();
 
         assertTrue(
-            tokenSale.airdropMerkleRoot() ==
-                bytes32(
-                    0x1a22147bba2925efd48ca48b860220617600b681013c3f91680b51b082bed39f
-                )
+            tokenSale.airdropMerkleRoot() == bytes32(0x1a22147bba2925efd48ca48b860220617600b681013c3f91680b51b082bed39f)
         );
         assertTrue(
-            tokenSale.seedsaleMerkleRoot() ==
-                bytes32(
-                    0x073d9c846828def16f872ba1c3c9da0d9eda7d47d652658b3203daf28cb1f398
-                )
+            tokenSale.seedsaleMerkleRoot()
+                == bytes32(0x073d9c846828def16f872ba1c3c9da0d9eda7d47d652658b3203daf28cb1f398)
         );
         assertTrue(
-            tokenSale.presaleMerkleRoot() ==
-                bytes32(
-                    0x724188b029894cbd0e18f48c6bdbae3bc4a10d47cdb48eb6eeb9899975a3fcb3
-                )
+            tokenSale.presaleMerkleRoot() == bytes32(0x724188b029894cbd0e18f48c6bdbae3bc4a10d47cdb48eb6eeb9899975a3fcb3)
         );
 
         emit log("-----> Merkle Roots Test (OKAY)");
@@ -156,39 +165,21 @@ contract TokenSaleTest is Test {
         assertTrue(tokenSale.isAirdropStarted() == true);
 
         bytes32[] memory user1Proof = new bytes32[](2);
-        user1Proof[0] = bytes32(
-            0x1bec7c333d3d0c3eef8c6199a402856509c3f869d25408cc1cc2208d0371db0e
-        );
-        user1Proof[1] = bytes32(
-            0x2fa0b85315835788c20e90a54c4b0d74a53b0f06be6bc835b57fa2b44daf17c2
-        );
+        user1Proof[0] = bytes32(0x1bec7c333d3d0c3eef8c6199a402856509c3f869d25408cc1cc2208d0371db0e);
+        user1Proof[1] = bytes32(0x2fa0b85315835788c20e90a54c4b0d74a53b0f06be6bc835b57fa2b44daf17c2);
         bytes32[] memory user2Proof = new bytes32[](2);
-        user2Proof[0] = bytes32(
-            0x94a6fc29a44456b36232638a7042431c9c91b910df1c52187179085fac1560e9
-        );
-        user2Proof[1] = bytes32(
-            0x2fa0b85315835788c20e90a54c4b0d74a53b0f06be6bc835b57fa2b44daf17c2
-        );
+        user2Proof[0] = bytes32(0x94a6fc29a44456b36232638a7042431c9c91b910df1c52187179085fac1560e9);
+        user2Proof[1] = bytes32(0x2fa0b85315835788c20e90a54c4b0d74a53b0f06be6bc835b57fa2b44daf17c2);
 
         vm.prank(user1);
         tokenSale.buyAirdrop(user1Proof);
-        assertTrue(
-            tokenSale.airdropBalances(user1) ==
-                tokenSale.AIRDROP_MAX_PER_WALLET()
-        );
-        assertTrue(
-            tokenSale.airdropBuyed() == tokenSale.AIRDROP_MAX_PER_WALLET()
-        );
+        assertTrue(tokenSale.airdropBalances(user1) == tokenSale.AIRDROP_MAX_PER_WALLET());
+        assertTrue(tokenSale.airdropBuyed() == tokenSale.AIRDROP_MAX_PER_WALLET());
 
         vm.prank(user2);
         tokenSale.buyAirdrop(user2Proof);
-        assertTrue(
-            tokenSale.airdropBalances(user2) ==
-                tokenSale.AIRDROP_MAX_PER_WALLET()
-        );
-        assertTrue(
-            tokenSale.airdropBuyed() == tokenSale.AIRDROP_MAX_PER_WALLET() * 2
-        );
+        assertTrue(tokenSale.airdropBalances(user2) == tokenSale.AIRDROP_MAX_PER_WALLET());
+        assertTrue(tokenSale.airdropBuyed() == tokenSale.AIRDROP_MAX_PER_WALLET() * 2);
 
         assertTrue(tokenSale.AIRDROP_AMOUNT() - tokenSale.airdropBuyed() == 0);
 
@@ -207,19 +198,11 @@ contract TokenSaleTest is Test {
         assertTrue(tokenSale.isSeedsaleStarted() == true);
 
         bytes32[] memory user3Proof = new bytes32[](2);
-        user3Proof[0] = bytes32(
-            0x0ec177b07a450912768b0990e3f3942da56d7b24528a8ff010fef62bdc36ed2b
-        );
-        user3Proof[1] = bytes32(
-            0x2fa0b85315835788c20e90a54c4b0d74a53b0f06be6bc835b57fa2b44daf17c2
-        );
+        user3Proof[0] = bytes32(0x0ec177b07a450912768b0990e3f3942da56d7b24528a8ff010fef62bdc36ed2b);
+        user3Proof[1] = bytes32(0x2fa0b85315835788c20e90a54c4b0d74a53b0f06be6bc835b57fa2b44daf17c2);
         bytes32[] memory user4Proof = new bytes32[](2);
-        user4Proof[0] = bytes32(
-            0x1143df8268b94bd6292fdd7c9b8af39a79f764cfc03ae006844446bc91203927
-        );
-        user4Proof[1] = bytes32(
-            0x2fa0b85315835788c20e90a54c4b0d74a53b0f06be6bc835b57fa2b44daf17c2
-        );
+        user4Proof[0] = bytes32(0x1143df8268b94bd6292fdd7c9b8af39a79f764cfc03ae006844446bc91203927);
+        user4Proof[1] = bytes32(0x2fa0b85315835788c20e90a54c4b0d74a53b0f06be6bc835b57fa2b44daf17c2);
 
         uint256 user3Amount = 10;
         uint256 user3Value = tokenSale.SEEDSALE_PRICE() * user3Amount;
@@ -232,9 +215,7 @@ contract TokenSaleTest is Test {
 
         assertTrue(tokenSale.seedsaleBalances(user3) == user3Amount);
         assertTrue(tokenSale.seedsaleBuyed() == user3Amount);
-        assertTrue(
-            address(user3).balance == 100000000000000000000 - user3Value
-        );
+        assertTrue(address(user3).balance == 100000000000000000000 - user3Value);
 
         vm.startPrank(user4);
         tokenSale.buySeedsale{value: user4Value}(user4Proof, user4Amount);
@@ -242,13 +223,9 @@ contract TokenSaleTest is Test {
 
         assertTrue(tokenSale.seedsaleBalances(user4) == user4Amount);
         assertTrue(tokenSale.seedsaleBuyed() == user3Amount + user4Amount);
-        assertTrue(
-            address(user4).balance == 100000000000000000000 - user4Value
-        );
+        assertTrue(address(user4).balance == 100000000000000000000 - user4Value);
 
-        assertTrue(
-            tokenSale.SEEDSALE_AMOUNT() - tokenSale.seedsaleBuyed() == 0
-        );
+        assertTrue(tokenSale.SEEDSALE_AMOUNT() - tokenSale.seedsaleBuyed() == 0);
 
         vm.prank(contractOwner);
         tokenSale.setStartSeedsale(false);
@@ -265,19 +242,11 @@ contract TokenSaleTest is Test {
         assertTrue(tokenSale.isPresaleStarted() == true);
 
         bytes32[] memory user5Proof = new bytes32[](2);
-        user5Proof[0] = bytes32(
-            0x487a0fa9fe1271bede1abe958efd4a3e46c23bd75ee1766be76ac527effefdb2
-        );
-        user5Proof[1] = bytes32(
-            0x2fa0b85315835788c20e90a54c4b0d74a53b0f06be6bc835b57fa2b44daf17c2
-        );
+        user5Proof[0] = bytes32(0x487a0fa9fe1271bede1abe958efd4a3e46c23bd75ee1766be76ac527effefdb2);
+        user5Proof[1] = bytes32(0x2fa0b85315835788c20e90a54c4b0d74a53b0f06be6bc835b57fa2b44daf17c2);
         bytes32[] memory user6Proof = new bytes32[](2);
-        user6Proof[0] = bytes32(
-            0x214ce8fb7807e8a6d3aae20a0447e848c2b2676ee5ee6c7bd6badaed66a2f817
-        );
-        user6Proof[1] = bytes32(
-            0x2fa0b85315835788c20e90a54c4b0d74a53b0f06be6bc835b57fa2b44daf17c2
-        );
+        user6Proof[0] = bytes32(0x214ce8fb7807e8a6d3aae20a0447e848c2b2676ee5ee6c7bd6badaed66a2f817);
+        user6Proof[1] = bytes32(0x2fa0b85315835788c20e90a54c4b0d74a53b0f06be6bc835b57fa2b44daf17c2);
 
         uint256 user5Amount = 10;
         uint256 user5Value = tokenSale.PRESALE_PRICE() * user5Amount;
@@ -290,22 +259,15 @@ contract TokenSaleTest is Test {
 
         assertTrue(tokenSale.presaleBalances(user5) == user5Amount);
         assertTrue(tokenSale.presaleBuyed() == user5Amount);
-        assertTrue(
-            address(user5).balance == 100000000000000000000 - user5Value
-        );
+        assertTrue(address(user5).balance == 100000000000000000000 - user5Value);
 
         vm.startPrank(user6);
-        tokenSale.buyPresale{value: tokenSale.PRESALE_PRICE() * user6Amount}(
-            user6Proof,
-            user6Amount
-        );
+        tokenSale.buyPresale{value: tokenSale.PRESALE_PRICE() * user6Amount}(user6Proof, user6Amount);
         vm.stopPrank();
 
         assertTrue(tokenSale.presaleBalances(user6) == user6Amount);
         assertTrue(tokenSale.presaleBuyed() == user5Amount + user6Amount);
-        assertTrue(
-            address(user6).balance == 100000000000000000000 - user6Value
-        );
+        assertTrue(address(user6).balance == 100000000000000000000 - user6Value);
 
         assertTrue(tokenSale.PRESALE_AMOUNT() - tokenSale.presaleBuyed() == 10);
 
@@ -347,9 +309,7 @@ contract TokenSaleTest is Test {
 
         assertTrue(tokenSale.publicsaleBalances(user7) == user7Amount);
         assertTrue(tokenSale.publicsaleBuyed() == user7Amount);
-        assertTrue(
-            address(user7).balance == 100000000000000000000 - user7Value
-        );
+        assertTrue(address(user7).balance == 100000000000000000000 - user7Value);
 
         vm.startPrank(user8);
         tokenSale.buyPublicsale{value: user8Value}(user8Amount);
@@ -357,13 +317,9 @@ contract TokenSaleTest is Test {
 
         assertTrue(tokenSale.publicsaleBalances(user8) == user8Amount);
         assertTrue(tokenSale.publicsaleBuyed() == user7Amount + user8Amount);
-        assertTrue(
-            address(user8).balance == 100000000000000000000 - user8Value
-        );
+        assertTrue(address(user8).balance == 100000000000000000000 - user8Value);
 
-        assertTrue(
-            tokenSale.PUBLICSALE_AMOUNT() - tokenSale.publicsaleBuyed() == 30
-        );
+        assertTrue(tokenSale.PUBLICSALE_AMOUNT() - tokenSale.publicsaleBuyed() == 30);
 
         vm.prank(contractOwner);
         tokenSale.setStartPublicsale(false);
@@ -377,8 +333,7 @@ contract TokenSaleTest is Test {
         assertTrue(token.balanceOf(user1) == 0);
 
         uint256 firstBalance = tokenSale.airdropBalances(user1);
-        uint256 perPeriodBalance = (firstBalance /
-            tokenSale.AIRDROP_CLAIM_PERIOD()) * 10 ** 18;
+        uint256 perPeriodBalance = (firstBalance / tokenSale.AIRDROP_CLAIM_PERIOD()) * 10 ** 18;
 
         // 1. Period
         vm.warp(110);
@@ -416,8 +371,7 @@ contract TokenSaleTest is Test {
         assertTrue(token.balanceOf(user3) == 0);
 
         uint256 firstBalance = tokenSale.seedsaleBalances(user3);
-        uint256 perPeriodBalance = (firstBalance /
-            tokenSale.SEEDSALE_CLAIM_PERIOD()) * 10 ** 18;
+        uint256 perPeriodBalance = (firstBalance / tokenSale.SEEDSALE_CLAIM_PERIOD()) * 10 ** 18;
 
         // 1. Period
         vm.warp(210);
@@ -455,8 +409,7 @@ contract TokenSaleTest is Test {
         assertTrue(token.balanceOf(user5) == 0);
 
         uint256 firstBalance = tokenSale.presaleBalances(user5);
-        uint256 perPeriodBalance = (firstBalance /
-            tokenSale.PRESALE_CLAIM_PERIOD()) * 10 ** 18;
+        uint256 perPeriodBalance = (firstBalance / tokenSale.PRESALE_CLAIM_PERIOD()) * 10 ** 18;
 
         // 1. Period
         vm.warp(310);
@@ -494,8 +447,7 @@ contract TokenSaleTest is Test {
         assertTrue(token.balanceOf(user7) == 0);
 
         uint256 firstBalance = tokenSale.publicsaleBalances(user7);
-        uint256 perPeriodBalance = (firstBalance /
-            tokenSale.PUBLICSALE_CLAIM_PERIOD()) * 10 ** 18;
+        uint256 perPeriodBalance = (firstBalance / tokenSale.PUBLICSALE_CLAIM_PERIOD()) * 10 ** 18;
 
         // 1. Period
         vm.warp(410);
@@ -534,10 +486,7 @@ contract TokenSaleTest is Test {
         uint256 beforeContractBalance = address(tokenSale).balance;
         vm.prank(contractOwner);
         tokenSale.withdrawCoin();
-        assertTrue(
-            address(contractOwner).balance ==
-                beforeOwnerBalance + beforeContractBalance
-        );
+        assertTrue(address(contractOwner).balance == beforeOwnerBalance + beforeContractBalance);
         assertTrue(address(tokenSale).balance == 0);
 
         emit log("-----> Withdraw Coin Test (OKAY)");
@@ -549,10 +498,7 @@ contract TokenSaleTest is Test {
         uint256 beforeContractBalance = token.balanceOf(address(tokenSale));
         vm.prank(contractOwner);
         tokenSale.withdrawToken();
-        assertTrue(
-            token.balanceOf(contractOwner) ==
-                beforeOwnerBalance + beforeContractBalance
-        );
+        assertTrue(token.balanceOf(contractOwner) == beforeOwnerBalance + beforeContractBalance);
         assertTrue(token.balanceOf(address(tokenSale)) == 0);
 
         emit log("-----> Withdraw Token Test (OKAY)");

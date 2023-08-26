@@ -19,3 +19,5 @@ docs/
 
 # misc
 .DS_Store
+reports/
+lcov.info
