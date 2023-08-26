@@ -16,7 +16,8 @@ contract NFTContractAudit is BaseTest {
     address public member1;
 
     address public freeAddress = 0x2B5AD5c4795c026514f8317c7a215E218DcCD6cF;
-    address public wlAddress = 0x6813Eb9362372EEF6200f3b1dbC3f819671cBA69;
+    address public whitelistAddress =
+        0x6813Eb9362372EEF6200f3b1dbC3f819671cBA69;
     address public publicAddress = 0x1efF47bc3a10a45D4B230B5d10E37751FE6AA718;
 
     uint256 public constant WALLET_BALANCE = 100 ether;
@@ -46,8 +47,8 @@ contract NFTContractAudit is BaseTest {
 
         vm.deal(freeAddress, WALLET_BALANCE);
         vm.label(freeAddress, "freeAddress");
-        vm.deal(wlAddress, WALLET_BALANCE);
-        vm.label(wlAddress, "wlAddress");
+        vm.deal(whitelistAddress, WALLET_BALANCE);
+        vm.label(whitelistAddress, "whitelistAddress");
         vm.deal(publicAddress, WALLET_BALANCE);
         vm.label(publicAddress, "publicAddress");
 
@@ -94,40 +95,15 @@ contract NFTContractAudit is BaseTest {
         vm.stopPrank();
     }
 
-    //     function setTimes(
-    //     uint256 _freeStart,
-    //     uint256 _freeStop,
-    //     uint256 _wlStart,
-    //     uint256 _wlStop,
-    //     uint256 _publicStart,
-    //     uint256 _publicStop
-    // ) public onlyOwner {
-    //     // require(block.timestamp <= _freeStart && _freeStart < _freeStop && _freeStop <= _wlStart, "InvalidFreeMintTime");
-    //     if (block.timestamp > _freeStart || _freeStart >= _freeStop || _freeStop > _wlStart) {
-    //         revert("InvalidFreeMintTime");
-    //     }
-    //     if (_wlStart >= _wlStop || _wlStop > _publicStart) {
-    //         revert("InvalidWlTime");
-    //     }
-    //     if (_publicStart >= _publicStop) {
-    //         revert("InvalidPublicTime");
-    //     }
-    //     FREE_START = _freeStart;
-    //     FREE_STOP = _freeStop;
-    //     WL_START = _wlStart;
-    //     WL_STOP = _wlStop;
-    //     PUBLIC_START = _publicStart;
-    //     PUBLIC_STOP = _publicStop;
-    // }
     function test_Revert_setTime_InvalidFreeMintTime() public {
         vm.prank(contractOwner);
         vm.expectRevert(NFTName.InvalidFreeMintTime.selector);
         nftContract.setTimes(5, 3, 2, 5, 6);
     }
 
-    function test_Revert_setTime_InvalidWlTime() public {
+    function test_Revert_setTime_InvalidWhitelistTime() public {
         vm.prank(contractOwner);
-        vm.expectRevert(NFTName.InvalidWlMintTime.selector);
+        vm.expectRevert(NFTName.InvalidWhitelistMintTime.selector);
         nftContract.setTimes(5, 6, 7, 5, 6);
     }
 
@@ -135,12 +111,12 @@ contract NFTContractAudit is BaseTest {
         vm.prank(contractOwner);
         nftContract.setPrices(100, 200);
 
-        assertEq(nftContract.WL_PRICE(), 100);
+        assertEq(nftContract.WHITELIST_PRICE(), 100);
         assertEq(nftContract.PUBLIC_PRICE(), 200);
     }
 
     function test_Revert_SetPrice() public {
-        vm.warp(nftContract.WL_START() + 1);
+        vm.warp(nftContract.WHITELIST_START() + 1);
         vm.prank(contractOwner);
         vm.expectRevert(NFTName.CanNotChangePrice.selector);
         nftContract.setPrices(200, 100);
@@ -235,7 +211,7 @@ contract NFTContractAudit is BaseTest {
 
     function test_setWhitelistRoot() public setWhitelistRoot {
         assertEq(
-            nftContract.wlMerkleRoot(),
+            nftContract.whitelistMerkleRoot(),
             bytes32(
                 0x4c2793909c6fd3832188b7b5693cb1fd466066cb37e4366c1f8bc6b7db24d9d7
             )
@@ -399,7 +375,10 @@ contract NFTContractAudit is BaseTest {
         assertEq(preBalance + 1, postBalance);
     }
 
-    function test_Revert_wlMint_WlMintNotStarted() public setWhitelistRoot {
+    function test_Revert_whitelistMint_WhitelistMintNotStarted()
+        public
+        setWhitelistRoot
+    {
         bytes32[] memory proof = new bytes32[](4);
         proof[0] = bytes32(
             0x94a6fc29a44456b36232638a7042431c9c91b910df1c52187179085fac1560e9
@@ -413,13 +392,16 @@ contract NFTContractAudit is BaseTest {
         proof[3] = bytes32(
             0x154fba61f817ed493b12b0c1f9cdadc21f1846ff3145cc9fb5dfe99736335e3a
         );
-        vm.warp(nftContract.WL_START() - 1);
-        vm.prank(wlAddress);
-        vm.expectRevert(NFTName.WlMintNotStarted.selector);
-        nftContract.wlMint(proof, 0);
+        vm.warp(nftContract.WHITELIST_START() - 1);
+        vm.prank(whitelistAddress);
+        vm.expectRevert(NFTName.WhitelistMintNotStarted.selector);
+        nftContract.whitelistMint(proof, 0);
     }
 
-    function test_Revert_wlMint_WlMintFinished() public setWhitelistRoot {
+    function test_Revert_whitelistMint_WhitelistMintFinished()
+        public
+        setWhitelistRoot
+    {
         bytes32[] memory proof = new bytes32[](4);
         proof[0] = bytes32(
             0x94a6fc29a44456b36232638a7042431c9c91b910df1c52187179085fac1560e9
@@ -433,13 +415,16 @@ contract NFTContractAudit is BaseTest {
         proof[3] = bytes32(
             0x154fba61f817ed493b12b0c1f9cdadc21f1846ff3145cc9fb5dfe99736335e3a
         );
-        vm.warp(nftContract.WL_STOP() + 1);
-        vm.prank(wlAddress);
-        vm.expectRevert(NFTName.WlMintFinished.selector);
-        nftContract.wlMint(proof, 0);
+        vm.warp(nftContract.WHITELIST_STOP() + 1);
+        vm.prank(whitelistAddress);
+        vm.expectRevert(NFTName.WhitelistMintFinished.selector);
+        nftContract.whitelistMint(proof, 0);
     }
 
-    function test_Revert_wlMint_MintingStopped() public setWhitelistRoot {
+    function test_Revert_whitelistMint_MintingStopped()
+        public
+        setWhitelistRoot
+    {
         bytes32[] memory proof = new bytes32[](4);
         proof[0] = bytes32(
             0x94a6fc29a44456b36232638a7042431c9c91b910df1c52187179085fac1560e9
@@ -454,16 +439,19 @@ contract NFTContractAudit is BaseTest {
             0x154fba61f817ed493b12b0c1f9cdadc21f1846ff3145cc9fb5dfe99736335e3a
         );
 
-        vm.warp(nftContract.WL_START());
+        vm.warp(nftContract.WHITELIST_START());
         assertEq(nftContract.MINT_STATUS(), false);
         vm.prank(contractOwner);
         nftContract.setMintStatus(true);
-        vm.prank(wlAddress);
+        vm.prank(whitelistAddress);
         vm.expectRevert(NFTName.MintingStopped.selector);
-        nftContract.wlMint(proof, 0);
+        nftContract.whitelistMint(proof, 0);
     }
 
-    function test_Revert_wlMint_InvalidQuantity() public setWhitelistRoot {
+    function test_Revert_whitelistMint_InvalidQuantity()
+        public
+        setWhitelistRoot
+    {
         bytes32[] memory proof = new bytes32[](4);
         proof[0] = bytes32(
             0x94a6fc29a44456b36232638a7042431c9c91b910df1c52187179085fac1560e9
@@ -478,13 +466,16 @@ contract NFTContractAudit is BaseTest {
             0x154fba61f817ed493b12b0c1f9cdadc21f1846ff3145cc9fb5dfe99736335e3a
         );
 
-        vm.warp(nftContract.WL_START());
-        vm.prank(wlAddress);
+        vm.warp(nftContract.WHITELIST_START());
+        vm.prank(whitelistAddress);
         vm.expectRevert(NFTName.InvalidAmount.selector);
-        nftContract.wlMint(proof, 0);
+        nftContract.whitelistMint(proof, 0);
     }
 
-    function test_Revert_wlMint_OverflowMaxSupply() public setWhitelistRoot {
+    function test_Revert_whitelistMint_OverflowMaxSupply()
+        public
+        setWhitelistRoot
+    {
         bytes32[] memory proof = new bytes32[](4);
         proof[0] = bytes32(
             0x94a6fc29a44456b36232638a7042431c9c91b910df1c52187179085fac1560e9
@@ -500,22 +491,28 @@ contract NFTContractAudit is BaseTest {
         );
 
         uint256 amount = nftContract.MAX_SUPPLY() + 1;
-        vm.warp(nftContract.WL_START());
-        vm.prank(wlAddress);
+        vm.warp(nftContract.WHITELIST_START());
+        vm.prank(whitelistAddress);
         vm.expectRevert(NFTName.OwerflowMaxSupply.selector);
-        nftContract.wlMint(proof, amount);
+        nftContract.whitelistMint(proof, amount);
     }
 
-    function test_Revert_wlMint_HaveNotEligible() public setWhitelistRoot {
+    function test_Revert_whitelistMint_HaveNotEligible()
+        public
+        setWhitelistRoot
+    {
         bytes32[] memory proof = new bytes32[](4);
 
-        vm.warp(nftContract.WL_START());
-        vm.prank(wlAddress);
+        vm.warp(nftContract.WHITELIST_START());
+        vm.prank(whitelistAddress);
         vm.expectRevert(NFTName.HaveNotEligible.selector);
-        nftContract.wlMint(proof, 1);
+        nftContract.whitelistMint(proof, 1);
     }
 
-    function test_Revert_wlMint_OverflowQuantity() public setWhitelistRoot {
+    function test_Revert_whitelistMint_OverflowQuantity()
+        public
+        setWhitelistRoot
+    {
         bytes32[] memory proof = new bytes32[](4);
         proof[0] = bytes32(
             0x94a6fc29a44456b36232638a7042431c9c91b910df1c52187179085fac1560e9
@@ -530,16 +527,19 @@ contract NFTContractAudit is BaseTest {
             0x154fba61f817ed493b12b0c1f9cdadc21f1846ff3145cc9fb5dfe99736335e3a
         );
 
-        uint256 amount = nftContract.WL_PER_WALLET();
-        uint256 totalValue = nftContract.WL_PRICE() * amount;
-        vm.warp(nftContract.WL_START());
-        vm.startPrank(wlAddress);
-        nftContract.wlMint{value: totalValue}(proof, amount);
-        vm.expectRevert(NFTName.WlMintLimitExceeded.selector);
-        nftContract.wlMint(proof, 1);
+        uint256 amount = nftContract.WHITELIST_PER_WALLET();
+        uint256 totalValue = nftContract.WHITELIST_PRICE() * amount;
+        vm.warp(nftContract.WHITELIST_START());
+        vm.startPrank(whitelistAddress);
+        nftContract.whitelistMint{value: totalValue}(proof, amount);
+        vm.expectRevert(NFTName.WhitelistMintLimitExceeded.selector);
+        nftContract.whitelistMint(proof, 1);
     }
 
-    function test_Revert_wlMint_InsufficientBalance() public setWhitelistRoot {
+    function test_Revert_whitelistMint_InsufficientBalance()
+        public
+        setWhitelistRoot
+    {
         bytes32[] memory proof = new bytes32[](4);
         proof[0] = bytes32(
             0x94a6fc29a44456b36232638a7042431c9c91b910df1c52187179085fac1560e9
@@ -554,16 +554,16 @@ contract NFTContractAudit is BaseTest {
             0x154fba61f817ed493b12b0c1f9cdadc21f1846ff3145cc9fb5dfe99736335e3a
         );
 
-        uint256 amount = nftContract.WL_PER_WALLET();
-        uint256 totalValue = nftContract.WL_PRICE() * amount;
-        vm.warp(nftContract.WL_START());
-        vm.startPrank(wlAddress);
+        uint256 amount = nftContract.WHITELIST_PER_WALLET();
+        uint256 totalValue = nftContract.WHITELIST_PRICE() * amount;
+        vm.warp(nftContract.WHITELIST_START());
+        vm.startPrank(whitelistAddress);
         vm.expectRevert(NFTName.InsufficientBalance.selector);
-        nftContract.wlMint{value: totalValue - 1}(proof, amount);
-        // nftContract.wlMint(proof, 1);
+        nftContract.whitelistMint{value: totalValue - 1}(proof, amount);
+        // nftContract.whitelistMint(proof, 1);
     }
 
-    function test_wlMint_increasesBalance() public setWhitelistRoot {
+    function test_whitelistMint_increasesBalance() public setWhitelistRoot {
         bytes32[] memory proof = new bytes32[](4);
         proof[0] = bytes32(
             0x94a6fc29a44456b36232638a7042431c9c91b910df1c52187179085fac1560e9
@@ -577,14 +577,14 @@ contract NFTContractAudit is BaseTest {
         proof[3] = bytes32(
             0x154fba61f817ed493b12b0c1f9cdadc21f1846ff3145cc9fb5dfe99736335e3a
         );
-        assertEq(nftContract.balanceOf(wlAddress), 0);
-        uint256 preBalance = nftContract.balanceOf(wlAddress);
-        uint256 amount = nftContract.WL_PER_WALLET();
-        uint256 totalValue = nftContract.WL_PRICE() * amount;
-        vm.warp(nftContract.WL_START());
-        vm.startPrank(wlAddress);
-        nftContract.wlMint{value: totalValue}(proof, amount);
-        uint256 postBalance = nftContract.balanceOf(wlAddress);
+        assertEq(nftContract.balanceOf(whitelistAddress), 0);
+        uint256 preBalance = nftContract.balanceOf(whitelistAddress);
+        uint256 amount = nftContract.WHITELIST_PER_WALLET();
+        uint256 totalValue = nftContract.WHITELIST_PRICE() * amount;
+        vm.warp(nftContract.WHITELIST_START());
+        vm.startPrank(whitelistAddress);
+        nftContract.whitelistMint{value: totalValue}(proof, amount);
+        uint256 postBalance = nftContract.balanceOf(whitelistAddress);
         assertEq(preBalance + amount, postBalance);
     }
 
