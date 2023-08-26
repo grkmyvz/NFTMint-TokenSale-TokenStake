@@ -131,6 +131,21 @@ contract NFTContractAudit is BaseTest {
         nftContract.setTimes(5, 6, 7, 5, 6);
     }
 
+    function test_SetPrice() public {
+        vm.prank(contractOwner);
+        nftContract.setPrices(100, 200);
+
+        assertEq(nftContract.WL_PRICE(), 100);
+        assertEq(nftContract.PUBLIC_PRICE(), 200);
+    }
+
+    function test_Revert_SetPrice() public {
+        vm.warp(nftContract.WL_START() + 1);
+        vm.prank(contractOwner);
+        vm.expectRevert(NFTName.CanNotChangePrice.selector);
+        nftContract.setPrices(200, 100);
+    }
+
     function test_Revert_ownerMint_InvalidQuantity() public {
         vm.prank(contractOwner);
         vm.expectRevert(NFTName.InvalidAmount.selector);
