@@ -31,6 +31,7 @@ contract NFTName is ERC721Enumerable, Ownable, ReentrancyGuard {
     error WlMintNotStarted();
     error WlMintFinished();
     error PublicMintNotStarted();
+    error CanNotChangePrice();
     error MintingStopped();
     error InvalidAmount();
     error OwerflowMaxSupply();
@@ -258,6 +259,24 @@ contract NFTName is ERC721Enumerable, Ownable, ReentrancyGuard {
     }
 
     /**
+     * @notice Set the prices for different stages.
+     * @dev Allows the contract owner to set the prices for WL_PRICE and PUBLIC_PRICE.
+     * @param _wlPrice Price of each token during the whitelist stage.
+     * @param _publicPrice Price of each token during the public sale stage.
+     */
+    function setPrices(
+        uint256 _wlPrice,
+        uint256 _publicPrice
+    ) external onlyOwner {
+        if (block.timestamp > WL_START || block.timestamp > PUBLIC_START) {
+            revert CanNotChangePrice();
+        }
+
+        WL_PRICE = _wlPrice;
+        PUBLIC_PRICE = _publicPrice;
+    }
+
+    /**
      * @notice Change mint status.
      * @dev Only the contract owner can change mint status.
      * When mint stop is change, no new tokens can be minted.
@@ -321,19 +340,6 @@ contract NFTName is ERC721Enumerable, Ownable, ReentrancyGuard {
         } else {
             return false;
         }
-    }
-
-    /**
-     * @notice Get the times for different stages.
-     * @dev Returns the timestamps for FREE_START, FREE_STOP, WL_START, WL_STOP and PUBLIC_START.
-     * @return Six uint256 values representing the timestamps for different stages.
-     */
-    function getTimes()
-        external
-        view
-        returns (uint256, uint256, uint256, uint256, uint256)
-    {
-        return (FREE_START, FREE_STOP, WL_START, WL_STOP, PUBLIC_START);
     }
 
     /**
