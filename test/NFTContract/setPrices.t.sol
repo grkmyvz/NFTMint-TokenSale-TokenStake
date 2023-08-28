@@ -24,6 +24,22 @@ contract setPrices is BaseSetup {
         nftContract.setPrices(1 ether, 2 ether);
     }
 
+    function test_Revert_InvalidAmount1_setPrice() public {
+        vm.prank(users.owner);
+        vm.expectRevert(NFTName.InvalidAmount.selector);
+        nftContract.setPrices(0, 2 ether);
+
+        vm.prank(users.owner);
+        vm.expectRevert(NFTName.InvalidAmount.selector);
+        nftContract.setPrices(1 ether, 0);
+    }
+
+    function test_Revert_InvalidAmount2_setPrice() public {
+        vm.prank(users.owner);
+        vm.expectRevert(NFTName.InvalidAmount.selector);
+        nftContract.setPrices(2 ether, 1 ether);
+    }
+
     function test_Revert_CanNotChangePrice_setPrices() public {
         vm.warp(6);
         vm.prank(users.owner);

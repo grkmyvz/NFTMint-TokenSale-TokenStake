@@ -86,6 +86,7 @@ contract NFTName is ERC721Enumerable, Ownable, ReentrancyGuard {
     );
     event ChangedMintStatus(bool _status);
     event ChangedPrices(uint256 _whitelistPrice, uint256 _publicPrice);
+    event MintedForOwner(address indexed _to, uint256 _qty);
     event MintedForFree(address indexed _to, uint256 _qty);
     event MintedForWhitelist(address indexed _to, uint256 _qty);
     event MintedForPublic(address indexed _to, uint256 _qty);
@@ -155,6 +156,12 @@ contract NFTName is ERC721Enumerable, Ownable, ReentrancyGuard {
             WHITELIST_START >= WHITELIST_STOP || WHITELIST_STOP > PUBLIC_START
         ) {
             revert InvalidWhitelistMintTime();
+        }
+        if (WHITELIST_PRICE <= 0 || PUBLIC_PRICE <= 0) {
+            revert InvalidAmount();
+        }
+        if (WHITELIST_PRICE > PUBLIC_PRICE) {
+            revert InvalidAmount();
         }
     }
 
@@ -321,6 +328,12 @@ contract NFTName is ERC721Enumerable, Ownable, ReentrancyGuard {
         uint256 _whitelistPrice,
         uint256 _publicPrice
     ) external onlyOwner {
+        if (_whitelistPrice <= 0 || _publicPrice <= 0) {
+            revert InvalidAmount();
+        }
+        if (_whitelistPrice > _publicPrice) {
+            revert InvalidAmount();
+        }
         if (
             block.timestamp > WHITELIST_START || block.timestamp > PUBLIC_START
         ) {
@@ -356,6 +369,8 @@ contract NFTName is ERC721Enumerable, Ownable, ReentrancyGuard {
             _tokenIdCounter.increment();
             _safeMint(msg.sender, tokenId);
         }
+
+        emit MintedForOwner(msg.sender, _qty);
     }
 
     /**
@@ -364,14 +379,12 @@ contract NFTName is ERC721Enumerable, Ownable, ReentrancyGuard {
      */
     function withdrawMoney() external onlyOwner {
         uint256 amount = address(this).balance;
-        (bool success, bytes memory data) = owner().call{
-            value: address(this).balance
-        }("");
+        (bool success, bytes memory data) = msg.sender.call{value: amount}("");
         if (!success) {
             revert WithdrawalFailed();
         }
 
-        emit Withdraw(owner(), amount, data);
+        emit Withdraw(msg.sender, amount, data);
     }
 
     // </ Only Owner Functions >
@@ -387,10 +400,10 @@ contract NFTName is ERC721Enumerable, Ownable, ReentrancyGuard {
         uint256 _qty
     )
         external
+        nonReentrant
         isFreeStart
         checkZeroAmount(_qty)
         checkMaxSupply(_qty)
-        nonReentrant
     {
         if (!_verifyFreelist(_merkleProof)) {
             revert HaveNotEligible();
@@ -401,7 +414,7 @@ contract NFTName is ERC721Enumerable, Ownable, ReentrancyGuard {
 
         for (uint256 i = 0; i < _qty; i++) {
             uint256 tokenId = _tokenIdCounter.current();
-            _freeClaimed[msg.sender] = _freeClaimed[msg.sender] + 1;
+            _freeClaimed[msg.sender]++;
             _tokenIdCounter.increment();
             _safeMint(msg.sender, tokenId);
         }
@@ -421,10 +434,10 @@ contract NFTName is ERC721Enumerable, Ownable, ReentrancyGuard {
     )
         external
         payable
+        nonReentrant
         isWhitelistStart
         checkZeroAmount(_qty)
         checkMaxSupply(_qty)
-        nonReentrant
     {
         if (!_verifyWhitelist(_merkleProof)) {
             revert HaveNotEligible();
@@ -438,7 +451,7 @@ contract NFTName is ERC721Enumerable, Ownable, ReentrancyGuard {
 
         for (uint256 i = 0; i < _qty; i++) {
             uint256 tokenId = _tokenIdCounter.current();
-            _whitelistClaimed[msg.sender] = _whitelistClaimed[msg.sender] + 1;
+            _whitelistClaimed[msg.sender]++;
             _tokenIdCounter.increment();
             _safeMint(msg.sender, tokenId);
         }
@@ -456,10 +469,10 @@ contract NFTName is ERC721Enumerable, Ownable, ReentrancyGuard {
     )
         external
         payable
+        nonReentrant
         isPublicStart
         checkZeroAmount(_qty)
         checkMaxSupply(_qty)
-        nonReentrant
     {
         if ((_publicClaimed[msg.sender] + _qty) > PUBLIC_PER_WALLET) {
             revert PublicMintLimitExceeded();
@@ -470,7 +483,7 @@ contract NFTName is ERC721Enumerable, Ownable, ReentrancyGuard {
 
         for (uint256 i = 0; i < _qty; i++) {
             uint256 tokenId = _tokenIdCounter.current();
-            _publicClaimed[msg.sender] = _publicClaimed[msg.sender] + 1;
+            _publicClaimed[msg.sender]++;
             _tokenIdCounter.increment();
             _safeMint(msg.sender, tokenId);
         }
@@ -490,18 +503,19 @@ contract NFTName is ERC721Enumerable, Ownable, ReentrancyGuard {
         if (_to == address(0) || _to == msg.sender) {
             revert InvalidAddress();
         }
-        if (_tokenIds.length <= 1) {
+        uint256 tokenIdsLength = _tokenIds.length;
+        if (tokenIdsLength <= 1) {
             revert InvalidAmount();
         }
 
-        for (uint256 i = 0; i < _tokenIds.length; i++) {
+        for (uint256 i = 0; i < tokenIdsLength; i++) {
             _requireMinted(_tokenIds[i]);
             if (ownerOf(_tokenIds[i]) != msg.sender) {
                 revert YouNotTokenHolder();
             }
         }
 
-        for (uint256 i = 0; i < _tokenIds.length; i++) {
+        for (uint256 i = 0; i < tokenIdsLength; i++) {
             _transfer(msg.sender, _to, _tokenIds[i]);
         }
     }
