@@ -30,7 +30,7 @@ contract NFTName is ERC721Enumerable, Ownable, ReentrancyGuard {
     error CanNotChangePrice();
     error InvalidAddress();
     error InvalidAmount();
-    error OwerflowMaxSupply();
+    error OverflowMaxSupply();
     error HaveNotEligible();
     error InsufficientBalance();
     error FreeMintLimitExceeded();
@@ -52,7 +52,7 @@ contract NFTName is ERC721Enumerable, Ownable, ReentrancyGuard {
     uint256 public MAX_SUPPLY = 1000; // Maximum number of tokens that can be minted.
     uint256 public FREE_START = 2; // Timestamp for the start of the free stage.
     uint256 public FREE_STOP = 4; // Timestamp for the end of the free stage.
-    uint256 public FREE_PER_WALLET = 1; // Maximum number of tokens that can be minted per wallet during the free stage.
+    uint256 public FREE_PER_WALLET = 2; // Maximum number of tokens that can be minted per wallet during the free stage.
     uint256 public WHITELIST_START = 5; // Timestamp for the start of the whitelist stage.
     uint256 public WHITELIST_STOP = 8; // Timestamp for the end of the whitelist stage.
     uint256 public WHITELIST_PER_WALLET = 10; // Maximum number of tokens that can be minted per wallet during the whitelist stage.
@@ -134,7 +134,7 @@ contract NFTName is ERC721Enumerable, Ownable, ReentrancyGuard {
 
     modifier checkMaxSupply(uint256 _amount) {
         if ((_tokenIdCounter.current() + _amount) > MAX_SUPPLY) {
-            revert OwerflowMaxSupply();
+            revert OverflowMaxSupply();
         }
         _;
     }
@@ -363,6 +363,7 @@ contract NFTName is ERC721Enumerable, Ownable, ReentrancyGuard {
      * emit Withdraw is an event that is emitted when the money is withdrawn.
      */
     function withdrawMoney() external onlyOwner {
+        uint256 amount = address(this).balance;
         (bool success, bytes memory data) = owner().call{
             value: address(this).balance
         }("");
@@ -370,7 +371,7 @@ contract NFTName is ERC721Enumerable, Ownable, ReentrancyGuard {
             revert WithdrawalFailed();
         }
 
-        emit Withdraw(owner(), address(this).balance, data);
+        emit Withdraw(owner(), amount, data);
     }
 
     // </ Only Owner Functions >
@@ -489,6 +490,10 @@ contract NFTName is ERC721Enumerable, Ownable, ReentrancyGuard {
         if (_to == address(0) || _to == msg.sender) {
             revert InvalidAddress();
         }
+        if (_tokenIds.length <= 1) {
+            revert InvalidAmount();
+        }
+
         for (uint256 i = 0; i < _tokenIds.length; i++) {
             _requireMinted(_tokenIds[i]);
             if (ownerOf(_tokenIds[i]) != msg.sender) {
