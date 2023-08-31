@@ -28,7 +28,12 @@ jobs:
           forge build --sizes
         id: build
 
-      - name: Run Forge tests
+      - name: Run NFTContract test
         run: |
-          forge test -vvv
-        id: test
+          forge test --mc NFTContractAudit -vvvvv
+        id: nftcontracttests
+
+      - name: Run TokenSale test
+        run: |
+          forge test --mc TokenSaleAudit -vvvvv
+        id: tokensaletests
