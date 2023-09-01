@@ -34,10 +34,10 @@ jobs:
 
       - name: Run NFTContract test
         run: |
-          forge test --mc NFTContractAudit -vvvvv
+          forge test --mc NFTContractAudit -vvv
         id: nftcontracttests
 
       - name: Run TokenSale test
         run: |
-          forge test --mc TokenSaleAudit -vvvvv
+          forge test --mc TokenSaleAudit -vvv
         id: tokensaletests
