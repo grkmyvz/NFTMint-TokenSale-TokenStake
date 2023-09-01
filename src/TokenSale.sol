@@ -165,7 +165,7 @@ contract TokenSale is Ownable, ReentrancyGuard {
     }
 
     modifier checkZeroAmount(uint256 _amount) {
-        if (_amount <= 0) {
+        if (_amount == 0) {
             revert InvalidAmount();
         }
         _;
@@ -218,6 +218,85 @@ contract TokenSale is Ownable, ReentrancyGuard {
     ) private view returns (bool) {
         bytes32 leaf = keccak256(abi.encodePacked(msg.sender));
         return MerkleProof.verify(_merkleProof, presaleMerkleRoot, leaf);
+    }
+
+    /**
+     * @notice Verify airdrop amount of the address.
+     * @return Whether the provided amount is valid for the airdrop.
+     */
+    function _verifyAirdropAmount() private view returns (bool) {
+        uint256 checkAmount;
+        for (uint256 i = 1; i <= AIRDROP_CLAIM_PERIOD; i++) {
+            checkAmount += airdropClaimedPerPeriod[msg.sender][i];
+        }
+        checkAmount += airdropBalances[msg.sender];
+
+        if (checkAmount >= AIRDROP_MAX_PER_WALLET) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * @notice Verify seedsale amount of the address.
+     * @return Whether the provided amount is valid for the seedsale.
+     */
+    function _verifySeedsaleAmount(
+        uint256 _amount
+    ) private view returns (bool) {
+        uint256 checkAmount;
+        for (uint256 i = 1; i <= SEEDSALE_CLAIM_PERIOD; i++) {
+            checkAmount += seedsaleClaimedPerPeriod[msg.sender][i];
+        }
+        checkAmount += seedsaleBalances[msg.sender];
+        checkAmount += _amount;
+
+        if (checkAmount > SEEDSALE_MAX_PER_WALLET) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * @notice Verify presale amount of the address.
+     * @return Whether the provided amount is valid for the presale.
+     */
+    function _verifyPresaleAmount(uint256 _amount) private view returns (bool) {
+        uint256 checkAmount;
+        for (uint256 i = 1; i <= PRESALE_CLAIM_PERIOD; i++) {
+            checkAmount += presaleClaimedPerPeriod[msg.sender][i];
+        }
+        checkAmount += presaleBalances[msg.sender];
+        checkAmount += _amount;
+
+        if (checkAmount > PRESALE_MAX_PER_WALLET) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * @notice Verify publicsale amount of the address.
+     * @return Whether the provided amount is valid for the publicsale.
+     */
+    function _verifyPublicsaleAmount(
+        uint256 _amount
+    ) private view returns (bool) {
+        uint256 checkAmount;
+        for (uint256 i = 1; i <= PUBLICSALE_CLAIM_PERIOD; i++) {
+            checkAmount += publicsaleClaimedPerPeriod[msg.sender][i];
+        }
+        checkAmount += publicsaleBalances[msg.sender];
+        checkAmount += _amount;
+
+        if (checkAmount > PUBLICSALE_MAX_PER_WALLET) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     // </ Private Functions >
@@ -407,6 +486,7 @@ contract TokenSale is Ownable, ReentrancyGuard {
     function withdrawToken() public onlyOwner {
         uint256 amount = token.balanceOf(address(this));
 
+        isTokenBalanceOk = false;
         token.safeTransfer(msg.sender, amount);
 
         emit OwnerWithdrawToken(amount);
@@ -426,7 +506,7 @@ contract TokenSale is Ownable, ReentrancyGuard {
         if (!_verifyAirdrop(_merkleProof)) {
             revert InvalidMerkleProof();
         }
-        if (airdropBalances[msg.sender] == AIRDROP_MAX_PER_WALLET) {
+        if (_verifyAirdropAmount()) {
             revert AirdropAlreadyBuyed();
         }
         if (airdropBuyed + AIRDROP_MAX_PER_WALLET > AIRDROP_AMOUNT) {
@@ -449,14 +529,14 @@ contract TokenSale is Ownable, ReentrancyGuard {
     function buySeedsale(
         bytes32[] calldata _merkleProof,
         uint256 _amount
-    ) external payable nonReentrant isSeedsaleStarted checkZeroAmount(_amount) {
+    ) external payable isSeedsaleStarted checkZeroAmount(_amount) {
         if (_amount <= SEEDSALE_CLAIM_PERIOD) {
             revert InvalidAmount();
         }
         if (!_verifySeedsale(_merkleProof)) {
             revert InvalidMerkleProof();
         }
-        if (seedsaleBalances[msg.sender] + _amount > SEEDSALE_MAX_PER_WALLET) {
+        if (_verifySeedsaleAmount(_amount)) {
             revert SeedsaleMaxPerWalletExceeded();
         }
         if (seedsaleBuyed + _amount > SEEDSALE_AMOUNT) {
@@ -482,14 +562,14 @@ contract TokenSale is Ownable, ReentrancyGuard {
     function buyPresale(
         bytes32[] calldata _merkleProof,
         uint256 _amount
-    ) external payable nonReentrant isPresaleStarted checkZeroAmount(_amount) {
+    ) external payable isPresaleStarted checkZeroAmount(_amount) {
         if (_amount <= PRESALE_CLAIM_PERIOD) {
             revert InvalidAmount();
         }
         if (!_verifyPresale(_merkleProof)) {
             revert InvalidMerkleProof();
         }
-        if (presaleBalances[msg.sender] + _amount > PRESALE_MAX_PER_WALLET) {
+        if (_verifyPresaleAmount(_amount)) {
             revert PresaleMaxPerWalletExceeded();
         }
         if (presaleBuyed + _amount > PRESALE_AMOUNT) {
@@ -513,19 +593,11 @@ contract TokenSale is Ownable, ReentrancyGuard {
      */
     function buyPublicsale(
         uint256 _amount
-    )
-        external
-        payable
-        nonReentrant
-        isPublicsaleStarted
-        checkZeroAmount(_amount)
-    {
+    ) external payable isPublicsaleStarted checkZeroAmount(_amount) {
         if (_amount <= PUBLICSALE_CLAIM_PERIOD) {
             revert InvalidAmount();
         }
-        if (
-            publicsaleBalances[msg.sender] + _amount > PUBLICSALE_MAX_PER_WALLET
-        ) {
+        if (_verifyPublicsaleAmount(_amount)) {
             revert PublicsaleMaxPerWalletExceeded();
         }
         if (publicsaleBuyed + _amount > PUBLICSALE_AMOUNT) {
@@ -548,7 +620,7 @@ contract TokenSale is Ownable, ReentrancyGuard {
      * emit AirdropClaimed is an event that is emitted when the user claims Airdrop tokens.
      */
     function claimAirdrop(uint256 _period) external nonReentrant {
-        if (_period <= 0 || _period > AIRDROP_CLAIM_PERIOD) {
+        if (_period == 0 || _period > AIRDROP_CLAIM_PERIOD) {
             revert InvalidPeriod();
         }
         if (
@@ -592,7 +664,7 @@ contract TokenSale is Ownable, ReentrancyGuard {
      * emit SeedsaleClaimed is an event that is emitted when the user claims Seed Sale tokens.
      */
     function claimSeedsale(uint256 _period) external nonReentrant {
-        if (_period <= 0 || _period > SEEDSALE_CLAIM_PERIOD) {
+        if (_period == 0 || _period > SEEDSALE_CLAIM_PERIOD) {
             revert InvalidPeriod();
         }
         if (
@@ -636,7 +708,7 @@ contract TokenSale is Ownable, ReentrancyGuard {
      * emit PresaleClaimed is an event that is emitted when the user claims Presale tokens.
      */
     function claimPresale(uint256 _period) external nonReentrant {
-        if (_period <= 0 || _period > PRESALE_CLAIM_PERIOD) {
+        if (_period == 0 || _period > PRESALE_CLAIM_PERIOD) {
             revert InvalidPeriod();
         }
         if (
@@ -680,7 +752,7 @@ contract TokenSale is Ownable, ReentrancyGuard {
      * emit PublicsaleClaimed is an event that is emitted when the user claims Public Sale tokens.
      */
     function claimPublicsale(uint256 _period) external nonReentrant {
-        if (_period <= 0 || _period > PUBLICSALE_CLAIM_PERIOD) {
+        if (_period == 0 || _period > PUBLICSALE_CLAIM_PERIOD) {
             revert InvalidPeriod();
         }
         if (
