@@ -3,57 +3,64 @@ const path = require("path");
 const { ethers } = require("ethers");
 const { MerkleTree } = require("merkletreejs");
 
-// THIS VARIABLES CAN BE CHANGED
-const walletList = require("./wl-list1.json");
+const nftFreelist = require("./nft-freelist.json");
+const nftWhitelist = require("./nft-whitelist.json");
 const outDirectory = "./out";
-const outFileName = "proofs";
-// THIS VARIABLES CAN BE CHANGED
 
 const keccak256 = ethers.keccak256;
 
-const leafNodes = walletList.map((addr) =>
-  keccak256(Buffer.concat([Buffer.from(addr.replace("0x", ""), "hex")]))
-);
+let nftFreelistOut = [];
+let nftWhitelistOut = [];
 
-const merkleTree = new MerkleTree(leafNodes, keccak256, { sortPairs: true });
+function forNFTFreelist() {
+  const leafNodes = nftFreelist.map((addr) =>
+    keccak256(Buffer.concat([Buffer.from(addr.replace("0x", ""), "hex")]))
+  );
 
-let out = [];
+  const merkleTree = new MerkleTree(leafNodes, keccak256, { sortPairs: true });
 
-for (let i = 0; i < walletList.length; i++) {
-  out.push({
-    address: walletList[i],
-    proof: merkleTree.getHexProof(leafNodes[i]),
-  });
+  for (let i = 0; i < nftFreelist.length; i++) {
+    nftFreelistOut.push({
+      address: nftFreelist[i],
+      proof: merkleTree.getHexProof(leafNodes[i]),
+    });
+  }
+  fs.writeFileSync(
+    path.join(outDirectory, `nft-freelist-proofs.json`),
+    JSON.stringify({
+      merkleRoot: merkleTree.getHexRoot(),
+      proofs: nftFreelistOut,
+    })
+  );
 }
 
-function generateUniqueFileName(directory, baseFileName) {
-  let count = 0;
-  let fileName = baseFileName;
+function forNFTWhitelist() {
+  const leafNodes = nftWhitelist.map((addr) =>
+    keccak256(Buffer.concat([Buffer.from(addr.replace("0x", ""), "hex")]))
+  );
 
-  while (fs.existsSync(path.join(directory, `${fileName}.json`))) {
-    count++;
-    fileName = `${baseFileName}${count}`;
+  const merkleTree = new MerkleTree(leafNodes, keccak256, { sortPairs: true });
+
+  for (let i = 0; i < nftWhitelist.length; i++) {
+    nftWhitelistOut.push({
+      address: nftWhitelist[i],
+      proof: merkleTree.getHexProof(leafNodes[i]),
+    });
   }
-
-  return fileName;
+  fs.writeFileSync(
+    path.join(outDirectory, `nft-whitelist-proofs.json`),
+    JSON.stringify({
+      merkleRoot: merkleTree.getHexRoot(),
+      proofs: nftWhitelistOut,
+    })
+  );
 }
 
 try {
-  if (!fs.existsSync(outDirectory)) {
-    fs.mkdirSync(outDirectory);
-  }
+  forNFTFreelist();
+  forNFTWhitelist();
 
-  const uniqueFileName = generateUniqueFileName(outDirectory, outFileName);
-  fs.writeFileSync(
-    path.join(outDirectory, `${uniqueFileName}.json`),
-    JSON.stringify({
-      merkleRoot: merkleTree.getHexRoot(),
-      proofs: out,
-    })
-  );
-
-  console.log("Merke Hash:", merkleTree.getHexRoot());
-  console.log(`Proofs file is saved as "${uniqueFileName}.json".`);
-} catch (err) {
-  console.error(err);
+  console.log("Done!");
+} catch (e) {
+  console.log(e);
 }
