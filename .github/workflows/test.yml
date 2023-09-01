@@ -1,6 +1,10 @@
-name: test
+name: Test
 
-on: workflow_dispatch
+on:
+  pull_request:
+  push:
+    branches:
+      - main
 
 env:
   FOUNDRY_PROFILE: ci
@@ -10,7 +14,7 @@ jobs:
     strategy:
       fail-fast: true
 
-    name: Foundry project
+    name: Contract Tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -28,7 +32,12 @@ jobs:
           forge build --sizes
         id: build
 
-      - name: Run Forge tests
+      - name: Run NFTContract test
         run: |
-          forge test -vvv
-        id: test
+          forge test --mc NFTContractAudit -vvv
+        id: nftcontracttests
+
+      - name: Run TokenSale test
+        run: |
+          forge test --mc TokenSaleAudit -vvv
+        id: tokensaletests
