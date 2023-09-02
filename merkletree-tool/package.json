@@ -4,7 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "create-proof": "node ./src/create-proof.js"
+    "create-proof": "node ./src/create-proof.js",
+    "release-proof": "rm -rf ../app/src/proofs && mkdir -p ../app/src/proofs && cp -r ./out/* ../app/src/proofs/"
   },
   "devDependencies": {
     "ethers": "^6.6.4",
