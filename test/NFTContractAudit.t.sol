@@ -10,9 +10,7 @@ import {getTokenListByOwner} from "./NFTContract/getTokenListByOwner.t.sol";
 import {setFreelistRoot} from "./NFTContract/setFreelistRoot.t.sol";
 import {setWhitelistRoot} from "./NFTContract/setWhitelistRoot.t.sol";
 import {setBaseUrl} from "./NFTContract/setBaseUrl.t.sol";
-import {setTimes} from "./NFTContract/setTimes.t.sol";
 import {setPrices} from "./NFTContract/setPrices.t.sol";
-import {setMintStatus} from "./NFTContract/setMintStatus.t.sol";
 import {ownerMint} from "./NFTContract/ownerMint.t.sol";
 import {withdrawMoney} from "./NFTContract/withdrawMoney.t.sol";
 import {freeMint} from "./NFTContract/freeMint.t.sol";
@@ -30,9 +28,7 @@ contract NFTContractAudit is
     setFreelistRoot,
     setWhitelistRoot,
     setBaseUrl,
-    setTimes,
     setPrices,
-    setMintStatus,
     ownerMint,
     withdrawMoney,
     freeMint,

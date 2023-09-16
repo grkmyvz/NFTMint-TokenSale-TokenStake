@@ -5,13 +5,9 @@ import "../../src/NFTContract.sol";
 import {BaseSetup} from "./BaseSetup.t.sol";
 
 contract publicMint is BaseSetup {
-    // Defined in NFTContract.sol (If you change it, you need to change it here too)
-    event MintedForPublic(address indexed _to, uint256 _qty);
-
-    function test_ShouldBeSuccess_publicMint() public {
+    function test_ShouldBeSuccess_publicMint() public activePublicMint {
         uint256 publicMintQty = nftContract.PUBLIC_PER_WALLET();
         uint256 publicPrice = nftContract.PUBLIC_PRICE();
-        vm.warp(nftContract.PUBLIC_START());
         vm.prank(users.publicMinter);
         vm.expectEmit(address(nftContract));
         emit MintedForPublic(address(users.publicMinter), publicMintQty);
@@ -26,9 +22,11 @@ contract publicMint is BaseSetup {
         );
     }
 
-    function test_ShouldBeSuccessIncreaseBalance_publicMint() public {
+    function test_ShouldBeSuccessIncreaseBalance_publicMint()
+        public
+        activePublicMint
+    {
         uint256 publicPrice = nftContract.PUBLIC_PRICE();
-        vm.warp(nftContract.PUBLIC_START());
         vm.prank(users.publicMinter);
         nftContract.publicMint{value: publicPrice}(1);
 
@@ -40,31 +38,7 @@ contract publicMint is BaseSetup {
         assertEq(nftContract.balanceOf(address(users.publicMinter)), 2);
     }
 
-    function test_Revert_PublicMintNotStarted_publicMint() public {
-        uint256 publicMintQty = nftContract.PUBLIC_PER_WALLET();
-        uint256 publicPrice = nftContract.PUBLIC_PRICE();
-        vm.prank(users.publicMinter);
-        vm.expectRevert(NFTName.PublicMintNotStarted.selector);
-        nftContract.publicMint{value: publicPrice * publicMintQty}(
-            publicMintQty
-        );
-    }
-
-    function test_Revert_MintingStopped_publicMint() public {
-        uint256 publicMintQty = nftContract.PUBLIC_PER_WALLET();
-        uint256 publicPrice = nftContract.PUBLIC_PRICE();
-        vm.warp(nftContract.PUBLIC_START());
-        vm.prank(users.owner);
-        nftContract.setMintStatus(true);
-        vm.prank(users.publicMinter);
-        vm.expectRevert(NFTName.MintingStopped.selector);
-        nftContract.publicMint{value: publicPrice * publicMintQty}(
-            publicMintQty
-        );
-    }
-
-    function test_Revert_InvalidAmount_publicMint() public {
-        vm.warp(nftContract.PUBLIC_START());
+    function test_Revert_InvalidAmount_publicMint() public activePublicMint {
         vm.prank(users.publicMinter);
         vm.expectRevert(NFTName.InvalidAmount.selector);
         nftContract.publicMint{value: 0}(0);
@@ -73,10 +47,10 @@ contract publicMint is BaseSetup {
     function test_Revert_OverflowMaxSupply_publicMint()
         public
         mintedForOwner(nftContract.MAX_SUPPLY() - 1)
+        activePublicMint
     {
         uint256 publicMintQty = nftContract.PUBLIC_PER_WALLET();
         uint256 publicPrice = nftContract.PUBLIC_PRICE();
-        vm.warp(nftContract.PUBLIC_START());
         vm.prank(users.publicMinter);
         vm.expectRevert(NFTName.OverflowMaxSupply.selector);
         nftContract.publicMint{value: publicPrice * publicMintQty}(
@@ -84,14 +58,39 @@ contract publicMint is BaseSetup {
         );
     }
 
-    function test_Revert_PublicMintLimitExceeded_publicMint() public {
+    function test_Revert_PublicMintClosed_publicMint() public {
         uint256 publicMintQty = nftContract.PUBLIC_PER_WALLET();
         uint256 publicPrice = nftContract.PUBLIC_PRICE();
-        vm.warp(nftContract.PUBLIC_START());
+        vm.prank(users.publicMinter);
+        vm.expectRevert(NFTName.PublicMintClosed.selector);
+        nftContract.publicMint{value: publicPrice * publicMintQty}(
+            publicMintQty
+        );
+    }
+
+    function test_Revert_PublicMintLimitExceeded_publicMint()
+        public
+        activePublicMint
+    {
+        uint256 publicMintQty = nftContract.PUBLIC_PER_WALLET();
+        uint256 publicPrice = nftContract.PUBLIC_PRICE();
         vm.prank(users.publicMinter);
         vm.expectRevert(NFTName.PublicMintLimitExceeded.selector);
         nftContract.publicMint{value: publicPrice * (publicMintQty + 1)}(
             publicMintQty + 1
+        );
+    }
+
+    function test_Revert_InsufficientBalance_publicMint()
+        public
+        activePublicMint
+    {
+        uint256 publicMintQty = nftContract.PUBLIC_PER_WALLET();
+        uint256 publicPrice = nftContract.PUBLIC_PRICE();
+        vm.prank(users.publicMinter);
+        vm.expectRevert(NFTName.InsufficientBalance.selector);
+        nftContract.publicMint{value: publicPrice * publicMintQty - 1}(
+            publicMintQty
         );
     }
 }
