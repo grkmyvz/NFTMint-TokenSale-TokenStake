@@ -157,10 +157,10 @@ contract TokenSale is Ownable, ReentrancyGuard {
             revert InvalidParams();
         }
         if (
-            block.timestamp < AIRDROP_CLAIM_START_TIME &&
-            AIRDROP_CLAIM_START_TIME < SEEDSALE_CLAIM_START_TIME &&
-            SEEDSALE_CLAIM_START_TIME < PRESALE_CLAIM_START_TIME &&
-            PRESALE_CLAIM_START_TIME < PUBLICSALE_CLAIM_START_TIME
+            block.timestamp > AIRDROP_CLAIM_START_TIME ||
+            AIRDROP_CLAIM_START_TIME > SEEDSALE_CLAIM_START_TIME ||
+            SEEDSALE_CLAIM_START_TIME > PRESALE_CLAIM_START_TIME ||
+            PRESALE_CLAIM_START_TIME > PUBLICSALE_CLAIM_START_TIME
         ) {
             revert InvalidParams();
         }
@@ -486,7 +486,10 @@ contract TokenSale is Ownable, ReentrancyGuard {
         }
 
         uint256 amount = token.balanceOf(address(this));
-        uint256 remainderBalance = airdropBuyed + seedsaleBuyed + presaleBuyed;
+        uint256 remainderBalance = airdropBuyed +
+            seedsaleBuyed +
+            presaleBuyed +
+            publicsaleBuyed;
         uint256 withdrawableBalance = amount -
             (remainderBalance * TOKEN_DECIMALS);
 
