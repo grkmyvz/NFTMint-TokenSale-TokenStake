@@ -19,37 +19,38 @@ contract TokenSale is Ownable, ReentrancyGuard {
     //////////////////////////////////////////
     // Errors
     //////////////////////////////////////////
-    error AirdropNotStarted();
-    error SeedsaleNotStarted();
-    error PresaleNotStarted();
-    error PublicsaleNotStarted();
+    error InvalidParams();
     error InvalidAmount();
     error InvalidBalance();
     error InvalidTokenAddress();
+    error InvalidPeriod();
+    error InvalidMerkleProof();
     error FirstSendTokens();
     error TokenBalanceAlreadyOk();
     error SalesCountinue();
-    error WithdrawalFailed();
-    error InvalidMerkleProof();
-    error AirdropAlreadyBuyed();
-    error AirdropSoldOut();
-    error SeedsaleMaxPerWalletExceeded();
-    error SeedsaleSoldOut();
-    error PresaleMaxPerWalletExceeded();
-    error PresaleSoldOut();
-    error PublicsaleMaxPerWalletExceeded();
-    error PublicsaleSoldOut();
-    error InvalidPeriod();
     error ZeroBalance();
     error BeforeClaimFirstPeriod();
+    error AirdropNotStarted();
+    error AirdropAlreadyBuyed();
+    error AirdropSoldOut();
     error AirdropClaimPeriodNotStarted();
     error AirdropAlreadyClaimed();
+    error SeedsaleNotStarted();
+    error SeedsaleMaxPerWalletExceeded();
+    error SeedsaleSoldOut();
     error SeedsaleClaimPeriodNotStarted();
     error SeedsaleAlreadyClaimed();
+    error PresaleNotStarted();
+    error PresaleMaxPerWalletExceeded();
+    error PresaleSoldOut();
     error PresaleClaimPeriodNotStarted();
     error PresaleAlreadyClaimed();
+    error PublicsaleNotStarted();
+    error PublicsaleMaxPerWalletExceeded();
+    error PublicsaleSoldOut();
     error PublicsaleClaimPeriodNotStarted();
     error PublicsaleAlreadyClaimed();
+    error WithdrawalFailed();
 
     //////////////////////////////////////////
     // Interfaces
@@ -62,23 +63,24 @@ contract TokenSale is Ownable, ReentrancyGuard {
     // Variables
     //////////////////////////////////////////
     // THIS VARIBALES CAN BE CHANGED //
+    uint256 public TOKEN_DECIMALS = 10 ** 18; // Token decimals.
     uint256 public AIRDROP_AMOUNT = 10; // Maximum amount of tokens for the airdrop.
     uint256 public AIRDROP_MAX_PER_WALLET = 6; // Maximum amount of tokens per wallet for the airdrop.
     uint256 public AIRDROP_CLAIM_START_TIME = 100; // Start time for the airdrop claim.
     uint256 public AIRDROP_CLAIM_PERIOD = 5; // Claim period for the airdrop.
     uint256 public SEEDSALE_AMOUNT = 20; // Maximum amount of tokens for the seedsale.
     uint256 public SEEDSALE_MAX_PER_WALLET = 11; // Maximum amount of tokens per wallet for the seedsale.
-    uint256 public SEEDSALE_PRICE = 0.1 * 10 ** 18; // Price of the seedsale.
+    uint256 public SEEDSALE_PRICE = (1 * TOKEN_DECIMALS) / 10; // Price of the seedsale. (0.1)
     uint256 public SEEDSALE_CLAIM_START_TIME = 200; // Start time for the seedsale claim.
     uint256 public SEEDSALE_CLAIM_PERIOD = 5; // Claim period for the seedsale.
     uint256 public PRESALE_AMOUNT = 30; // Maximum amount of tokens for the presale.
     uint256 public PRESALE_MAX_PER_WALLET = 16; // Maximum amount of tokens per wallet for the presale.
-    uint256 public PRESALE_PRICE = 0.2 * 10 ** 18; // Price of the presale.
+    uint256 public PRESALE_PRICE = (2 * TOKEN_DECIMALS) / 10; // Price of the presale. (0.2)
     uint256 public PRESALE_CLAIM_START_TIME = 300; // Start time for the presale claim.
     uint256 public PRESALE_CLAIM_PERIOD = 5; // Claim period for the presale.
     uint256 public PUBLICSALE_AMOUNT = 40; // Maximum amount of tokens for the publicsale.
     uint256 public PUBLICSALE_MAX_PER_WALLET = 21; // Maximum amount of tokens per wallet for the publicsale.
-    uint256 public PUBLICSALE_PRICE = 0.5 * 10 ** 18; // Price of the publicsale.
+    uint256 public PUBLICSALE_PRICE = (5 * TOKEN_DECIMALS) / 10; // Price of the publicsale. (0.5)
     uint256 public PUBLICSALE_CLAIM_START_TIME = 400; // Start time for the publicsale claim.
     uint256 public PUBLICSALE_CLAIM_PERIOD = 5; // Claim period for the publicsale.
     uint256 public PERIOD_TIME = 10; // Period time for the claims. Example: 2592000 (30 days).
@@ -136,34 +138,6 @@ contract TokenSale is Ownable, ReentrancyGuard {
     //////////////////////////////////////////
     // Modifiers
     //////////////////////////////////////////
-    modifier isAirdropStarted() {
-        if (!airdropStatus) {
-            revert AirdropNotStarted();
-        }
-        _;
-    }
-
-    modifier isSeedsaleStarted() {
-        if (!seedsaleStatus) {
-            revert SeedsaleNotStarted();
-        }
-        _;
-    }
-
-    modifier isPresaleStarted() {
-        if (!presaleStatus) {
-            revert PresaleNotStarted();
-        }
-        _;
-    }
-
-    modifier isPublicsaleStarted() {
-        if (!publicsaleStatus) {
-            revert PublicsaleNotStarted();
-        }
-        _;
-    }
-
     modifier checkZeroAmount(uint256 _amount) {
         if (_amount == 0) {
             revert InvalidAmount();
@@ -175,6 +149,29 @@ contract TokenSale is Ownable, ReentrancyGuard {
     // Functions
     //////////////////////////////////////////
     constructor(address _tokenAddress) {
+        if (
+            SEEDSALE_MAX_PER_WALLET < SEEDSALE_CLAIM_PERIOD ||
+            PRESALE_MAX_PER_WALLET < PRESALE_CLAIM_PERIOD ||
+            PUBLICSALE_MAX_PER_WALLET < PUBLICSALE_CLAIM_PERIOD
+        ) {
+            revert InvalidParams();
+        }
+        if (
+            block.timestamp > AIRDROP_CLAIM_START_TIME ||
+            AIRDROP_CLAIM_START_TIME > SEEDSALE_CLAIM_START_TIME ||
+            SEEDSALE_CLAIM_START_TIME > PRESALE_CLAIM_START_TIME ||
+            PRESALE_CLAIM_START_TIME > PUBLICSALE_CLAIM_START_TIME
+        ) {
+            revert InvalidParams();
+        }
+        if (
+            SEEDSALE_PRICE > PRESALE_PRICE || PRESALE_PRICE > PUBLICSALE_PRICE
+        ) {
+            revert InvalidParams();
+        }
+        if (PERIOD_TIME == 0) {
+            revert InvalidParams();
+        }
         if (_tokenAddress == address(0)) {
             revert InvalidTokenAddress();
         }
@@ -316,7 +313,7 @@ contract TokenSale is Ownable, ReentrancyGuard {
                 SEEDSALE_AMOUNT +
                 PRESALE_AMOUNT +
                 PUBLICSALE_AMOUNT) *
-                10 ** 18 !=
+                TOKEN_DECIMALS !=
             _amount
         ) {
             revert InvalidAmount();
@@ -484,10 +481,25 @@ contract TokenSale is Ownable, ReentrancyGuard {
      * emit OwnerWithdrawToken is an event that is emitted when the contract owner withdraws the contract token balance to their address.
      */
     function withdrawToken() public onlyOwner {
+        if (!isTokenBalanceOk) {
+            revert FirstSendTokens();
+        }
+
         uint256 amount = token.balanceOf(address(this));
+        uint256 remainderBalance = airdropBuyed +
+            seedsaleBuyed +
+            presaleBuyed +
+            publicsaleBuyed;
+        uint256 withdrawableBalance = amount -
+            (remainderBalance * TOKEN_DECIMALS);
+
+        AIRDROP_AMOUNT = airdropBuyed;
+        SEEDSALE_AMOUNT = seedsaleBuyed;
+        PRESALE_AMOUNT = presaleBuyed;
+        PUBLICSALE_AMOUNT = publicsaleBuyed;
 
         isTokenBalanceOk = false;
-        token.safeTransfer(msg.sender, amount);
+        token.safeTransfer(msg.sender, withdrawableBalance);
 
         emit OwnerWithdrawToken(amount);
     }
@@ -500,9 +512,10 @@ contract TokenSale is Ownable, ReentrancyGuard {
      * @param _merkleProof Merkle proof for the user's address.
      * emit AirdropBuyed is an event that is emitted when the user buys Airdrop tokens.
      */
-    function buyAirdrop(
-        bytes32[] calldata _merkleProof
-    ) external isAirdropStarted {
+    function buyAirdrop(bytes32[] calldata _merkleProof) external {
+        if (!airdropStatus) {
+            revert AirdropNotStarted();
+        }
         if (!_verifyAirdrop(_merkleProof)) {
             revert InvalidMerkleProof();
         }
@@ -529,7 +542,10 @@ contract TokenSale is Ownable, ReentrancyGuard {
     function buySeedsale(
         bytes32[] calldata _merkleProof,
         uint256 _amount
-    ) external payable isSeedsaleStarted checkZeroAmount(_amount) {
+    ) external payable checkZeroAmount(_amount) {
+        if (!seedsaleStatus) {
+            revert SeedsaleNotStarted();
+        }
         if (_amount <= SEEDSALE_CLAIM_PERIOD) {
             revert InvalidAmount();
         }
@@ -562,7 +578,10 @@ contract TokenSale is Ownable, ReentrancyGuard {
     function buyPresale(
         bytes32[] calldata _merkleProof,
         uint256 _amount
-    ) external payable isPresaleStarted checkZeroAmount(_amount) {
+    ) external payable checkZeroAmount(_amount) {
+        if (!presaleStatus) {
+            revert PresaleNotStarted();
+        }
         if (_amount <= PRESALE_CLAIM_PERIOD) {
             revert InvalidAmount();
         }
@@ -593,7 +612,10 @@ contract TokenSale is Ownable, ReentrancyGuard {
      */
     function buyPublicsale(
         uint256 _amount
-    ) external payable isPublicsaleStarted checkZeroAmount(_amount) {
+    ) external payable checkZeroAmount(_amount) {
+        if (!publicsaleStatus) {
+            revert PublicsaleNotStarted();
+        }
         if (_amount <= PUBLICSALE_CLAIM_PERIOD) {
             revert InvalidAmount();
         }
@@ -648,7 +670,7 @@ contract TokenSale is Ownable, ReentrancyGuard {
             amount = airdropClaimedPerPeriod[msg.sender][1];
         }
 
-        uint256 bigIntAmount = amount * 10 ** 18;
+        uint256 bigIntAmount = amount * TOKEN_DECIMALS;
 
         airdropClaimedPerPeriod[msg.sender][_period] = amount;
         airdropBalances[msg.sender] -= amount;
@@ -692,7 +714,7 @@ contract TokenSale is Ownable, ReentrancyGuard {
             amount = seedsaleClaimedPerPeriod[msg.sender][1];
         }
 
-        uint256 bigIntAmount = amount * 10 ** 18;
+        uint256 bigIntAmount = amount * TOKEN_DECIMALS;
 
         seedsaleClaimedPerPeriod[msg.sender][_period] = amount;
         seedsaleBalances[msg.sender] -= amount;
@@ -736,7 +758,7 @@ contract TokenSale is Ownable, ReentrancyGuard {
             amount = presaleClaimedPerPeriod[msg.sender][1];
         }
 
-        uint256 bigIntAmount = amount * 10 ** 18;
+        uint256 bigIntAmount = amount * TOKEN_DECIMALS;
 
         presaleClaimedPerPeriod[msg.sender][_period] = amount;
         presaleBalances[msg.sender] -= amount;
@@ -781,7 +803,7 @@ contract TokenSale is Ownable, ReentrancyGuard {
             amount = publicsaleClaimedPerPeriod[msg.sender][1];
         }
 
-        uint256 bigIntAmount = amount * 10 ** 18;
+        uint256 bigIntAmount = amount * TOKEN_DECIMALS;
 
         publicsaleClaimedPerPeriod[msg.sender][_period] = amount;
         publicsaleBalances[msg.sender] -= amount;
