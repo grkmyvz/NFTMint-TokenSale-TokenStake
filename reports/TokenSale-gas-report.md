@@ -1,0 +1,61 @@
+| src/TokenSale.sol:TokenSale contract |                 |       |        |       |         |
+|--------------------------------------|-----------------|-------|--------|-------|---------|
+| Deployment Cost                      | Deployment Size |       |        |       |         |
+| 2841545                              | 12359           |       |        |       |         |
+| Function Name                        | min             | avg   | median | max   | # calls |
+| AIRDROP_AMOUNT                       | 419             | 2356  | 2419   | 2419  | 128     |
+| AIRDROP_CLAIM_PERIOD                 | 397             | 508   | 397    | 2397  | 36      |
+| AIRDROP_CLAIM_START_TIME             | 416             | 1688  | 2416   | 2416  | 22      |
+| AIRDROP_MAX_PER_WALLET               | 417             | 1417  | 1417   | 2417  | 8       |
+| PERIOD_TIME                          | 375             | 1510  | 2375   | 2375  | 74      |
+| PRESALE_AMOUNT                       | 373             | 2310  | 2373   | 2373  | 128     |
+| PRESALE_CLAIM_PERIOD                 | 351             | 561   | 351    | 2351  | 38      |
+| PRESALE_CLAIM_START_TIME             | 418             | 1690  | 2418   | 2418  | 22      |
+| PRESALE_MAX_PER_WALLET               | 374             | 2088  | 2374   | 2374  | 28      |
+| PRESALE_PRICE                        | 2352            | 2352  | 2352   | 2352  | 28      |
+| PUBLICSALE_AMOUNT                    | 397             | 2304  | 2397   | 2397  | 130     |
+| PUBLICSALE_CLAIM_PERIOD              | 396             | 606   | 396    | 2396  | 38      |
+| PUBLICSALE_CLAIM_START_TIME          | 419             | 1691  | 2419   | 2419  | 22      |
+| PUBLICSALE_MAX_PER_WALLET            | 353             | 2045  | 2353   | 2353  | 26      |
+| PUBLICSALE_PRICE                     | 2374            | 2374  | 2374   | 2374  | 26      |
+| SEEDSALE_AMOUNT                      | 374             | 2311  | 2374   | 2374  | 128     |
+| SEEDSALE_CLAIM_PERIOD                | 373             | 583   | 373    | 2373  | 38      |
+| SEEDSALE_CLAIM_START_TIME            | 375             | 1647  | 2375   | 2375  | 22      |
+| SEEDSALE_MAX_PER_WALLET              | 375             | 2089  | 2375   | 2375  | 28      |
+| SEEDSALE_PRICE                       | 2376            | 2376  | 2376   | 2376  | 28      |
+| airdropBalances                      | 641             | 641   | 641    | 641   | 8       |
+| airdropBuyed                         | 373             | 1373  | 1373   | 2373  | 4       |
+| airdropMerkleRoot                    | 2418            | 2418  | 2418   | 2418  | 2       |
+| airdropStatus                        | 389             | 389   | 389    | 389   | 4       |
+| buyAirdrop                           | 730             | 47284 | 65763  | 65763 | 26      |
+| buyPresale                           | 617             | 38356 | 63820  | 63820 | 30      |
+| buyPublicsale                        | 391             | 39427 | 38440  | 62340 | 34      |
+| buySeedsale                          | 640             | 38375 | 63832  | 63832 | 30      |
+| claimAirdrop                         | 4461            | 21009 | 16523  | 52009 | 24      |
+| claimPresale                         | 4464            | 21014 | 16527  | 52015 | 24      |
+| claimPublicsale                      | 4420            | 20971 | 16487  | 51971 | 24      |
+| claimSeedsale                        | 4487            | 21031 | 16543  | 52027 | 24      |
+| isTokenBalanceOk                     | 2399            | 2399  | 2399   | 2399  | 2       |
+| presaleBalances                      | 598             | 598   | 598    | 598   | 8       |
+| presaleBuyed                         | 398             | 1398  | 1398   | 2398  | 4       |
+| presaleMerkleRoot                    | 2353            | 2353  | 2353   | 2353  | 2       |
+| presaleStatus                        | 388             | 388   | 388    | 388   | 4       |
+| publicsaleBalances                   | 577             | 577   | 577    | 577   | 8       |
+| publicsaleBuyed                      | 352             | 1352  | 1352   | 2352  | 4       |
+| publicsaleStatus                     | 411             | 411   | 411    | 411   | 4       |
+| receive                              | 55              | 55    | 55     | 55    | 2       |
+| seedsaleBalances                     | 576             | 576   | 576    | 576   | 8       |
+| seedsaleBuyed                        | 418             | 1418  | 1418   | 2418  | 4       |
+| seedsaleMerkleRoot                   | 2396            | 2396  | 2396   | 2396  | 2       |
+| seedsaleStatus                       | 388             | 388   | 388    | 388   | 4       |
+| setAirdropMerkleRoot                 | 2531            | 19872 | 22593  | 24593 | 28      |
+| setAirdropStatus                     | 1938            | 2201  | 1938   | 4682  | 26      |
+| setPresaleMerkleRoot                 | 2534            | 20355 | 22596  | 24596 | 34      |
+| setPresaleStatus                     | 1992            | 2204  | 1992   | 4725  | 32      |
+| setPublicsaleStatus                  | 2662            | 16394 | 18348  | 18348 | 30      |
+| setSeedsaleMerkleRoot                | 2576            | 20397 | 22638  | 24638 | 34      |
+| setSeedsaleStatus                    | 1969            | 2181  | 1969   | 4702  | 32      |
+| setSendTokens                        | 664             | 49591 | 51931  | 51931 | 124     |
+| token                                | 447             | 447   | 447    | 447   | 2       |
+| withdrawCoin                         | 11223           | 11223 | 11223  | 11223 | 2       |
+| withdrawToken                        | 22934           | 22934 | 22934  | 22934 | 2       |

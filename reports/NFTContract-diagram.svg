@@ -1,0 +1,671 @@
+<?xml version="1.0" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="630pt" height="1812pt" viewBox="0.00 0.00 629.76 1812">
+<g id="graph0" class="graph" transform="translate(-1092.708847013374,6146.439371170025) scale(4.59479341998814)" data-name="G">
+
+<polygon fill="#2e3e56" stroke="none" points="-4,4 -4,-1808 625.76,-1808 625.76,4 -4,4"/>
+<g id="clust1" class="cluster" data-name="clusterNFTName">
+
+<path fill="#445773" stroke="#445773" d="M20,-232C20,-232 496.57,-232 496.57,-232 502.57,-232 508.57,-238 508.57,-244 508.57,-244 508.57,-1647 508.57,-1647 508.57,-1653 502.57,-1659 496.57,-1659 496.57,-1659 20,-1659 20,-1659 14,-1659 8,-1653 8,-1647 8,-1647 8,-244 8,-244 8,-238 14,-232 20,-232" style=""/>
+<text text-anchor="middle" x="258.28" y="-1642.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">NFTName</text>
+</g>
+<g id="clust2" class="cluster" data-name="clusterCounters.Counter">
+
+<path fill="#3b4b63" stroke="#e8726d" stroke-dasharray="5,2" d="M330.71,-93C330.71,-93 422.01,-93 422.01,-93 428.01,-93 434.01,-99 434.01,-105 434.01,-105 434.01,-212 434.01,-212 434.01,-218 428.01,-224 422.01,-224 422.01,-224 330.71,-224 330.71,-224 324.71,-224 318.71,-218 318.71,-212 318.71,-212 318.71,-105 318.71,-105 318.71,-99 324.71,-93 330.71,-93" style=""/>
+<text text-anchor="middle" x="376.36" y="-207.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">Counters.Counter</text>
+</g>
+<g id="clust3" class="cluster" data-name="clusterMerkleProof">
+
+<path fill="#3b4b63" stroke="#e8726d" stroke-dasharray="5,2" d="M540.57,-637C540.57,-637 603.76,-637 603.76,-637 609.76,-637 615.76,-643 615.76,-649 615.76,-649 615.76,-702 615.76,-702 615.76,-708 609.76,-714 603.76,-714 603.76,-714 540.57,-714 540.57,-714 534.57,-714 528.57,-708 528.57,-702 528.57,-702 528.57,-649 528.57,-649 528.57,-643 534.57,-637 540.57,-637" style=""/>
+<text text-anchor="middle" x="572.16" y="-697.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">MerkleProof</text>
+</g>
+<g id="clust4" class="cluster" data-name="clustertokenId">
+
+<path fill="#3b4b63" stroke="#e8726d" stroke-dasharray="5,2" d="M338.2,-8C338.2,-8 414.52,-8 414.52,-8 420.52,-8 426.52,-14 426.52,-20 426.52,-20 426.52,-73 426.52,-73 426.52,-79 420.52,-85 414.52,-85 414.52,-85 338.2,-85 338.2,-85 332.2,-85 326.2,-79 326.2,-73 326.2,-73 326.2,-20 326.2,-20 326.2,-14 332.2,-8 338.2,-8" style=""/>
+<text text-anchor="middle" x="376.36" y="-68.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">tokenId</text>
+</g>
+<g id="clust5" class="cluster" data-name="cluster_01">
+
+<polygon fill="#2e3e56" stroke="black" points="43.08,-1667 43.08,-1796 411.36,-1796 411.36,-1667 43.08,-1667" style=""/>
+<text text-anchor="middle" x="227.22" y="-1779.4" font-family="Times,serif" font-size="14.00" style="">Legend</text>
+</g>
+<!-- NFTName.checkZeroAmount -->
+<g id="node1" class="node" pointer-events="visible" data-name="NFTName.checkZeroAmount">
+
+<polygon fill="#edad56" stroke="#1bc6a6" stroke-width="3" points="206.2,-1488.54 206.2,-1503.46 153.41,-1514 78.74,-1514 25.95,-1503.46 25.95,-1488.54 78.74,-1478 153.41,-1478 206.2,-1488.54"/>
+<polygon fill="none" stroke="#1bc6a6" stroke-width="3" points="210.2,-1485.26 210.2,-1506.74 153.8,-1518 78.35,-1518 21.96,-1506.74 21.96,-1485.26 78.35,-1474 153.8,-1474 210.2,-1485.26"/>
+<text text-anchor="middle" x="116.08" y="-1491.8" font-family="Times,serif" font-size="14.00">checkZeroAmount</text>
+</g>
+<!-- NFTName.InvalidAmount -->
+<g id="node25" class="node" pointer-events="visible" data-name="NFTName.InvalidAmount">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="376.36" cy="-1446" rx="70.09" ry="18"/>
+<text text-anchor="middle" x="376.36" y="-1441.8" font-family="Times,serif" font-size="14.00">InvalidAmount</text>
+</g>
+<!-- NFTName.checkZeroAmount&#45;&gt;NFTName.InvalidAmount -->
+<g id="edge1" class="edge" data-name="NFTName.checkZeroAmount-&gt;NFTName.InvalidAmount">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M195.27,-1480.86C230.29,-1474.08 271.26,-1466.15 305.27,-1459.57"/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="305.82,-1463.03 314.97,-1457.69 304.49,-1456.16 305.82,-1463.03"/>
+</g>
+<!-- NFTName.checkMaxSupply -->
+<g id="node2" class="node" pointer-events="visible" data-name="NFTName.checkMaxSupply">
+
+<polygon fill="#edad56" stroke="#1bc6a6" stroke-width="3" points="201.27,-759.54 201.27,-774.46 151.36,-785 80.79,-785 30.88,-774.46 30.88,-759.54 80.79,-749 151.36,-749 201.27,-759.54"/>
+<polygon fill="none" stroke="#1bc6a6" stroke-width="3" points="205.27,-756.3 205.27,-777.7 151.78,-789 80.37,-789 26.88,-777.7 26.88,-756.3 80.37,-745 151.78,-745 205.27,-756.3"/>
+<text text-anchor="middle" x="116.08" y="-762.8" font-family="Times,serif" font-size="14.00">checkMaxSupply</text>
+</g>
+<!-- NFTName.OverflowMaxSupply -->
+<g id="node26" class="node" pointer-events="visible" data-name="NFTName.OverflowMaxSupply">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="376.36" cy="-852" rx="93.22" ry="18"/>
+<text text-anchor="middle" x="376.36" y="-847.8" font-family="Times,serif" font-size="14.00">OverflowMaxSupply</text>
+</g>
+<!-- NFTName.checkMaxSupply&#45;&gt;NFTName.OverflowMaxSupply -->
+<g id="edge3" class="edge" data-name="NFTName.checkMaxSupply-&gt;NFTName.OverflowMaxSupply">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M161.29,-788.51C187.28,-800.51 221.05,-815.01 252.15,-825 265.24,-829.2 279.32,-832.97 293.12,-836.26"/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="292.19,-839.64 302.72,-838.46 293.76,-832.81 292.19,-839.64"/>
+</g>
+<!-- Counters.Counter.current -->
+<g id="node48" class="node" pointer-events="visible" data-name="Counters.Counter.current">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="376.36" cy="-173" rx="38.26" ry="18"/>
+<text text-anchor="middle" x="376.36" y="-168.8" font-family="Times,serif" font-size="14.00">current</text>
+</g>
+<!-- NFTName.checkMaxSupply&#45;&gt;Counters.Counter.current -->
+<g id="edge2" class="edge" data-name="NFTName.checkMaxSupply-&gt;Counters.Counter.current">
+
+<path fill="none" stroke="white" stroke-width="2" d="M148.93,-743.51C171.94,-724.57 201.45,-695.76 216.15,-663 255.87,-574.51 196.05,-307.13 252.15,-228 269.38,-203.7 299.91,-189.97 326.26,-182.3"/>
+<polygon fill="white" stroke="white" stroke-width="2" points="327.07,-185.71 335.86,-179.78 325.29,-178.94 327.07,-185.71"/>
+</g>
+<!-- NFTName.&lt;Constructor&gt; -->
+<g id="node3" class="node" pointer-events="visible" data-name="NFTName.&lt;Constructor&gt;">
+
+<ellipse fill="#ff9797" stroke="#ff9797" stroke-width="3" cx="116.08" cy="-1438" rx="67.55" ry="18"/>
+<text text-anchor="middle" x="116.08" y="-1433.8" font-family="Times,serif" font-size="14.00">&lt;Constructor&gt;</text>
+</g>
+<!-- NFTName.&lt;Constructor&gt;&#45;&gt;NFTName.InvalidAmount -->
+<g id="edge6" class="edge" data-name="NFTName.&lt;Constructor&gt;-&gt;NFTName.InvalidAmount">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M184.6,-1440.09C217.75,-1441.12 257.97,-1442.36 292.91,-1443.45"/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="292.4,-1446.93 302.5,-1443.74 292.62,-1439.94 292.4,-1446.93"/>
+</g>
+<!-- NFTName.InvalidPrice --><g id="edge4" class="edge" data-name="NFTName.&lt;Constructor&gt;-&gt;NFTName.InvalidPrice" data-comment="NFTName.InvalidPrice">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M164.45,-1424.2C203.95,-1415.59 260.79,-1405.24 305.51,-1398.37"/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="306,-1401.83 315.37,-1396.89 304.97,-1394.91 306,-1401.83"/>
+</g>
+<g id="node27" class="node" pointer-events="visible" data-name="NFTName.InvalidPrice">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="376.36" cy="-1392" rx="58.46" ry="18"/>
+<text text-anchor="middle" x="376.36" y="-1387.8" font-family="Times,serif" font-size="14.00">InvalidPrice</text>
+</g>
+<!-- NFTName.&lt;Constructor&gt;&#45;&gt;NFTName.InvalidPrice -->
+
+<!-- NFTName.&lt;Constructor&gt;&#45;&gt;NFTName.InvalidPrice -->
+<g id="edge5" class="edge" data-name="NFTName.&lt;Constructor&gt;-&gt;NFTName.InvalidPrice">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M181.92,-1432.39C224.26,-1426.01 278.98,-1416.18 319.41,-1407.64" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="320,-1411.09 329.04,-1405.56 318.53,-1404.25 320,-1411.09"/>
+</g>
+<!-- NFTName._verifyFreelist -->
+<g id="node4" class="node" pointer-events="visible" data-name="NFTName._verifyFreelist">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="376.36" cy="-798" rx="67.78" ry="18"/>
+<text text-anchor="middle" x="376.36" y="-793.8" font-family="Times,serif" font-size="14.00">_verifyFreelist</text>
+</g>
+<!-- MerkleProof.verify -->
+<g id="node50" class="node" pointer-events="visible" data-name="MerkleProof.verify">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="571.66" cy="-663" rx="34.19" ry="18"/>
+<text text-anchor="middle" x="571.66" y="-658.8" font-family="Times,serif" font-size="14.00">verify</text>
+</g>
+<!-- NFTName._verifyFreelist&#45;&gt;MerkleProof.verify -->
+<g id="edge7" class="edge" data-name="NFTName._verifyFreelist-&gt;MerkleProof.verify">
+
+<path fill="none" stroke="white" stroke-width="2" d="M444.5,-795.1C466.54,-791.44 490.1,-784.35 508.57,-771 534.69,-752.12 551.44,-718.62 560.88,-693.92"/>
+<polygon fill="white" stroke="white" stroke-width="2" points="564.08,-695.38 564.14,-684.79 557.48,-693.03 564.08,-695.38"/>
+</g>
+<!-- NFTName._verifyWhitelist -->
+<g id="node5" class="node" pointer-events="visible" data-name="NFTName._verifyWhitelist">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="376.36" cy="-528" rx="74.15" ry="18"/>
+<text text-anchor="middle" x="376.36" y="-523.8" font-family="Times,serif" font-size="14.00">_verifyWhitelist</text>
+</g>
+<!-- NFTName._verifyWhitelist&#45;&gt;MerkleProof.verify -->
+<g id="edge8" class="edge" data-name="NFTName._verifyWhitelist-&gt;MerkleProof.verify">
+
+<path fill="none" stroke="white" stroke-width="2" d="M450.26,-531.93C470.59,-535.84 491.7,-542.8 508.57,-555 534.69,-573.88 551.44,-607.38 560.88,-632.08"/>
+<polygon fill="white" stroke="white" stroke-width="2" points="557.48,-632.97 564.14,-641.21 564.08,-630.62 557.48,-632.97"/>
+</g>
+<!-- NFTName._baseURI -->
+<g id="node6" class="node" pointer-events="visible" data-name="NFTName._baseURI">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="376.36" cy="-1284" rx="49.81" ry="18"/>
+<text text-anchor="middle" x="376.36" y="-1279.8" font-family="Times,serif" font-size="14.00">_baseURI</text>
+</g>
+<!-- NFTName.tokenURI -->
+<g id="node7" class="node" pointer-events="visible" data-name="NFTName.tokenURI">
+
+<ellipse fill="#ff9797" stroke="#ff9797" stroke-width="3" cx="116.08" cy="-1330" rx="49.24" ry="18"/>
+<text text-anchor="middle" x="116.08" y="-1325.8" font-family="Times,serif" font-size="14.00">tokenURI</text>
+</g>
+<!-- NFTName.tokenURI&#45;&gt;NFTName._baseURI -->
+<g id="edge10" class="edge" data-name="NFTName.tokenURI-&gt;NFTName._baseURI">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M162.07,-1321.99C205.13,-1314.32 270.32,-1302.71 317.29,-1294.34"/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="317.81,-1297.81 327.04,-1292.61 316.58,-1290.91 317.81,-1297.81"/>
+</g>
+<!-- NFTName._requireMinted -->
+<g id="node28" class="node" pointer-events="visible" data-name="NFTName._requireMinted">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="376.36" cy="-1176" rx="71.21" ry="18"/>
+<text text-anchor="middle" x="376.36" y="-1171.8" font-family="Times,serif" font-size="14.00">_requireMinted</text>
+</g>
+<!-- NFTName.tokenURI&#45;&gt;NFTName._requireMinted -->
+<g id="edge9" class="edge" data-name="NFTName.tokenURI-&gt;NFTName._requireMinted">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M165.72,-1326.1C183.44,-1322.46 202.46,-1315.64 216.15,-1303 250.85,-1270.95 216.65,-1234.16 252.15,-1203 263.53,-1193.01 277.75,-1186.45 292.44,-1182.19"/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="293.04,-1185.65 301.91,-1179.85 291.36,-1178.85 293.04,-1185.65"/>
+</g>
+<!-- tokenId.toString -->
+<g id="node51" class="node" pointer-events="visible" data-name="tokenId.toString">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="376.36" cy="-34" rx="42.32" ry="18"/>
+<text text-anchor="middle" x="376.36" y="-29.8" font-family="Times,serif" font-size="14.00">toString</text>
+</g>
+<!-- NFTName.tokenURI&#45;&gt;tokenId.toString -->
+<g id="edge11" class="edge" data-name="NFTName.tokenURI-&gt;tokenId.toString">
+
+<path fill="none" stroke="white" stroke-width="2" d="M166.44,-1328.48C184.92,-1325.23 204.29,-1318.06 216.15,-1303 299.65,-1196.99 177.04,-201.11 252.15,-89 268.12,-65.17 297,-51.55 322.79,-43.83"/>
+<polygon fill="white" stroke="white" stroke-width="2" points="323.47,-47.27 332.21,-41.28 321.65,-40.51 323.47,-47.27"/>
+</g>
+<!-- NFTName.isMinted -->
+<g id="node8" class="node" pointer-events="visible" data-name="NFTName.isMinted">
+
+<ellipse fill="#ffbdb9" stroke="#ffbdb9" stroke-width="3" cx="116.08" cy="-1608" rx="45.25" ry="18"/>
+<text text-anchor="middle" x="116.08" y="-1603.8" font-family="Times,serif" font-size="14.00">isMinted</text>
+</g>
+<!-- NFTName._exists -->
+<g id="node29" class="node" pointer-events="visible" data-name="NFTName._exists">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="376.36" cy="-1608" rx="37.72" ry="18"/>
+<text text-anchor="middle" x="376.36" y="-1603.8" font-family="Times,serif" font-size="14.00">_exists</text>
+</g>
+<!-- NFTName.isMinted&#45;&gt;NFTName._exists -->
+<g id="edge12" class="edge" data-name="NFTName.isMinted-&gt;NFTName._exists">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M162.66,-1608C207.96,-1608 277.32,-1608 324.42,-1608"/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="324.34,-1611.5 334.34,-1608 324.34,-1604.5 324.34,-1611.5"/>
+</g>
+<!-- NFTName.getTokenListByOwner -->
+<g id="node9" class="node" pointer-events="visible" data-name="NFTName.getTokenListByOwner">
+
+<ellipse fill="#ff9797" stroke="#ff9797" stroke-width="3" cx="116.08" cy="-1554" rx="100.15" ry="18"/>
+<text text-anchor="middle" x="116.08" y="-1549.8" font-family="Times,serif" font-size="14.00">getTokenListByOwner</text>
+</g>
+<!-- NFTName.balanceOf -->
+<g id="node30" class="node" pointer-events="visible" data-name="NFTName.balanceOf">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="376.36" cy="-1554" rx="50.92" ry="18"/>
+<text text-anchor="middle" x="376.36" y="-1549.8" font-family="Times,serif" font-size="14.00">balanceOf</text>
+</g>
+<!-- NFTName.getTokenListByOwner&#45;&gt;NFTName.balanceOf -->
+<g id="edge13" class="edge" data-name="NFTName.getTokenListByOwner-&gt;NFTName.balanceOf">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M217.67,-1554C249.1,-1554 282.9,-1554 311.11,-1554"/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="311.04,-1557.5 321.04,-1554 311.04,-1550.5 311.04,-1557.5"/>
+</g>
+<!-- NFTName.tokenOfOwnerByIndex -->
+<g id="node31" class="node" pointer-events="visible" data-name="NFTName.tokenOfOwnerByIndex">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="376.36" cy="-1500" rx="102.43" ry="18"/>
+<text text-anchor="middle" x="376.36" y="-1495.8" font-family="Times,serif" font-size="14.00">tokenOfOwnerByIndex</text>
+</g>
+<!-- NFTName.getTokenListByOwner&#45;&gt;NFTName.tokenOfOwnerByIndex -->
+<g id="edge14" class="edge" data-name="NFTName.getTokenListByOwner-&gt;NFTName.tokenOfOwnerByIndex">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M185.27,-1539.74C218.69,-1532.76 259.16,-1524.29 294.16,-1516.98"/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="294.74,-1520.43 303.82,-1514.96 293.31,-1513.58 294.74,-1520.43"/>
+</g>
+<!-- NFTName.setFreelistRoot -->
+<g id="node10" class="node" pointer-events="visible" data-name="NFTName.setFreelistRoot">
+
+<ellipse fill="#ffbdb9" stroke="#ffbdb9" stroke-width="3" cx="116.08" cy="-1276" rx="69.52" ry="18"/>
+<text text-anchor="middle" x="116.08" y="-1271.8" font-family="Times,serif" font-size="14.00">setFreelistRoot</text>
+</g>
+<!-- NFTName.setWhitelistRoot -->
+<g id="node11" class="node" pointer-events="visible" data-name="NFTName.setWhitelistRoot">
+
+<ellipse fill="#ffbdb9" stroke="#ffbdb9" stroke-width="3" cx="116.08" cy="-1222" rx="75.89" ry="18"/>
+<text text-anchor="middle" x="116.08" y="-1217.8" font-family="Times,serif" font-size="14.00">setWhitelistRoot</text>
+</g>
+<!-- NFTName.startFreeMint -->
+<g id="node12" class="node" pointer-events="visible" data-name="NFTName.startFreeMint">
+
+<ellipse fill="#ffbdb9" stroke="#ffbdb9" stroke-width="3" cx="116.08" cy="-1168" rx="63.71" ry="18"/>
+<text text-anchor="middle" x="116.08" y="-1163.8" font-family="Times,serif" font-size="14.00">startFreeMint</text>
+</g>
+<!-- NFTName.startWhitelistMint -->
+<g id="node13" class="node" pointer-events="visible" data-name="NFTName.startWhitelistMint">
+
+<ellipse fill="#ffbdb9" stroke="#ffbdb9" stroke-width="3" cx="116.08" cy="-1114" rx="81.69" ry="18"/>
+<text text-anchor="middle" x="116.08" y="-1109.8" font-family="Times,serif" font-size="14.00">startWhitelistMint</text>
+</g>
+<!-- NFTName.startPublicMint -->
+<g id="node14" class="node" pointer-events="visible" data-name="NFTName.startPublicMint">
+
+<ellipse fill="#ffbdb9" stroke="#ffbdb9" stroke-width="3" cx="116.08" cy="-1060" rx="71.25" ry="18"/>
+<text text-anchor="middle" x="116.08" y="-1055.8" font-family="Times,serif" font-size="14.00">startPublicMint</text>
+</g>
+<!-- NFTName.setBaseUrl -->
+<g id="node15" class="node" pointer-events="visible" data-name="NFTName.setBaseUrl">
+
+<ellipse fill="#ffbdb9" stroke="#ffbdb9" stroke-width="3" cx="116.08" cy="-1006" rx="53.32" ry="18"/>
+<text text-anchor="middle" x="116.08" y="-1001.8" font-family="Times,serif" font-size="14.00">setBaseUrl</text>
+</g>
+<!-- NFTName.setPrices --><g id="edge15" class="edge" data-name="NFTName.setPrices-&gt;NFTName.InvalidPrice" data-comment="NFTName.setPrices">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M161.77,-1380.13C202.07,-1379.68 261.9,-1381.28 308,-1383.9"/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="307.7,-1387.39 317.89,-1384.5 308.12,-1380.4 307.7,-1387.39"/>
+</g>
+<g id="node16" class="node" pointer-events="visible" data-name="NFTName.setPrices">
+
+<ellipse fill="#ffbdb9" stroke="#ffbdb9" stroke-width="3" cx="116.08" cy="-1384" rx="45.23" ry="18"/>
+<text text-anchor="middle" x="116.08" y="-1379.8" font-family="Times,serif" font-size="14.00">setPrices</text>
+</g>
+<!-- NFTName.setPrices&#45;&gt;NFTName.InvalidPrice -->
+
+<!-- NFTName.setPrices&#45;&gt;NFTName.InvalidPrice -->
+<g id="edge16" class="edge" data-name="NFTName.setPrices-&gt;NFTName.InvalidPrice">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M160.02,-1390.51C199.4,-1393.45 258.46,-1395.59 304.78,-1395.9" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="304.75,-1399.4 314.76,-1395.94 304.77,-1392.4 304.75,-1399.4"/>
+</g>
+<!-- NFTName.CanNotChangePrice -->
+<g id="node32" class="node" pointer-events="visible" data-name="NFTName.CanNotChangePrice">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="376.36" cy="-1338" rx="90.34" ry="18"/>
+<text text-anchor="middle" x="376.36" y="-1333.8" font-family="Times,serif" font-size="14.00">CanNotChangePrice</text>
+</g>
+<!-- NFTName.setPrices&#45;&gt;NFTName.CanNotChangePrice -->
+<g id="edge17" class="edge" data-name="NFTName.setPrices-&gt;NFTName.CanNotChangePrice">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M159.15,-1376.51C195.33,-1370.06 248.58,-1360.58 293.18,-1352.64"/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="293.59,-1356.12 302.82,-1350.92 292.36,-1349.23 293.59,-1356.12"/>
+</g>
+<!-- NFTName.ownerMint -->
+<g id="node17" class="node" pointer-events="visible" data-name="NFTName.ownerMint">
+
+<ellipse fill="#ffbdb9" stroke="#ffbdb9" stroke-width="3" cx="116.08" cy="-366" rx="53.9" ry="18"/>
+<text text-anchor="middle" x="116.08" y="-361.8" font-family="Times,serif" font-size="14.00">ownerMint</text>
+</g>
+<!-- NFTName._safeMint -->
+<g id="node33" class="node" pointer-events="visible" data-name="NFTName._safeMint">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="376.36" cy="-420" rx="50.39" ry="18"/>
+<text text-anchor="middle" x="376.36" y="-415.8" font-family="Times,serif" font-size="14.00">_safeMint</text>
+</g>
+<!-- NFTName.ownerMint&#45;&gt;NFTName._safeMint -->
+<g id="edge20" class="edge" data-name="NFTName.ownerMint-&gt;NFTName._safeMint">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M163.85,-375.78C207.3,-384.86 272.1,-398.41 318.52,-408.12"/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="317.62,-411.5 328.13,-410.13 319.06,-404.65 317.62,-411.5"/>
+</g>
+<!-- NFTName.ownerMint&#45;&gt;Counters.Counter.current -->
+<g id="edge18" class="edge" data-name="NFTName.ownerMint-&gt;Counters.Counter.current">
+
+<path fill="none" stroke="white" stroke-width="2" d="M169.77,-361.5C186.38,-357.7 203.64,-350.93 216.15,-339 253.69,-303.21 217.48,-266.57 252.15,-228 271.85,-206.09 301.92,-192.44 327.43,-184.21"/>
+<polygon fill="white" stroke="white" stroke-width="2" points="328.41,-187.57 336.99,-181.36 326.41,-180.86 328.41,-187.57"/>
+</g>
+<!-- Counters.Counter.increment -->
+<g id="node49" class="node" pointer-events="visible" data-name="Counters.Counter.increment">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="376.36" cy="-119" rx="49.79" ry="18"/>
+<text text-anchor="middle" x="376.36" y="-114.8" font-family="Times,serif" font-size="14.00">increment</text>
+</g>
+<!-- NFTName.ownerMint&#45;&gt;Counters.Counter.increment -->
+<g id="edge19" class="edge" data-name="NFTName.ownerMint-&gt;Counters.Counter.increment">
+
+<path fill="none" stroke="white" stroke-width="2" d="M170.44,-362.47C187.19,-358.74 204.37,-351.78 216.15,-339 275.28,-274.83 191.42,-208.66 252.15,-146 267.82,-129.83 290.78,-122.3 312.64,-119.07"/>
+<polygon fill="white" stroke="white" stroke-width="2" points="312.78,-122.57 322.32,-117.97 311.99,-115.62 312.78,-122.57"/>
+</g>
+<!-- NFTName.withdrawMoney -->
+<g id="node18" class="node" pointer-events="visible" data-name="NFTName.withdrawMoney">
+
+<ellipse fill="#ffbdb9" stroke="#ffbdb9" stroke-width="3" cx="116.08" cy="-952" rx="74.74" ry="18"/>
+<text text-anchor="middle" x="116.08" y="-947.8" font-family="Times,serif" font-size="14.00">withdrawMoney</text>
+</g>
+<!-- NFTName.address -->
+<g id="node34" class="node" pointer-events="visible" data-name="NFTName.address">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="376.36" cy="-1122" rx="40" ry="18"/>
+<text text-anchor="middle" x="376.36" y="-1117.8" font-family="Times,serif" font-size="14.00">address</text>
+</g>
+<!-- NFTName.withdrawMoney&#45;&gt;NFTName.address -->
+<g id="edge21" class="edge" data-name="NFTName.withdrawMoney-&gt;NFTName.address">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M184.27,-960.49C196.03,-964.55 207.3,-970.45 216.15,-979 254.98,-1016.5 212.39,-1058.49 252.15,-1095 270.93,-1112.25 298.12,-1119.39 322.18,-1122.05"/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="321.88,-1125.54 332.13,-1122.86 322.45,-1118.56 321.88,-1125.54"/>
+</g>
+<!-- NFTName.WithdrawalFailed -->
+<g id="node35" class="node" pointer-events="visible" data-name="NFTName.WithdrawalFailed">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="376.36" cy="-1230" rx="80.51" ry="18"/>
+<text text-anchor="middle" x="376.36" y="-1225.8" font-family="Times,serif" font-size="14.00">WithdrawalFailed</text>
+</g>
+<!-- NFTName.withdrawMoney&#45;&gt;NFTName.WithdrawalFailed -->
+<g id="edge22" class="edge" data-name="NFTName.withdrawMoney-&gt;NFTName.WithdrawalFailed">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M185.78,-959.71C197.26,-963.85 208.05,-969.98 216.15,-979 283.55,-1054 182.89,-1129.72 252.15,-1203 260.69,-1212.04 271.5,-1218.39 283.16,-1222.81"/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="282.08,-1226.14 292.67,-1225.83 284.2,-1219.47 282.08,-1226.14"/>
+</g>
+<!-- NFTName.freeMint -->
+<g id="node19" class="node" pointer-events="visible" data-name="NFTName.freeMint">
+
+<ellipse fill="#ffbdb9" stroke="#ffbdb9" stroke-width="3" cx="116.08" cy="-636" rx="44.64" ry="18"/>
+<text text-anchor="middle" x="116.08" y="-631.8" font-family="Times,serif" font-size="14.00">freeMint</text>
+</g>
+<!-- NFTName.freeMint&#45;&gt;NFTName._verifyFreelist -->
+<g id="edge24" class="edge" data-name="NFTName.freeMint-&gt;NFTName._verifyFreelist">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M134.45,-653.62C170.11,-689.75 248.56,-769.04 252.15,-771 266.62,-778.91 283.24,-784.51 299.49,-788.46"/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="298.33,-791.79 308.84,-790.52 299.83,-784.95 298.33,-791.79"/>
+</g>
+<!-- NFTName.freeMint&#45;&gt;NFTName._safeMint -->
+<g id="edge29" class="edge" data-name="NFTName.freeMint-&gt;NFTName._safeMint">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M130.8,-617.85C150.17,-592.1 186.48,-543.4 216.15,-501 232.69,-477.37 228.33,-463.27 252.15,-447 269.82,-434.93 291.95,-428.14 312.57,-424.36"/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="312.83,-427.86 322.16,-422.85 311.74,-420.95 312.83,-427.86"/>
+</g>
+<!-- NFTName.FreeMintClosed -->
+<g id="node36" class="node" pointer-events="visible" data-name="NFTName.FreeMintClosed">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="376.36" cy="-690" rx="73.6" ry="18"/>
+<text text-anchor="middle" x="376.36" y="-685.8" font-family="Times,serif" font-size="14.00">FreeMintClosed</text>
+</g>
+<!-- NFTName.freeMint&#45;&gt;NFTName.FreeMintClosed -->
+<g id="edge23" class="edge" data-name="NFTName.freeMint-&gt;NFTName.FreeMintClosed">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M157.43,-644.44C196.81,-652.67 257.54,-665.37 304.89,-675.27"/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="304.09,-678.67 314.59,-677.3 305.52,-671.82 304.09,-678.67"/>
+</g>
+<!-- NFTName.HaveNotEligible -->
+<g id="node37" class="node" pointer-events="visible" data-name="NFTName.HaveNotEligible">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="376.36" cy="-636" rx="76.44" ry="18"/>
+<text text-anchor="middle" x="376.36" y="-631.8" font-family="Times,serif" font-size="14.00">HaveNotEligible</text>
+</g>
+<!-- NFTName.freeMint&#45;&gt;NFTName.HaveNotEligible -->
+<g id="edge25" class="edge" data-name="NFTName.freeMint-&gt;NFTName.HaveNotEligible">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M162.07,-636C196.05,-636 243.8,-636 285.51,-636"/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="285.49,-639.5 295.49,-636 285.49,-632.5 285.49,-639.5"/>
+</g>
+<!-- NFTName.FreeMintLimitExceeded -->
+<g id="node38" class="node" pointer-events="visible" data-name="NFTName.FreeMintLimitExceeded">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="376.36" cy="-744" rx="105.93" ry="18"/>
+<text text-anchor="middle" x="376.36" y="-739.8" font-family="Times,serif" font-size="14.00">FreeMintLimitExceeded</text>
+</g>
+<!-- NFTName.freeMint&#45;&gt;NFTName.FreeMintLimitExceeded -->
+<g id="edge26" class="edge" data-name="NFTName.freeMint-&gt;NFTName.FreeMintLimitExceeded">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M139.31,-652.45C165.16,-670.81 209.71,-700.15 252.15,-717 262.5,-721.11 273.6,-724.65 284.75,-727.69"/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="283.82,-731.07 294.38,-730.16 285.56,-724.29 283.82,-731.07"/>
+</g>
+<!-- NFTName.freeMint&#45;&gt;Counters.Counter.current -->
+<g id="edge27" class="edge" data-name="NFTName.freeMint-&gt;Counters.Counter.current">
+
+<path fill="none" stroke="white" stroke-width="2" d="M134.47,-618.6C157.4,-594.48 197.07,-548.48 216.15,-501 261.79,-387.44 178.96,-326.09 252.15,-228 269.91,-204.2 300.29,-190.49 326.44,-182.7"/>
+<polygon fill="white" stroke="white" stroke-width="2" points="327.2,-186.12 335.94,-180.13 325.37,-179.37 327.2,-186.12"/>
+</g>
+<!-- NFTName.freeMint&#45;&gt;Counters.Counter.increment -->
+<g id="edge28" class="edge" data-name="NFTName.freeMint-&gt;Counters.Counter.increment">
+
+<path fill="none" stroke="white" stroke-width="2" d="M135.07,-618.27C158.3,-594.14 197.89,-548.49 216.15,-501 244.61,-426.99 199.39,-205.19 252.15,-146 267.32,-128.99 290.51,-121.35 312.71,-118.27"/>
+<polygon fill="white" stroke="white" stroke-width="2" points="312.99,-121.76 322.58,-117.25 312.27,-114.79 312.99,-121.76"/>
+</g>
+<!-- NFTName.whitelistMint -->
+<g id="node20" class="node" pointer-events="visible" data-name="NFTName.whitelistMint">
+
+<ellipse fill="#ffbdb9" stroke="brown" stroke-width="3" cx="116.08" cy="-474" rx="63.16" ry="18"/>
+<text text-anchor="middle" x="116.08" y="-469.8" font-family="Times,serif" font-size="14.00">whitelistMint</text>
+</g>
+<!-- NFTName.whitelistMint&#45;&gt;NFTName._verifyWhitelist -->
+<g id="edge31" class="edge" data-name="NFTName.whitelistMint-&gt;NFTName._verifyWhitelist">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M169.34,-484.93C208.3,-493.07 261.93,-504.29 304.71,-513.23"/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="303.85,-516.63 314.36,-515.25 305.29,-509.77 303.85,-516.63"/>
+</g>
+<!-- NFTName.whitelistMint&#45;&gt;NFTName._safeMint -->
+<g id="edge37" class="edge" data-name="NFTName.whitelistMint-&gt;NFTName._safeMint">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M169.34,-463.07C212.54,-454.04 273.79,-441.24 318.27,-431.94"/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="318.88,-435.38 327.95,-429.91 317.45,-428.53 318.88,-435.38"/>
+</g>
+<!-- NFTName.whitelistMint&#45;&gt;NFTName.HaveNotEligible -->
+<g id="edge32" class="edge" data-name="NFTName.whitelistMint-&gt;NFTName.HaveNotEligible">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M130.06,-492.6C151.76,-522.17 198.34,-579.57 252.15,-609 264.78,-615.91 279.05,-621.05 293.28,-624.87"/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="292.25,-628.22 302.8,-627.19 293.91,-621.42 292.25,-628.22"/>
+</g>
+<!-- NFTName.WhitelistMintClosed -->
+<g id="node39" class="node" pointer-events="visible" data-name="NFTName.WhitelistMintClosed">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="376.36" cy="-582" rx="92.09" ry="18"/>
+<text text-anchor="middle" x="376.36" y="-577.8" font-family="Times,serif" font-size="14.00">WhitelistMintClosed</text>
+</g>
+<!-- NFTName.whitelistMint&#45;&gt;NFTName.WhitelistMintClosed -->
+<g id="edge30" class="edge" data-name="NFTName.whitelistMint-&gt;NFTName.WhitelistMintClosed">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M141.2,-491.79C167.29,-510.21 210.73,-538.55 252.15,-555 264.18,-559.78 277.22,-563.79 290.17,-567.13"/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="289.03,-570.46 299.58,-569.42 290.69,-563.65 289.03,-570.46"/>
+</g>
+<!-- NFTName.WhitelistMintLimitExceeded -->
+<g id="node40" class="node" pointer-events="visible" data-name="NFTName.WhitelistMintLimitExceeded">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="376.36" cy="-474" rx="124.42" ry="18"/>
+<text text-anchor="middle" x="376.36" y="-469.8" font-family="Times,serif" font-size="14.00">WhitelistMintLimitExceeded</text>
+</g>
+<!-- NFTName.whitelistMint&#45;&gt;NFTName.WhitelistMintLimitExceeded -->
+<g id="edge33" class="edge" data-name="NFTName.whitelistMint-&gt;NFTName.WhitelistMintLimitExceeded">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M180.59,-474C198.07,-474 217.74,-474 237.68,-474"/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="237.43,-477.5 247.43,-474 237.43,-470.5 237.43,-477.5"/>
+</g>
+<!-- NFTName.InsufficientBalance -->
+<g id="node41" class="node" pointer-events="visible" data-name="NFTName.InsufficientBalance">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="376.36" cy="-366" rx="86.79" ry="18"/>
+<text text-anchor="middle" x="376.36" y="-361.8" font-family="Times,serif" font-size="14.00">InsufficientBalance</text>
+</g>
+<!-- NFTName.whitelistMint&#45;&gt;NFTName.InsufficientBalance -->
+<g id="edge34" class="edge" data-name="NFTName.whitelistMint-&gt;NFTName.InsufficientBalance">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M174.44,-465.74C188.98,-461.74 203.93,-455.81 216.15,-447 239.55,-430.14 228.33,-409.27 252.15,-393 261.71,-386.47 272.58,-381.48 283.81,-377.69"/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="284.61,-381.1 293.18,-374.88 282.6,-374.39 284.61,-381.1"/>
+</g>
+<!-- NFTName.whitelistMint&#45;&gt;Counters.Counter.current -->
+<g id="edge35" class="edge" data-name="NFTName.whitelistMint-&gt;Counters.Counter.current">
+
+<path fill="none" stroke="white" stroke-width="2" d="M178.08,-468.73C192.34,-464.69 206.24,-457.99 216.15,-447 282.21,-373.75 191.91,-306.11 252.15,-228 270.28,-204.49 300.67,-190.77 326.72,-182.92"/>
+<polygon fill="white" stroke="white" stroke-width="2" points="327.46,-186.35 336.18,-180.32 325.61,-179.6 327.46,-186.35"/>
+</g>
+<!-- NFTName.whitelistMint&#45;&gt;Counters.Counter.increment -->
+<g id="edge36" class="edge" data-name="NFTName.whitelistMint-&gt;Counters.Counter.increment">
+
+<path fill="none" stroke="white" stroke-width="2" d="M178.42,-469.02C192.67,-464.98 206.48,-458.2 216.15,-447 304.17,-344.99 161.6,-245.76 252.15,-146 267.41,-129.19 290.51,-121.57 312.6,-118.45"/>
+<polygon fill="white" stroke="white" stroke-width="2" points="312.84,-121.94 322.41,-117.41 312.1,-114.98 312.84,-121.94"/>
+</g>
+<!-- NFTName.publicMint -->
+<g id="node21" class="node" pointer-events="visible" data-name="NFTName.publicMint">
+
+<ellipse fill="#ffbdb9" stroke="brown" stroke-width="3" cx="116.08" cy="-420" rx="53.91" ry="18"/>
+<text text-anchor="middle" x="116.08" y="-415.8" font-family="Times,serif" font-size="14.00">publicMint</text>
+</g>
+<!-- NFTName.publicMint&#45;&gt;NFTName._safeMint -->
+<g id="edge43" class="edge" data-name="NFTName.publicMint-&gt;NFTName._safeMint">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M171.22,-420C212.24,-420 268.71,-420 311.86,-420"/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="311.77,-423.5 321.77,-420 311.77,-416.5 311.77,-423.5"/>
+</g>
+<!-- NFTName.publicMint&#45;&gt;NFTName.InsufficientBalance -->
+<g id="edge40" class="edge" data-name="NFTName.publicMint-&gt;NFTName.InsufficientBalance">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M163.85,-410.22C201.56,-402.34 255.35,-391.09 299.24,-381.91"/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="299.89,-385.35 308.97,-379.88 298.46,-378.5 299.89,-385.35"/>
+</g>
+<!-- NFTName.PublicMintClosed -->
+<g id="node42" class="node" pointer-events="visible" data-name="NFTName.PublicMintClosed">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="376.36" cy="-312" rx="81.15" ry="18"/>
+<text text-anchor="middle" x="376.36" y="-307.8" font-family="Times,serif" font-size="14.00">PublicMintClosed</text>
+</g>
+<!-- NFTName.publicMint&#45;&gt;NFTName.PublicMintClosed -->
+<g id="edge38" class="edge" data-name="NFTName.publicMint-&gt;NFTName.PublicMintClosed">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M168.02,-413.39C184.5,-409.43 202.12,-403.11 216.15,-393 239.55,-376.14 228.33,-355.27 252.15,-339 262.66,-331.82 274.75,-326.51 287.16,-322.59"/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="288.02,-325.98 296.71,-319.93 286.14,-319.24 288.02,-325.98"/>
+</g>
+<!-- NFTName.PublicMintLimitExceeded -->
+<g id="node43" class="node" pointer-events="visible" data-name="NFTName.PublicMintLimitExceeded">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="376.36" cy="-258" rx="113.47" ry="18"/>
+<text text-anchor="middle" x="376.36" y="-253.8" font-family="Times,serif" font-size="14.00">PublicMintLimitExceeded</text>
+</g>
+<!-- NFTName.publicMint&#45;&gt;NFTName.PublicMintLimitExceeded -->
+<g id="edge39" class="edge" data-name="NFTName.publicMint-&gt;NFTName.PublicMintLimitExceeded">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M169.72,-415.44C186.32,-411.64 203.59,-404.88 216.15,-393 252.91,-358.23 214.53,-318.83 252.15,-285 257.01,-280.63 262.42,-276.91 268.17,-273.75"/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="269.33,-277.07 276.88,-269.63 266.34,-270.74 269.33,-277.07"/>
+</g>
+<!-- NFTName.publicMint&#45;&gt;Counters.Counter.current -->
+<g id="edge41" class="edge" data-name="NFTName.publicMint-&gt;Counters.Counter.current">
+
+<path fill="none" stroke="white" stroke-width="2" d="M170.22,-416.26C186.96,-412.52 204.18,-405.6 216.15,-393 267.85,-338.58 204.79,-286.23 252.15,-228 270.82,-205.04 301.07,-191.35 326.92,-183.37"/>
+<polygon fill="white" stroke="white" stroke-width="2" points="327.61,-186.81 336.28,-180.72 325.7,-180.08 327.61,-186.81"/>
+</g>
+<!-- NFTName.publicMint&#45;&gt;Counters.Counter.increment -->
+<g id="edge42" class="edge" data-name="NFTName.publicMint-&gt;Counters.Counter.increment">
+
+<path fill="none" stroke="white" stroke-width="2" d="M170.47,-416.79C187.34,-413.1 204.57,-406.08 216.15,-393 289.7,-309.94 176.54,-227.18 252.15,-146 267.56,-129.46 290.58,-121.87 312.56,-118.7"/>
+<polygon fill="white" stroke="white" stroke-width="2" points="312.75,-122.2 322.31,-117.64 311.99,-115.24 312.75,-122.2"/>
+</g>
+<!-- NFTName.multipleTransfer -->
+<g id="node22" class="node" pointer-events="visible" data-name="NFTName.multipleTransfer">
+
+<ellipse fill="#ffbdb9" stroke="#ffbdb9" stroke-width="3" cx="116.08" cy="-898" rx="75.86" ry="18"/>
+<text text-anchor="middle" x="116.08" y="-893.8" font-family="Times,serif" font-size="14.00">multipleTransfer</text>
+</g>
+<!-- NFTName.multipleTransfer&#45;&gt;NFTName.InvalidAmount -->
+<g id="edge46" class="edge" data-name="NFTName.multipleTransfer-&gt;NFTName.InvalidAmount">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M187.18,-905.43C198.31,-909.63 208.62,-915.85 216.15,-925 286.11,-1009.98 180.08,-1335.81 252.15,-1419 262.62,-1431.08 277.13,-1438.47 292.53,-1442.85"/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="291.53,-1446.21 302.07,-1445.08 293.12,-1439.4 291.53,-1446.21"/>
+</g>
+<!-- NFTName.multipleTransfer&#45;&gt;NFTName._requireMinted -->
+<g id="edge47" class="edge" data-name="NFTName.multipleTransfer-&gt;NFTName._requireMinted">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M186.54,-905.98C197.73,-910.12 208.23,-916.18 216.15,-925 283.55,-1000 182.89,-1075.72 252.15,-1149 262.67,-1160.13 276.63,-1167.19 291.37,-1171.58"/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="290.4,-1174.94 300.94,-1173.94 292.08,-1168.15 290.4,-1174.94"/>
+</g>
+<!-- NFTName.multipleTransfer&#45;&gt;NFTName.address -->
+<g id="edge44" class="edge" data-name="NFTName.multipleTransfer-&gt;NFTName.address">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M185.94,-906.22C197.26,-910.33 207.95,-916.32 216.15,-925 269.17,-981.15 197.73,-1040.2 252.15,-1095 270.33,-1113.31 297.88,-1120.48 322.31,-1122.89"/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="321.88,-1126.37 332.1,-1123.56 322.36,-1119.39 321.88,-1126.37"/>
+</g>
+<!-- NFTName.InvalidAddress -->
+<g id="node44" class="node" pointer-events="visible" data-name="NFTName.InvalidAddress">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="376.36" cy="-960" rx="70.08" ry="18"/>
+<text text-anchor="middle" x="376.36" y="-955.8" font-family="Times,serif" font-size="14.00">InvalidAddress</text>
+</g>
+<!-- NFTName.multipleTransfer&#45;&gt;NFTName.InvalidAddress -->
+<g id="edge45" class="edge" data-name="NFTName.multipleTransfer-&gt;NFTName.InvalidAddress">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M169.24,-912.01C194.26,-918.6 224.7,-926.44 252.15,-933 269.8,-937.22 288.94,-941.54 306.75,-945.45"/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="305.97,-948.86 316.49,-947.57 307.46,-942.02 305.97,-948.86"/>
+</g>
+<!-- NFTName.ownerOf -->
+<g id="node45" class="node" pointer-events="visible" data-name="NFTName.ownerOf">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="376.36" cy="-1014" rx="45.22" ry="18"/>
+<text text-anchor="middle" x="376.36" y="-1009.8" font-family="Times,serif" font-size="14.00">ownerOf</text>
+</g>
+<!-- NFTName.multipleTransfer&#45;&gt;NFTName.ownerOf -->
+<g id="edge48" class="edge" data-name="NFTName.multipleTransfer-&gt;NFTName.ownerOf">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M182.31,-908C194.37,-911.93 206.26,-917.39 216.15,-925 241.41,-944.42 226.41,-968.22 252.15,-987 270.86,-1000.65 295.13,-1007.63 317.19,-1011.12"/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="316.48,-1014.56 326.85,-1012.4 317.4,-1007.62 316.48,-1014.56"/>
+</g>
+<!-- NFTName.YouNotTokenHolder -->
+<g id="node46" class="node" pointer-events="visible" data-name="NFTName.YouNotTokenHolder">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="376.36" cy="-1068" rx="93.78" ry="18"/>
+<text text-anchor="middle" x="376.36" y="-1063.8" font-family="Times,serif" font-size="14.00">YouNotTokenHolder</text>
+</g>
+<!-- NFTName.multipleTransfer&#45;&gt;NFTName.YouNotTokenHolder -->
+<g id="edge49" class="edge" data-name="NFTName.multipleTransfer-&gt;NFTName.YouNotTokenHolder">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M185.04,-906.76C196.52,-910.81 207.49,-916.64 216.15,-925 254.98,-962.5 212.39,-1004.49 252.15,-1041 259.08,-1047.36 267.16,-1052.35 275.8,-1056.25"/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="274.46,-1059.48 285.05,-1059.82 276.98,-1052.95 274.46,-1059.48"/>
+</g>
+<!-- NFTName._transfer -->
+<g id="node47" class="node" pointer-events="visible" data-name="NFTName._transfer">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="376.36" cy="-906" rx="45.21" ry="18"/>
+<text text-anchor="middle" x="376.36" y="-901.8" font-family="Times,serif" font-size="14.00">_transfer</text>
+</g>
+<!-- NFTName.multipleTransfer&#45;&gt;NFTName._transfer -->
+<g id="edge50" class="edge" data-name="NFTName.multipleTransfer-&gt;NFTName._transfer">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M192.82,-900.35C232.46,-901.57 280.25,-903.05 316.98,-904.19"/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="316.85,-907.69 326.95,-904.5 317.07,-900.69 316.85,-907.69"/>
+</g>
+<!-- NFTName.&lt;Receive Ether&gt; -->
+<g id="node23" class="node" pointer-events="visible" data-name="NFTName.&lt;Receive Ether&gt;">
+
+<ellipse fill="#ffbdb9" stroke="brown" stroke-width="3" cx="116.08" cy="-312" rx="76.21" ry="18"/>
+<text text-anchor="middle" x="116.08" y="-307.8" font-family="Times,serif" font-size="14.00">&lt;Receive Ether&gt;</text>
+</g>
+<!-- NFTName.&lt;Fallback&gt; -->
+<g id="node24" class="node" pointer-events="visible" data-name="NFTName.&lt;Fallback&gt;">
+
+<ellipse fill="#ffbdb9" stroke="brown" stroke-width="3" cx="116.08" cy="-258" rx="55.36" ry="18"/>
+<text text-anchor="middle" x="116.08" y="-253.8" font-family="Times,serif" font-size="14.00">&lt;Fallback&gt;</text>
+</g>
+<!-- key -->
+<g id="node52" class="node" pointer-events="visible" data-name="key">
+
+<polygon fill="#edad56" stroke="none" stroke-width="3" points="181.08,-1763 51.08,-1763 51.08,-1675 181.08,-1675 181.08,-1763"/>
+<text text-anchor="start" x="100.71" y="-1744.4" font-family="Times,serif" font-size="14.00">Internal Call</text>
+<text text-anchor="start" x="96.82" y="-1724.4" font-family="Times,serif" font-size="14.00">External Call</text>
+<text text-anchor="start" x="74.28" y="-1704.4" font-family="Times,serif" font-size="14.00">Defined Contract</text>
+<text text-anchor="start" x="60.68" y="-1684.4" font-family="Times,serif" font-size="14.00">Undefined Contract</text>
+</g>
+<!-- key2 -->
+<g id="edge51" class="edge" data-name="key-&gt;key2" data-comment="key2">
+
+<path fill="none" stroke="rgb(27, 198, 166)" stroke-width="2" d="M174.08,-1749C253.77,-1749 276.84,-1749 350.56,-1749"/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="350.33,-1752.5 360.33,-1749 350.33,-1745.5 350.33,-1752.5"/>
+</g>
+<g id="node53" class="node" pointer-events="visible" data-name="key2">
+
+<polygon fill="#edad56" stroke="none" stroke-width="3" points="403.36,-1763 349.36,-1763 349.36,-1675 403.36,-1675 403.36,-1763"/>
+<text text-anchor="start" x="366.36" y="-1744.4" font-family="Times,serif" font-size="14.00">   </text>
+<text text-anchor="start" x="366.36" y="-1724.4" font-family="Times,serif" font-size="14.00">   </text>
+<polygon fill="#445773" stroke="none" points="364.36,-1699 364.36,-1719 389.36,-1719 389.36,-1699 364.36,-1699"/>
+<text text-anchor="start" x="366.36" y="-1704.4" font-family="Times,serif" font-size="14.00">   </text>
+<polygon fill="none" stroke="#e8726d" points="366.36,-1681 366.36,-1697 387.36,-1697 387.36,-1681 366.36,-1681"/>
+</g>
+<!-- key&#45;&gt;key2 -->
+<!-- key&#45;&gt;key2 -->
+<g id="edge52" class="edge" data-name="key-&gt;key2">
+
+<path fill="none" stroke="white" stroke-width="2" d="M174.08,-1729C253.77,-1729 276.84,-1729 350.56,-1729" style=""/>
+<polygon fill="white" stroke="white" stroke-width="2" points="350.33,-1732.5 360.33,-1729 350.33,-1725.5 350.33,-1732.5"/>
+</g>
+</g>
+</svg>
