@@ -12,7 +12,6 @@ boardcast/
 docs/
 
 # Coverage
-reports/
 lcov.info
 
 # Dotenv file

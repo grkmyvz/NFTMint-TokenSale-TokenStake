@@ -1,0 +1,965 @@
+<?xml version="1.0" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="749pt" height="2645pt" viewBox="0.00 0.00 748.88 2645.00">
+<g id="graph0" class="graph" transform="translate(-573.0237532133866,5527.716503766659) scale(2.6390158215457924)" data-name="G">
+
+<polygon fill="#2e3e56" stroke="none" points="-4,4 -4,-2641 744.88,-2641 744.88,4 -4,4" style=""/>
+<g id="clust1" class="cluster" data-name="clusterTokenSale">
+
+<path fill="#445773" stroke="#445773" d="M20,-255C20,-255 720.88,-255 720.88,-255 726.88,-255 732.88,-261 732.88,-267 732.88,-267 732.88,-2480 732.88,-2480 732.88,-2486 726.88,-2492 720.88,-2492 720.88,-2492 20,-2492 20,-2492 14,-2492 8,-2486 8,-2480 8,-2480 8,-267 8,-267 8,-261 14,-255 20,-255" style=""/>
+<text text-anchor="middle" x="370.44" y="-2475.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">TokenSale</text>
+</g>
+<g id="clust2" class="cluster" data-name="clusterMerkleProof">
+
+<path fill="#3b4b63" stroke="#e8726d" stroke-dasharray="5,2" d="M622.13,-170C622.13,-170 685.32,-170 685.32,-170 691.32,-170 697.32,-176 697.32,-182 697.32,-182 697.32,-235 697.32,-235 697.32,-241 691.32,-247 685.32,-247 685.32,-247 622.13,-247 622.13,-247 616.13,-247 610.13,-241 610.13,-235 610.13,-235 610.13,-182 610.13,-182 610.13,-176 616.13,-170 622.13,-170" style=""/>
+<text text-anchor="middle" x="653.73" y="-230.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">MerkleProof</text>
+</g>
+<g id="clust3" class="cluster" data-name="clusterIERC20">
+
+<path fill="#3b4b63" stroke="#e8726d" stroke-dasharray="5,2" d="M324.79,-8C324.79,-8 477.22,-8 477.22,-8 483.22,-8 489.22,-14 489.22,-20 489.22,-20 489.22,-235 489.22,-235 489.22,-241 483.22,-247 477.22,-247 477.22,-247 324.79,-247 324.79,-247 318.79,-247 312.79,-241 312.79,-235 312.79,-235 312.79,-20 312.79,-20 312.79,-14 318.79,-8 324.79,-8" style=""/>
+<text text-anchor="middle" x="401" y="-230.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">IERC20</text>
+</g>
+<g id="clust4" class="cluster" data-name="cluster_01">
+
+<polygon fill="#2e3e56" stroke="black" points="45.22,-2500 45.22,-2629 436,-2629 436,-2500 45.22,-2500" style=""/>
+<text text-anchor="middle" x="240.61" y="-2612.4" font-family="Times,serif" font-size="14.00" style="">Legend</text>
+</g>
+<!-- TokenSale.checkZeroAmount -->
+<g id="node1" class="node" pointer-events="visible" data-name="TokenSale.checkZeroAmount">
+
+<polygon fill="#edad56" stroke="#1bc6a6" stroke-width="3" points="208.34,-1407.54 208.34,-1422.46 155.55,-1433 80.88,-1433 28.09,-1422.46 28.09,-1407.54 80.88,-1397 155.55,-1397 208.34,-1407.54" style=""/>
+<polygon fill="none" stroke="#1bc6a6" stroke-width="3" points="212.34,-1404.26 212.34,-1425.74 155.94,-1437 80.49,-1437 24.1,-1425.74 24.1,-1404.26 80.49,-1393 155.94,-1393 212.34,-1404.26" style=""/>
+<text text-anchor="middle" x="118.22" y="-1410.8" font-family="Times,serif" font-size="14.00" style="">checkZeroAmount</text>
+</g>
+<!-- TokenSale.InvalidAmount -->
+<g id="node31" class="node" pointer-events="visible" data-name="TokenSale.InvalidAmount">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="401" cy="-1415" rx="70.09" ry="18" style=""/>
+<text text-anchor="middle" x="401" y="-1410.8" font-family="Times,serif" font-size="14.00" style="">InvalidAmount</text>
+</g>
+<!-- TokenSale.checkZeroAmount&#45;&gt;TokenSale.InvalidAmount -->
+<g id="edge1" class="edge" data-name="TokenSale.checkZeroAmount-&gt;TokenSale.InvalidAmount">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M213.5,-1415C246.97,-1415 284.38,-1415 316.86,-1415" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="316.48,-1418.5 326.48,-1415 316.48,-1411.5 316.48,-1418.5" style=""/>
+</g>
+<!-- TokenSale.&lt;Constructor&gt; -->
+<g id="node2" class="node" pointer-events="visible" data-name="TokenSale.&lt;Constructor&gt;">
+
+<ellipse fill="#ff9797" stroke="#ff9797" stroke-width="3" cx="118.22" cy="-2387" rx="67.55" ry="18" style=""/>
+<text text-anchor="middle" x="118.22" y="-2382.8" font-family="Times,serif" font-size="14.00" style="">&lt;Constructor&gt;</text>
+</g>
+<!-- TokenSale.InvalidParams -->
+<g id="node32" class="node" pointer-events="visible" data-name="TokenSale.InvalidParams">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="401" cy="-2387" rx="66.64" ry="18" style=""/>
+<text text-anchor="middle" x="401" y="-2382.8" font-family="Times,serif" font-size="14.00" style="">InvalidParams</text>
+</g>
+<!-- TokenSale.&lt;Constructor&gt;&#45;&gt;TokenSale.InvalidParams -->
+<g id="edge2" class="edge" data-name="TokenSale.&lt;Constructor&gt;-&gt;TokenSale.InvalidParams">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M161.86,-2371.97C210.9,-2365.52 291.53,-2365.05 345.19,-2370.56" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="344.53,-2374 354.87,-2371.69 345.34,-2367.05 344.53,-2374" style=""/>
+</g>
+<!-- TokenSale.&lt;Constructor&gt;&#45;&gt;TokenSale.InvalidParams -->
+<g id="edge3" class="edge" data-name="TokenSale.&lt;Constructor&gt;-&gt;TokenSale.InvalidParams">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M183.99,-2381.21C225.47,-2380.04 279.5,-2379.94 323.15,-2380.91" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="322.93,-2384.4 333.02,-2381.16 323.11,-2377.4 322.93,-2384.4" style=""/>
+</g>
+<!-- TokenSale.&lt;Constructor&gt;&#45;&gt;TokenSale.InvalidParams -->
+<g id="edge4" class="edge" data-name="TokenSale.&lt;Constructor&gt;-&gt;TokenSale.InvalidParams">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M183.99,-2392.79C225.47,-2393.96 279.5,-2394.06 323.15,-2393.09" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="323.11,-2396.6 333.02,-2392.84 322.93,-2389.6 323.11,-2396.6" style=""/>
+</g>
+<!-- TokenSale.&lt;Constructor&gt;&#45;&gt;TokenSale.InvalidParams -->
+<g id="edge5" class="edge" data-name="TokenSale.&lt;Constructor&gt;-&gt;TokenSale.InvalidParams">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M161.86,-2402.03C210.9,-2408.48 291.53,-2408.95 345.19,-2403.44" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="345.34,-2406.95 354.87,-2402.31 344.53,-2400 345.34,-2406.95" style=""/>
+</g>
+<!-- TokenSale.address -->
+<g id="node33" class="node" pointer-events="visible" data-name="TokenSale.address">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="401" cy="-2225" rx="40" ry="18" style=""/>
+<text text-anchor="middle" x="401" y="-2220.8" font-family="Times,serif" font-size="14.00" style="">address</text>
+</g>
+<!-- TokenSale.&lt;Constructor&gt;&#45;&gt;TokenSale.address -->
+<g id="edge6" class="edge" data-name="TokenSale.&lt;Constructor&gt;-&gt;TokenSale.address">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M182.72,-2380.17C196.5,-2376.1 210.03,-2369.78 220.43,-2360 257.29,-2325.33 218.31,-2285.27 256.43,-2252 281.07,-2230.5 317.3,-2223.81 347.21,-2222.46" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="347.06,-2225.97 356.98,-2222.25 346.91,-2218.97 347.06,-2225.97" style=""/>
+</g>
+<!-- TokenSale.InvalidTokenAddress -->
+<g id="node34" class="node" pointer-events="visible" data-name="TokenSale.InvalidTokenAddress">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="401" cy="-2441" rx="94.92" ry="18" style=""/>
+<text text-anchor="middle" x="401" y="-2436.8" font-family="Times,serif" font-size="14.00" style="">InvalidTokenAddress</text>
+</g>
+<!-- TokenSale.&lt;Constructor&gt;&#45;&gt;TokenSale.InvalidTokenAddress -->
+<g id="edge7" class="edge" data-name="TokenSale.&lt;Constructor&gt;-&gt;TokenSale.InvalidTokenAddress">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M174.94,-2398.08C199.86,-2403 229.61,-2408.84 256.43,-2414 276.14,-2417.79 297.38,-2421.82 317.32,-2425.57" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="316.43,-2428.97 326.9,-2427.37 317.72,-2422.09 316.43,-2428.97" style=""/>
+</g>
+<!-- TokenSale.IERC20 -->
+<g id="node35" class="node" pointer-events="visible" data-name="TokenSale.IERC20">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="401" cy="-2333" rx="42.88" ry="18" style=""/>
+<text text-anchor="middle" x="401" y="-2328.8" font-family="Times,serif" font-size="14.00" style="">IERC20</text>
+</g>
+<!-- TokenSale.&lt;Constructor&gt;&#45;&gt;TokenSale.IERC20 -->
+<g id="edge8" class="edge" data-name="TokenSale.&lt;Constructor&gt;-&gt;TokenSale.IERC20">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M174.94,-2375.92C199.86,-2371 229.61,-2365.16 256.43,-2360 286.5,-2354.21 320.15,-2347.88 347.3,-2342.8" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="347.9,-2346.25 357.09,-2340.97 346.62,-2339.37 347.9,-2346.25" style=""/>
+</g>
+<!-- TokenSale._verifyAirdrop -->
+<g id="node3" class="node" pointer-events="visible" data-name="TokenSale._verifyAirdrop">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="401" cy="-1901" rx="69.49" ry="18" style=""/>
+<text text-anchor="middle" x="401" y="-1896.8" font-family="Times,serif" font-size="14.00" style="">_verifyAirdrop</text>
+</g>
+<!-- MerkleProof.verify -->
+<g id="node65" class="node" pointer-events="visible" data-name="MerkleProof.verify">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="653.23" cy="-196" rx="34.19" ry="18" style=""/>
+<text text-anchor="middle" x="653.23" y="-191.8" font-family="Times,serif" font-size="14.00" style="">verify</text>
+</g>
+<!-- TokenSale._verifyAirdrop&#45;&gt;MerkleProof.verify -->
+<g id="edge9" class="edge" data-name="TokenSale._verifyAirdrop-&gt;MerkleProof.verify">
+
+<path fill="none" stroke="white" stroke-width="2" d="M469.73,-1905.54C497.42,-1903.54 527.19,-1895.66 545.57,-1874 603.92,-1805.23 541.07,-331.58 581.57,-251 588.93,-236.35 602.22,-224.44 615.31,-215.49" style=""/>
+<polygon fill="white" stroke="white" stroke-width="2" points="616.96,-218.59 623.55,-210.29 613.22,-212.67 616.96,-218.59" style=""/>
+</g>
+<!-- TokenSale._verifySeedsale -->
+<g id="node4" class="node" pointer-events="visible" data-name="TokenSale._verifySeedsale">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="401" cy="-1577" rx="72.92" ry="18" style=""/>
+<text text-anchor="middle" x="401" y="-1572.8" font-family="Times,serif" font-size="14.00" style="">_verifySeedsale</text>
+</g>
+<!-- TokenSale._verifySeedsale&#45;&gt;MerkleProof.verify -->
+<g id="edge10" class="edge" data-name="TokenSale._verifySeedsale-&gt;MerkleProof.verify">
+
+<path fill="none" stroke="white" stroke-width="2" d="M473.39,-1581.19C499.99,-1578.75 527.96,-1570.65 545.57,-1550 592.43,-1495.08 548.97,-315.41 581.57,-251 588.97,-236.37 602.27,-224.46 615.35,-215.51" style=""/>
+<polygon fill="white" stroke="white" stroke-width="2" points="617,-218.61 623.59,-210.31 613.26,-212.69 617,-218.61" style=""/>
+</g>
+<!-- TokenSale._verifyPresale -->
+<g id="node5" class="node" pointer-events="visible" data-name="TokenSale._verifyPresale">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="401" cy="-1307" rx="66.62" ry="18" style=""/>
+<text text-anchor="middle" x="401" y="-1302.8" font-family="Times,serif" font-size="14.00" style="">_verifyPresale</text>
+</g>
+<!-- TokenSale._verifyPresale&#45;&gt;MerkleProof.verify -->
+<g id="edge11" class="edge" data-name="TokenSale._verifyPresale-&gt;MerkleProof.verify">
+
+<path fill="none" stroke="white" stroke-width="2" d="M467.02,-1311.6C495.39,-1309.88 526.48,-1302.22 545.57,-1280 620.14,-1193.24 529.54,-352.89 581.57,-251 589.03,-236.4 602.33,-224.49 615.4,-215.54" style=""/>
+<polygon fill="white" stroke="white" stroke-width="2" points="617.05,-218.64 623.63,-210.34 613.31,-212.72 617.05,-218.64" style=""/>
+</g>
+<!-- TokenSale._verifyAirdropAmount -->
+<g id="node6" class="node" pointer-events="visible" data-name="TokenSale._verifyAirdropAmount">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="401" cy="-1955" rx="101.3" ry="18" style=""/>
+<text text-anchor="middle" x="401" y="-1950.8" font-family="Times,serif" font-size="14.00" style="">_verifyAirdropAmount</text>
+</g>
+<!-- TokenSale._verifySeedsaleAmount -->
+<g id="node7" class="node" pointer-events="visible" data-name="TokenSale._verifySeedsaleAmount">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="401" cy="-1631" rx="104.22" ry="18" style=""/>
+<text text-anchor="middle" x="401" y="-1626.8" font-family="Times,serif" font-size="14.00" style="">_verifySeedsaleAmount</text>
+</g>
+<!-- TokenSale._verifyPresaleAmount -->
+<g id="node8" class="node" pointer-events="visible" data-name="TokenSale._verifyPresaleAmount">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="401" cy="-1253" rx="98.43" ry="18" style=""/>
+<text text-anchor="middle" x="401" y="-1248.8" font-family="Times,serif" font-size="14.00" style="">_verifyPresaleAmount</text>
+</g>
+<!-- TokenSale._verifyPublicsaleAmount -->
+<g id="node9" class="node" pointer-events="visible" data-name="TokenSale._verifyPublicsaleAmount">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="401" cy="-1037" rx="110.04" ry="18" style=""/>
+<text text-anchor="middle" x="401" y="-1032.8" font-family="Times,serif" font-size="14.00" style="">_verifyPublicsaleAmount</text>
+</g>
+<!-- TokenSale.setSendTokens -->
+<g id="node10" class="node" pointer-events="visible" data-name="TokenSale.setSendTokens">
+
+<ellipse fill="#ffbdb9" stroke="#ffbdb9" stroke-width="3" cx="118.22" cy="-2171" rx="69.51" ry="18" style=""/>
+<text text-anchor="middle" x="118.22" y="-2166.8" font-family="Times,serif" font-size="14.00" style="">setSendTokens</text>
+</g>
+<!-- TokenSale.setSendTokens&#45;&gt;TokenSale.InvalidAmount -->
+<g id="edge13" class="edge" data-name="TokenSale.setSendTokens-&gt;TokenSale.InvalidAmount">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M186.33,-2165.57C199.44,-2161.4 211.79,-2154.67 220.43,-2144 318.74,-2022.61 153.66,-1559.63 256.43,-1442 271.92,-1424.27 295.05,-1415.85 318.24,-1412.32" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="318.55,-1415.8 328.08,-1411.18 317.74,-1408.85 318.55,-1415.8" style=""/>
+</g>
+<!-- TokenSale.setSendTokens&#45;&gt;TokenSale.address -->
+<g id="edge15" class="edge" data-name="TokenSale.setSendTokens-&gt;TokenSale.address">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M175.94,-2182.27C200.66,-2187.16 229.97,-2192.91 256.43,-2198 287.5,-2203.98 322.38,-2210.54 349.98,-2215.7" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="349.05,-2219.09 359.53,-2217.48 350.34,-2212.21 349.05,-2219.09" style=""/>
+</g>
+<!-- TokenSale.TokenBalanceAlreadyOk -->
+<g id="node36" class="node" pointer-events="visible" data-name="TokenSale.TokenBalanceAlreadyOk">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="401" cy="-2171" rx="109.92" ry="18" style=""/>
+<text text-anchor="middle" x="401" y="-2166.8" font-family="Times,serif" font-size="14.00" style="">TokenBalanceAlreadyOk</text>
+</g>
+<!-- TokenSale.setSendTokens&#45;&gt;TokenSale.TokenBalanceAlreadyOk -->
+<g id="edge12" class="edge" data-name="TokenSale.setSendTokens-&gt;TokenSale.TokenBalanceAlreadyOk">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M188.98,-2171C215.56,-2171 246.7,-2171 276.78,-2171" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="276.56,-2174.5 286.56,-2171 276.56,-2167.5 276.56,-2174.5" style=""/>
+</g>
+<!-- IERC20.safeTransferFrom -->
+<g id="node66" class="node" pointer-events="visible" data-name="IERC20.safeTransferFrom">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="401" cy="-196" rx="80.43" ry="18" style=""/>
+<text text-anchor="middle" x="401" y="-191.8" font-family="Times,serif" font-size="14.00" style="">safeTransferFrom</text>
+</g>
+<!-- TokenSale.setSendTokens&#45;&gt;IERC20.safeTransferFrom -->
+<g id="edge14" class="edge" data-name="TokenSale.setSendTokens-&gt;IERC20.safeTransferFrom">
+
+<path fill="none" stroke="white" stroke-width="2" d="M186.59,-2165.78C199.69,-2161.59 211.96,-2154.81 220.43,-2144 285.3,-2061.2 196,-337.1 256.43,-251 270.86,-230.44 294.08,-217.57 317.68,-209.5" style=""/>
+<polygon fill="white" stroke="white" stroke-width="2" points="318.59,-212.89 327.11,-206.6 316.53,-206.19 318.59,-212.89" style=""/>
+</g>
+<!-- TokenSale.setAirdropMerkleRoot -->
+<g id="node11" class="node" pointer-events="visible" data-name="TokenSale.setAirdropMerkleRoot">
+
+<ellipse fill="#ffbdb9" stroke="#ffbdb9" stroke-width="3" cx="118.22" cy="-1901" rx="99.01" ry="18" style=""/>
+<text text-anchor="middle" x="118.22" y="-1896.8" font-family="Times,serif" font-size="14.00" style="">setAirdropMerkleRoot</text>
+</g>
+<!-- TokenSale.InvalidMerkleProof -->
+<g id="node37" class="node" pointer-events="visible" data-name="TokenSale.InvalidMerkleProof">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="401" cy="-2009" rx="87.97" ry="18" style=""/>
+<text text-anchor="middle" x="401" y="-2004.8" font-family="Times,serif" font-size="14.00" style="">InvalidMerkleProof</text>
+</g>
+<!-- TokenSale.setAirdropMerkleRoot&#45;&gt;TokenSale.InvalidMerkleProof -->
+<g id="edge16" class="edge" data-name="TokenSale.setAirdropMerkleRoot-&gt;TokenSale.InvalidMerkleProof">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M193.13,-1913.92C202.82,-1917.52 212.23,-1922.12 220.43,-1928 243.88,-1944.8 232.37,-1966.09 256.43,-1982 270.09,-1991.03 285.98,-1997.22 302.12,-2001.44" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="301,-2004.77 311.53,-2003.61 302.57,-1997.95 301,-2004.77" style=""/>
+</g>
+<!-- TokenSale.setSeedsaleMerkleRoot -->
+<g id="node12" class="node" pointer-events="visible" data-name="TokenSale.setSeedsaleMerkleRoot">
+
+<ellipse fill="#ffbdb9" stroke="#ffbdb9" stroke-width="3" cx="118.22" cy="-1847" rx="102.43" ry="18" style=""/>
+<text text-anchor="middle" x="118.22" y="-1842.8" font-family="Times,serif" font-size="14.00" style="">setSeedsaleMerkleRoot</text>
+</g>
+<!-- TokenSale.setSeedsaleMerkleRoot&#45;&gt;TokenSale.InvalidMerkleProof -->
+<g id="edge17" class="edge" data-name="TokenSale.setSeedsaleMerkleRoot-&gt;TokenSale.InvalidMerkleProof">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M198,-1859.43C206.23,-1863.14 213.94,-1867.89 220.43,-1874 257.29,-1908.67 218.31,-1948.73 256.43,-1982 268.77,-1992.76 284.01,-1999.82 299.91,-2004.34" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="298.67,-2007.64 309.22,-2006.62 300.33,-2000.84 298.67,-2007.64" style=""/>
+</g>
+<!-- TokenSale.setPresaleMerkleRoot -->
+<g id="node13" class="node" pointer-events="visible" data-name="TokenSale.setPresaleMerkleRoot">
+
+<ellipse fill="#ffbdb9" stroke="#ffbdb9" stroke-width="3" cx="118.22" cy="-2009" rx="96.14" ry="18" style=""/>
+<text text-anchor="middle" x="118.22" y="-2004.8" font-family="Times,serif" font-size="14.00" style="">setPresaleMerkleRoot</text>
+</g>
+<!-- TokenSale.setPresaleMerkleRoot&#45;&gt;TokenSale.InvalidMerkleProof -->
+<g id="edge18" class="edge" data-name="TokenSale.setPresaleMerkleRoot-&gt;TokenSale.InvalidMerkleProof">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M215.85,-2009C242.69,-2009 271.9,-2009 298.99,-2009" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="298.65,-2012.5 308.65,-2009 298.65,-2005.5 298.65,-2012.5" style=""/>
+</g>
+<!-- TokenSale.setAirdropStatus -->
+<g id="node14" class="node" pointer-events="visible" data-name="TokenSale.setAirdropStatus">
+
+<ellipse fill="#ffbdb9" stroke="#ffbdb9" stroke-width="3" cx="118.22" cy="-2117" rx="75.89" ry="18" style=""/>
+<text text-anchor="middle" x="118.22" y="-2112.8" font-family="Times,serif" font-size="14.00" style="">setAirdropStatus</text>
+</g>
+<!-- TokenSale.FirstSendTokens -->
+<g id="node38" class="node" pointer-events="visible" data-name="TokenSale.FirstSendTokens">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="401" cy="-2117" rx="76.48" ry="18" style=""/>
+<text text-anchor="middle" x="401" y="-2112.8" font-family="Times,serif" font-size="14.00" style="">FirstSendTokens</text>
+</g>
+<!-- TokenSale.setAirdropStatus&#45;&gt;TokenSale.FirstSendTokens -->
+<g id="edge19" class="edge" data-name="TokenSale.setAirdropStatus-&gt;TokenSale.FirstSendTokens">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M195.57,-2117C231.02,-2117 273.39,-2117 310.35,-2117" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="310.15,-2120.5 320.15,-2117 310.15,-2113.5 310.15,-2120.5" style=""/>
+</g>
+<!-- TokenSale.setSeedsaleStatus -->
+<g id="node15" class="node" pointer-events="visible" data-name="TokenSale.setSeedsaleStatus">
+
+<ellipse fill="#ffbdb9" stroke="#ffbdb9" stroke-width="3" cx="118.22" cy="-2225" rx="79.32" ry="18" style=""/>
+<text text-anchor="middle" x="118.22" y="-2220.8" font-family="Times,serif" font-size="14.00" style="">setSeedsaleStatus</text>
+</g>
+<!-- TokenSale.setSeedsaleStatus&#45;&gt;TokenSale.FirstSendTokens -->
+<g id="edge20" class="edge" data-name="TokenSale.setSeedsaleStatus-&gt;TokenSale.FirstSendTokens">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M186.01,-2214.53C198.18,-2210.64 210.23,-2205.31 220.43,-2198 243.88,-2181.2 232.37,-2159.91 256.43,-2144 272.74,-2133.21 292.26,-2126.47 311.56,-2122.32" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="312.02,-2125.8 321.2,-2120.51 310.73,-2118.92 312.02,-2125.8" style=""/>
+</g>
+<!-- TokenSale.setPresaleStatus -->
+<g id="node16" class="node" pointer-events="visible" data-name="TokenSale.setPresaleStatus">
+
+<ellipse fill="#ffbdb9" stroke="#ffbdb9" stroke-width="3" cx="118.22" cy="-2279" rx="73.02" ry="18" style=""/>
+<text text-anchor="middle" x="118.22" y="-2274.8" font-family="Times,serif" font-size="14.00" style="">setPresaleStatus</text>
+</g>
+<!-- TokenSale.setPresaleStatus&#45;&gt;TokenSale.FirstSendTokens -->
+<g id="edge21" class="edge" data-name="TokenSale.setPresaleStatus-&gt;TokenSale.FirstSendTokens">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M186.14,-2271.11C198.72,-2267.03 210.9,-2260.97 220.43,-2252 257.29,-2217.33 218.31,-2177.27 256.43,-2144 271.55,-2130.81 291.04,-2123.19 310.75,-2118.96" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="311.15,-2122.45 320.38,-2117.23 309.92,-2115.56 311.15,-2122.45" style=""/>
+</g>
+<!-- TokenSale.setPublicsaleStatus -->
+<g id="node17" class="node" pointer-events="visible" data-name="TokenSale.setPublicsaleStatus">
+
+<ellipse fill="#ffbdb9" stroke="#ffbdb9" stroke-width="3" cx="118.22" cy="-2063" rx="85.13" ry="18" style=""/>
+<text text-anchor="middle" x="118.22" y="-2058.8" font-family="Times,serif" font-size="14.00" style="">setPublicsaleStatus</text>
+</g>
+<!-- TokenSale.setTransferToPublic -->
+<g id="node18" class="node" pointer-events="visible" data-name="TokenSale.setTransferToPublic">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="401" cy="-2063" rx="89.75" ry="18" style=""/>
+<text text-anchor="middle" x="401" y="-2058.8" font-family="Times,serif" font-size="14.00" style="">setTransferToPublic</text>
+</g>
+<!-- TokenSale.setPublicsaleStatus&#45;&gt;TokenSale.setTransferToPublic -->
+<g id="edge23" class="edge" data-name="TokenSale.setPublicsaleStatus-&gt;TokenSale.setTransferToPublic">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M204.6,-2063C233.83,-2063 266.83,-2063 297.28,-2063" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="297.12,-2066.5 307.12,-2063 297.12,-2059.5 297.12,-2066.5" style=""/>
+</g>
+<!-- TokenSale.setPublicsaleStatus&#45;&gt;TokenSale.FirstSendTokens -->
+<g id="edge22" class="edge" data-name="TokenSale.setPublicsaleStatus-&gt;TokenSale.FirstSendTokens">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M183.42,-2075.75C206.44,-2080.29 232.59,-2085.41 256.43,-2090 278.81,-2094.31 303.17,-2098.92 325.36,-2103.09" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="324.7,-2106.52 335.17,-2104.93 325.99,-2099.64 324.7,-2106.52" style=""/>
+</g>
+<!-- TokenSale.SalesCountinue -->
+<g id="node39" class="node" pointer-events="visible" data-name="TokenSale.SalesCountinue">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="653.23" cy="-2063" rx="71.81" ry="18" style=""/>
+<text text-anchor="middle" x="653.23" y="-2058.8" font-family="Times,serif" font-size="14.00" style="">SalesCountinue</text>
+</g>
+<!-- TokenSale.setTransferToPublic&#45;&gt;TokenSale.SalesCountinue -->
+<g id="edge24" class="edge" data-name="TokenSale.setTransferToPublic-&gt;TokenSale.SalesCountinue">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M491.99,-2063C516.57,-2063 543.12,-2063 567.41,-2063" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="567.23,-2066.5 577.23,-2063 567.23,-2059.5 567.23,-2066.5" style=""/>
+</g>
+<!-- TokenSale.withdrawCoin -->
+<g id="node19" class="node" pointer-events="visible" data-name="TokenSale.withdrawCoin">
+
+<ellipse fill="#ff9797" stroke="#ff9797" stroke-width="3" cx="118.22" cy="-2333" rx="66.08" ry="18" style=""/>
+<text text-anchor="middle" x="118.22" y="-2328.8" font-family="Times,serif" font-size="14.00" style="">withdrawCoin</text>
+</g>
+<!-- TokenSale.withdrawCoin&#45;&gt;TokenSale.address -->
+<g id="edge25" class="edge" data-name="TokenSale.withdrawCoin-&gt;TokenSale.address">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M179.13,-2324.57C193.57,-2320.58 208.31,-2314.69 220.43,-2306 243.88,-2289.2 232.37,-2267.91 256.43,-2252 283.03,-2234.41 318.14,-2227.58 346.98,-2225.19" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="346.95,-2228.7 356.71,-2224.58 346.51,-2221.72 346.95,-2228.7" style=""/>
+</g>
+<!-- TokenSale.WithdrawalFailed -->
+<g id="node40" class="node" pointer-events="visible" data-name="TokenSale.WithdrawalFailed">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="401" cy="-2279" rx="80.51" ry="18" style=""/>
+<text text-anchor="middle" x="401" y="-2274.8" font-family="Times,serif" font-size="14.00" style="">WithdrawalFailed</text>
+</g>
+<!-- TokenSale.withdrawCoin&#45;&gt;TokenSale.WithdrawalFailed -->
+<g id="edge26" class="edge" data-name="TokenSale.withdrawCoin-&gt;TokenSale.WithdrawalFailed">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M173.95,-2322.12C199.07,-2317.16 229.25,-2311.23 256.43,-2306 278.29,-2301.79 302.04,-2297.3 323.81,-2293.21" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="324.21,-2296.69 333.4,-2291.41 322.92,-2289.81 324.21,-2296.69" style=""/>
+</g>
+<!-- TokenSale.withdrawToken -->
+<g id="node20" class="node" pointer-events="visible" data-name="TokenSale.withdrawToken">
+
+<ellipse fill="#ff9797" stroke="#ff9797" stroke-width="3" cx="118.22" cy="-1955" rx="72.36" ry="18" style=""/>
+<text text-anchor="middle" x="118.22" y="-1950.8" font-family="Times,serif" font-size="14.00" style="">withdrawToken</text>
+</g>
+<!-- TokenSale.withdrawToken&#45;&gt;TokenSale.address -->
+<g id="edge29" class="edge" data-name="TokenSale.withdrawToken-&gt;TokenSale.address">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M187.27,-1961.78C199.77,-1965.93 211.63,-1972.31 220.43,-1982 285.89,-2054.03 188.33,-2128.47 256.43,-2198 279.8,-2221.86 317.12,-2228.32 347.85,-2228.96" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="347.54,-2232.46 357.53,-2228.93 347.52,-2225.46 347.54,-2232.46" style=""/>
+</g>
+<!-- TokenSale.withdrawToken&#45;&gt;TokenSale.FirstSendTokens -->
+<g id="edge27" class="edge" data-name="TokenSale.withdrawToken-&gt;TokenSale.FirstSendTokens">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M185.87,-1962.8C198.55,-1966.88 210.83,-1972.97 220.43,-1982 257.29,-2016.67 218.31,-2056.73 256.43,-2090 271.55,-2103.19 291.04,-2110.81 310.75,-2115.04" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="309.92,-2118.44 320.38,-2116.77 311.15,-2111.55 309.92,-2118.44" style=""/>
+</g>
+<!-- IERC20.balanceOf -->
+<g id="node67" class="node" pointer-events="visible" data-name="IERC20.balanceOf">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="401" cy="-142" rx="50.92" ry="18" style=""/>
+<text text-anchor="middle" x="401" y="-137.8" font-family="Times,serif" font-size="14.00" style="">balanceOf</text>
+</g>
+<!-- TokenSale.withdrawToken&#45;&gt;IERC20.balanceOf -->
+<g id="edge28" class="edge" data-name="TokenSale.withdrawToken-&gt;IERC20.balanceOf">
+
+<path fill="none" stroke="white" stroke-width="2" d="M188.39,-1949.17C200.81,-1944.94 212.35,-1938.3 220.43,-1928 280.77,-1851.1 193.26,-243.59 256.43,-169 276.06,-145.82 308.75,-138.42 337.99,-137.11" style=""/>
+<polygon fill="white" stroke="white" stroke-width="2" points="337.72,-140.61 347.65,-136.94 337.6,-133.61 337.72,-140.61" style=""/>
+</g>
+<!-- IERC20.safeTransfer -->
+<g id="node68" class="node" pointer-events="visible" data-name="IERC20.safeTransfer">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="401" cy="-88" rx="59.08" ry="18" style=""/>
+<text text-anchor="middle" x="401" y="-83.8" font-family="Times,serif" font-size="14.00" style="">safeTransfer</text>
+</g>
+<!-- TokenSale.withdrawToken&#45;&gt;IERC20.safeTransfer -->
+<g id="edge30" class="edge" data-name="TokenSale.withdrawToken-&gt;IERC20.safeTransfer">
+
+<path fill="none" stroke="white" stroke-width="2" d="M188.39,-1949.18C200.81,-1944.95 212.35,-1938.3 220.43,-1928 282.6,-1848.72 191.35,-191.9 256.43,-115 274.26,-93.94 302.85,-85.9 329.85,-83.62" style=""/>
+<polygon fill="white" stroke="white" stroke-width="2" points="329.69,-87.14 339.48,-83.11 329.31,-80.15 329.69,-87.14" style=""/>
+</g>
+<!-- TokenSale.buyAirdrop -->
+<g id="node21" class="node" pointer-events="visible" data-name="TokenSale.buyAirdrop">
+
+<ellipse fill="#ffbdb9" stroke="#ffbdb9" stroke-width="3" cx="118.22" cy="-1793" rx="56.19" ry="18" style=""/>
+<text text-anchor="middle" x="118.22" y="-1788.8" font-family="Times,serif" font-size="14.00" style="">buyAirdrop</text>
+</g>
+<!-- TokenSale.buyAirdrop&#45;&gt;TokenSale._verifyAirdrop -->
+<g id="edge32" class="edge" data-name="TokenSale.buyAirdrop-&gt;TokenSale._verifyAirdrop">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M172.3,-1799.66C188.83,-1803.62 206.39,-1809.94 220.43,-1820 243.88,-1836.8 232.37,-1858.09 256.43,-1874 274.47,-1885.93 296.43,-1892.91 317.69,-1896.91" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="317.02,-1900.35 327.45,-1898.5 318.14,-1893.44 317.02,-1900.35" style=""/>
+</g>
+<!-- TokenSale.buyAirdrop&#45;&gt;TokenSale._verifyAirdropAmount -->
+<g id="edge34" class="edge" data-name="TokenSale.buyAirdrop-&gt;TokenSale._verifyAirdropAmount">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M174.03,-1797.56C190.67,-1801.39 207.85,-1808.16 220.43,-1820 257.29,-1854.67 218.31,-1894.73 256.43,-1928 265.89,-1936.25 277.06,-1942.33 288.92,-1946.75" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="287.51,-1949.97 298.1,-1949.71 289.66,-1943.31 287.51,-1949.97" style=""/>
+</g>
+<!-- TokenSale.buyAirdrop&#45;&gt;TokenSale.InvalidMerkleProof -->
+<g id="edge33" class="edge" data-name="TokenSale.buyAirdrop-&gt;TokenSale.InvalidMerkleProof">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M174.77,-1796.81C191.45,-1800.6 208.48,-1807.53 220.43,-1820 271.48,-1873.24 203.43,-1930.71 256.43,-1982 268.34,-1993.52 283.53,-2000.93 299.54,-2005.56" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="298.41,-2008.89 308.96,-2007.86 300.08,-2002.09 298.41,-2008.89" style=""/>
+</g>
+<!-- TokenSale.AirdropNotStarted -->
+<g id="node41" class="node" pointer-events="visible" data-name="TokenSale.AirdropNotStarted">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="401" cy="-1739" rx="83.4" ry="18" style=""/>
+<text text-anchor="middle" x="401" y="-1734.8" font-family="Times,serif" font-size="14.00" style="">AirdropNotStarted</text>
+</g>
+<!-- TokenSale.buyAirdrop&#45;&gt;TokenSale.AirdropNotStarted -->
+<g id="edge31" class="edge" data-name="TokenSale.buyAirdrop-&gt;TokenSale.AirdropNotStarted">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M168.1,-1783.28C194.29,-1778.1 227.11,-1771.64 256.43,-1766 277.78,-1761.89 300.92,-1757.51 322.26,-1753.5" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="322.79,-1756.96 331.97,-1751.67 321.49,-1750.08 322.79,-1756.96" style=""/>
+</g>
+<!-- TokenSale.AirdropAlreadyBuyed -->
+<g id="node42" class="node" pointer-events="visible" data-name="TokenSale.AirdropAlreadyBuyed">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="401" cy="-1793" rx="97.85" ry="18" style=""/>
+<text text-anchor="middle" x="401" y="-1788.8" font-family="Times,serif" font-size="14.00" style="">AirdropAlreadyBuyed</text>
+</g>
+<!-- TokenSale.buyAirdrop&#45;&gt;TokenSale.AirdropAlreadyBuyed -->
+<g id="edge35" class="edge" data-name="TokenSale.buyAirdrop-&gt;TokenSale.AirdropAlreadyBuyed">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M175.7,-1793C208.14,-1793 250.03,-1793 288.81,-1793" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="288.8,-1796.5 298.8,-1793 288.8,-1789.5 288.8,-1796.5" style=""/>
+</g>
+<!-- TokenSale.AirdropSoldOut -->
+<g id="node43" class="node" pointer-events="visible" data-name="TokenSale.AirdropSoldOut">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="401" cy="-1847" rx="73.61" ry="18" style=""/>
+<text text-anchor="middle" x="401" y="-1842.8" font-family="Times,serif" font-size="14.00" style="">AirdropSoldOut</text>
+</g>
+<!-- TokenSale.buyAirdrop&#45;&gt;TokenSale.AirdropSoldOut -->
+<g id="edge36" class="edge" data-name="TokenSale.buyAirdrop-&gt;TokenSale.AirdropSoldOut">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M168.1,-1802.72C194.29,-1807.9 227.11,-1814.36 256.43,-1820 279.44,-1824.43 304.54,-1829.18 327.22,-1833.44" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="326.46,-1836.85 336.93,-1835.26 327.75,-1829.97 326.46,-1836.85" style=""/>
+</g>
+<!-- TokenSale.buySeedsale -->
+<g id="node22" class="node" pointer-events="visible" data-name="TokenSale.buySeedsale">
+
+<ellipse fill="#ffbdb9" stroke="brown" stroke-width="3" cx="118.22" cy="-1550" rx="59.11" ry="18" style=""/>
+<text text-anchor="middle" x="118.22" y="-1545.8" font-family="Times,serif" font-size="14.00" style="">buySeedsale</text>
+</g>
+<!-- TokenSale.buySeedsale&#45;&gt;TokenSale._verifySeedsale -->
+<g id="edge39" class="edge" data-name="TokenSale.buySeedsale-&gt;TokenSale._verifySeedsale">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M176.04,-1555.46C216.89,-1559.39 272.59,-1564.75 318.22,-1569.14" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="317.8,-1572.61 328.09,-1570.09 318.47,-1565.64 317.8,-1572.61" style=""/>
+</g>
+<!-- TokenSale.buySeedsale&#45;&gt;TokenSale._verifySeedsaleAmount -->
+<g id="edge41" class="edge" data-name="TokenSale.buySeedsale-&gt;TokenSale._verifySeedsaleAmount">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M153.84,-1565.74C181.21,-1577.66 220.64,-1593.69 256.43,-1604 272.71,-1608.69 290.27,-1612.77 307.33,-1616.24" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="306.18,-1619.58 316.67,-1618.07 307.53,-1612.71 306.18,-1619.58" style=""/>
+</g>
+<!-- TokenSale.buySeedsale&#45;&gt;TokenSale.InvalidAmount -->
+<g id="edge38" class="edge" data-name="TokenSale.buySeedsale-&gt;TokenSale.InvalidAmount">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M136.4,-1531.83C160.68,-1507.32 207.58,-1464.19 256.43,-1442 276.22,-1433.01 298.85,-1427.02 320.2,-1423.01" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="320.69,-1426.48 329.96,-1421.34 319.51,-1419.58 320.69,-1426.48" style=""/>
+</g>
+<!-- TokenSale.buySeedsale&#45;&gt;TokenSale.InvalidMerkleProof -->
+<g id="edge40" class="edge" data-name="TokenSale.buySeedsale-&gt;TokenSale.InvalidMerkleProof">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M130.27,-1568.94C151.22,-1605.67 196.68,-1689.68 220.43,-1766 249.35,-1858.93 188.33,-1912.47 256.43,-1982 268.1,-1993.91 283.24,-2001.49 299.31,-2006.17" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="298.24,-2009.51 308.79,-2008.48 299.91,-2002.71 298.24,-2009.51" style=""/>
+</g>
+<!-- TokenSale.SeedsaleNotStarted -->
+<g id="node44" class="node" pointer-events="visible" data-name="TokenSale.SeedsaleNotStarted">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="401" cy="-1685" rx="86.82" ry="18" style=""/>
+<text text-anchor="middle" x="401" y="-1680.8" font-family="Times,serif" font-size="14.00" style="">SeedsaleNotStarted</text>
+</g>
+<!-- TokenSale.buySeedsale&#45;&gt;TokenSale.SeedsaleNotStarted -->
+<g id="edge37" class="edge" data-name="TokenSale.buySeedsale-&gt;TokenSale.SeedsaleNotStarted">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M136.4,-1568.17C160.68,-1592.68 207.58,-1635.81 256.43,-1658 272.41,-1665.26 290.24,-1670.57 307.76,-1674.45" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="306.96,-1677.86 317.46,-1676.42 308.36,-1671 306.96,-1677.86" style=""/>
+</g>
+<!-- TokenSale.SeedsaleMaxPerWalletExceeded -->
+<g id="node45" class="node" pointer-events="visible" data-name="TokenSale.SeedsaleMaxPerWalletExceeded">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="401" cy="-1469" rx="138.82" ry="18" style=""/>
+<text text-anchor="middle" x="401" y="-1464.8" font-family="Times,serif" font-size="14.00" style="">SeedsaleMaxPerWalletExceeded</text>
+</g>
+<!-- TokenSale.buySeedsale&#45;&gt;TokenSale.SeedsaleMaxPerWalletExceeded -->
+<g id="edge42" class="edge" data-name="TokenSale.buySeedsale-&gt;TokenSale.SeedsaleMaxPerWalletExceeded">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M153.84,-1534.26C181.21,-1522.34 220.64,-1506.31 256.43,-1496 268.99,-1492.38 282.31,-1489.13 295.58,-1486.24" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="296.22,-1489.68 305.29,-1484.2 294.79,-1482.83 296.22,-1489.68" style=""/>
+</g>
+<!-- TokenSale.SeedsaleSoldOut -->
+<g id="node46" class="node" pointer-events="visible" data-name="TokenSale.SeedsaleSoldOut">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="401" cy="-1523" rx="77.04" ry="18" style=""/>
+<text text-anchor="middle" x="401" y="-1518.8" font-family="Times,serif" font-size="14.00" style="">SeedsaleSoldOut</text>
+</g>
+<!-- TokenSale.buySeedsale&#45;&gt;TokenSale.SeedsaleSoldOut -->
+<g id="edge43" class="edge" data-name="TokenSale.buySeedsale-&gt;TokenSale.SeedsaleSoldOut">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M176.04,-1544.54C215.94,-1540.7 270,-1535.5 315.02,-1531.17" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="315.12,-1534.68 324.74,-1530.24 314.45,-1527.71 315.12,-1534.68" style=""/>
+</g>
+<!-- TokenSale.InvalidBalance -->
+<g id="node47" class="node" pointer-events="visible" data-name="TokenSale.InvalidBalance">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="401" cy="-1091" rx="69.47" ry="18" style=""/>
+<text text-anchor="middle" x="401" y="-1086.8" font-family="Times,serif" font-size="14.00" style="">InvalidBalance</text>
+</g>
+<!-- TokenSale.buySeedsale&#45;&gt;TokenSale.InvalidBalance -->
+<g id="edge44" class="edge" data-name="TokenSale.buySeedsale-&gt;TokenSale.InvalidBalance">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M143.99,-1532.48C168,-1513.97 203.24,-1482.46 220.43,-1446 251.7,-1379.68 206.61,-1171.8 256.43,-1118 272.36,-1100.81 295.48,-1092.51 318.55,-1088.92" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="318.79,-1092.42 328.3,-1087.75 317.95,-1085.47 318.79,-1092.42" style=""/>
+</g>
+<!-- TokenSale.buyPresale -->
+<g id="node23" class="node" pointer-events="visible" data-name="TokenSale.buyPresale">
+
+<ellipse fill="#ffbdb9" stroke="brown" stroke-width="3" cx="118.22" cy="-1280" rx="53.32" ry="18" style=""/>
+<text text-anchor="middle" x="118.22" y="-1275.8" font-family="Times,serif" font-size="14.00" style="">buyPresale</text>
+</g>
+<!-- TokenSale.buyPresale&#45;&gt;TokenSale._verifyPresale -->
+<g id="edge47" class="edge" data-name="TokenSale.buyPresale-&gt;TokenSale._verifyPresale">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M171.04,-1284.98C213.79,-1289.09 275.05,-1294.99 323.45,-1299.64" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="323.11,-1303.12 333.4,-1300.6 323.78,-1296.15 323.11,-1303.12" style=""/>
+</g>
+<!-- TokenSale.buyPresale&#45;&gt;TokenSale._verifyPresaleAmount -->
+<g id="edge49" class="edge" data-name="TokenSale.buyPresale-&gt;TokenSale._verifyPresaleAmount">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M171.04,-1275.02C206.66,-1271.59 255.14,-1266.93 298.31,-1262.78" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="298.59,-1266.27 308.21,-1261.83 297.92,-1259.3 298.59,-1266.27" style=""/>
+</g>
+<!-- TokenSale.buyPresale&#45;&gt;TokenSale.InvalidAmount -->
+<g id="edge46" class="edge" data-name="TokenSale.buyPresale-&gt;TokenSale.InvalidAmount">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M136.4,-1298.17C160.68,-1322.68 207.58,-1365.81 256.43,-1388 276.22,-1396.99 298.85,-1402.98 320.2,-1406.99" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="319.51,-1410.42 329.96,-1408.66 320.69,-1403.52 319.51,-1410.42" style=""/>
+</g>
+<!-- TokenSale.buyPresale&#45;&gt;TokenSale.InvalidMerkleProof -->
+<g id="edge48" class="edge" data-name="TokenSale.buyPresale-&gt;TokenSale.InvalidMerkleProof">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M143.92,-1297.01C168.23,-1315.33 204.04,-1346.9 220.43,-1384 247.33,-1444.89 212.42,-1932.07 256.43,-1982 267.84,-1994.94 283.31,-2002.91 299.89,-2007.63" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="298.63,-2010.93 309.17,-2009.83 300.24,-2004.12 298.63,-2010.93" style=""/>
+</g>
+<!-- TokenSale.buyPresale&#45;&gt;TokenSale.InvalidBalance -->
+<g id="edge52" class="edge" data-name="TokenSale.buyPresale-&gt;TokenSale.InvalidBalance">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M129.34,-1261.09C148.91,-1226.54 195.43,-1153.5 256.43,-1118 275.13,-1107.12 297.3,-1100.5 318.56,-1096.49" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="319.01,-1099.97 328.3,-1094.88 317.86,-1093.06 319.01,-1099.97" style=""/>
+</g>
+<!-- TokenSale.PresaleNotStarted -->
+<g id="node48" class="node" pointer-events="visible" data-name="TokenSale.PresaleNotStarted">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="401" cy="-1361" rx="80.52" ry="18" style=""/>
+<text text-anchor="middle" x="401" y="-1356.8" font-family="Times,serif" font-size="14.00" style="">PresaleNotStarted</text>
+</g>
+<!-- TokenSale.buyPresale&#45;&gt;TokenSale.PresaleNotStarted -->
+<g id="edge45" class="edge" data-name="TokenSale.buyPresale-&gt;TokenSale.PresaleNotStarted">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M152.44,-1295.12C179.85,-1307.1 220.02,-1323.51 256.43,-1334 276.41,-1339.75 298.32,-1344.59 318.87,-1348.51" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="318.02,-1351.91 328.49,-1350.28 319.29,-1345.03 318.02,-1351.91" style=""/>
+</g>
+<!-- TokenSale.PresaleMaxPerWalletExceeded -->
+<g id="node49" class="node" pointer-events="visible" data-name="TokenSale.PresaleMaxPerWalletExceeded">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="401" cy="-1145" rx="132.52" ry="18" style=""/>
+<text text-anchor="middle" x="401" y="-1140.8" font-family="Times,serif" font-size="14.00" style="">PresaleMaxPerWalletExceeded</text>
+</g>
+<!-- TokenSale.buyPresale&#45;&gt;TokenSale.PresaleMaxPerWalletExceeded -->
+<g id="edge50" class="edge" data-name="TokenSale.buyPresale-&gt;TokenSale.PresaleMaxPerWalletExceeded">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M136.4,-1261.83C160.68,-1237.32 207.58,-1194.19 256.43,-1172 266.06,-1167.63 276.36,-1163.96 286.85,-1160.89" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="287.57,-1164.32 296.31,-1158.34 285.75,-1157.57 287.57,-1164.32" style=""/>
+</g>
+<!-- TokenSale.PresaleSoldOut -->
+<g id="node50" class="node" pointer-events="visible" data-name="TokenSale.PresaleSoldOut">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="401" cy="-1199" rx="71.24" ry="18" style=""/>
+<text text-anchor="middle" x="401" y="-1194.8" font-family="Times,serif" font-size="14.00" style="">PresaleSoldOut</text>
+</g>
+<!-- TokenSale.buyPresale&#45;&gt;TokenSale.PresaleSoldOut -->
+<g id="edge51" class="edge" data-name="TokenSale.buyPresale-&gt;TokenSale.PresaleSoldOut">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M152.44,-1264.88C179.85,-1252.9 220.02,-1236.49 256.43,-1226 278.23,-1219.72 302.32,-1214.53 324.45,-1210.44" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="325,-1213.9 334.23,-1208.69 323.77,-1207.01 325,-1213.9" style=""/>
+</g>
+<!-- TokenSale.buyPublicsale -->
+<g id="node24" class="node" pointer-events="visible" data-name="TokenSale.buyPublicsale">
+
+<ellipse fill="#ffbdb9" stroke="brown" stroke-width="3" cx="118.22" cy="-1010" rx="65.43" ry="18" style=""/>
+<text text-anchor="middle" x="118.22" y="-1005.8" font-family="Times,serif" font-size="14.00" style="">buyPublicsale</text>
+</g>
+<!-- TokenSale.buyPublicsale&#45;&gt;TokenSale._verifyPublicsaleAmount -->
+<g id="edge55" class="edge" data-name="TokenSale.buyPublicsale-&gt;TokenSale._verifyPublicsaleAmount">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M181.53,-1015.99C213.47,-1019.06 253.32,-1022.9 290.2,-1026.44" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="289.81,-1029.92 300.09,-1027.39 290.48,-1022.95 289.81,-1029.92" style=""/>
+</g>
+<!-- TokenSale.buyPublicsale&#45;&gt;TokenSale.InvalidAmount -->
+<g id="edge54" class="edge" data-name="TokenSale.buyPublicsale-&gt;TokenSale.InvalidAmount">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M128.25,-1029.19C147.14,-1069.81 191.46,-1167.76 220.43,-1253 240.42,-1311.79 210.91,-1345.76 256.43,-1388 272.83,-1403.21 294.97,-1411.15 316.94,-1415.02" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="316.43,-1418.48 326.82,-1416.42 317.42,-1411.55 316.43,-1418.48" style=""/>
+</g>
+<!-- TokenSale.buyPublicsale&#45;&gt;TokenSale.InvalidBalance -->
+<g id="edge58" class="edge" data-name="TokenSale.buyPublicsale-&gt;TokenSale.InvalidBalance">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M154.97,-1026.23C182.29,-1038.1 221.13,-1053.83 256.43,-1064 278.64,-1070.4 303.23,-1075.66 325.69,-1079.79" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="324.84,-1083.19 335.3,-1081.49 326.06,-1076.3 324.84,-1083.19" style=""/>
+</g>
+<!-- TokenSale.PublicsaleNotStarted -->
+<g id="node51" class="node" pointer-events="visible" data-name="TokenSale.PublicsaleNotStarted">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="401" cy="-875" rx="92.64" ry="18" style=""/>
+<text text-anchor="middle" x="401" y="-870.8" font-family="Times,serif" font-size="14.00" style="">PublicsaleNotStarted</text>
+</g>
+<!-- TokenSale.buyPublicsale&#45;&gt;TokenSale.PublicsaleNotStarted -->
+<g id="edge53" class="edge" data-name="TokenSale.buyPublicsale-&gt;TokenSale.PublicsaleNotStarted">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M136.81,-991.42C161.21,-966.84 207.85,-924.07 256.43,-902 271.43,-895.19 288.06,-890.09 304.52,-886.29" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="305.04,-889.75 314.09,-884.25 303.58,-882.91 305.04,-889.75" style=""/>
+</g>
+<!-- TokenSale.PublicsaleMaxPerWalletExceeded -->
+<g id="node52" class="node" pointer-events="visible" data-name="TokenSale.PublicsaleMaxPerWalletExceeded">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="401" cy="-929" rx="144.64" ry="18" style=""/>
+<text text-anchor="middle" x="401" y="-924.8" font-family="Times,serif" font-size="14.00" style="">PublicsaleMaxPerWalletExceeded</text>
+</g>
+<!-- TokenSale.buyPublicsale&#45;&gt;TokenSale.PublicsaleMaxPerWalletExceeded -->
+<g id="edge56" class="edge" data-name="TokenSale.buyPublicsale-&gt;TokenSale.PublicsaleMaxPerWalletExceeded">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M154.97,-993.77C182.29,-981.9 221.13,-966.17 256.43,-956 268.5,-952.53 281.26,-949.39 294.01,-946.58" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="294.7,-950.01 303.76,-944.51 293.25,-943.16 294.7,-950.01" style=""/>
+</g>
+<!-- TokenSale.PublicsaleSoldOut -->
+<g id="node53" class="node" pointer-events="visible" data-name="TokenSale.PublicsaleSoldOut">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="401" cy="-983" rx="82.85" ry="18" style=""/>
+<text text-anchor="middle" x="401" y="-978.8" font-family="Times,serif" font-size="14.00" style="">PublicsaleSoldOut</text>
+</g>
+<!-- TokenSale.buyPublicsale&#45;&gt;TokenSale.PublicsaleSoldOut -->
+<g id="edge57" class="edge" data-name="TokenSale.buyPublicsale-&gt;TokenSale.PublicsaleSoldOut">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M181.53,-1004.01C219.38,-1000.37 268.33,-995.66 310.3,-991.63" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="310.45,-995.13 320.07,-990.69 309.78,-988.16 310.45,-995.13" style=""/>
+</g>
+<!-- TokenSale.claimAirdrop -->
+<g id="node25" class="node" pointer-events="visible" data-name="TokenSale.claimAirdrop">
+
+<ellipse fill="#ffbdb9" stroke="#ffbdb9" stroke-width="3" cx="118.22" cy="-605" rx="63.12" ry="18" style=""/>
+<text text-anchor="middle" x="118.22" y="-600.8" font-family="Times,serif" font-size="14.00" style="">claimAirdrop</text>
+</g>
+<!-- TokenSale.InvalidPeriod -->
+<g id="node54" class="node" pointer-events="visible" data-name="TokenSale.InvalidPeriod">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="401" cy="-551" rx="63.71" ry="18" style=""/>
+<text text-anchor="middle" x="401" y="-546.8" font-family="Times,serif" font-size="14.00" style="">InvalidPeriod</text>
+</g>
+<!-- TokenSale.claimAirdrop&#45;&gt;TokenSale.InvalidPeriod -->
+<g id="edge59" class="edge" data-name="TokenSale.claimAirdrop-&gt;TokenSale.InvalidPeriod">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M172.3,-594.45C197.74,-589.42 228.66,-583.34 256.43,-578 281.34,-573.21 308.71,-568.04 332.8,-563.52" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="333.28,-566.99 342.47,-561.71 331.99,-560.11 333.28,-566.99" style=""/>
+</g>
+<!-- TokenSale.AirdropClaimPeriodNotStarted -->
+<g id="node55" class="node" pointer-events="visible" data-name="TokenSale.AirdropClaimPeriodNotStarted">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="401" cy="-821" rx="132.03" ry="18" style=""/>
+<text text-anchor="middle" x="401" y="-816.8" font-family="Times,serif" font-size="14.00" style="">AirdropClaimPeriodNotStarted</text>
+</g>
+<!-- TokenSale.claimAirdrop&#45;&gt;TokenSale.AirdropClaimPeriodNotStarted -->
+<g id="edge60" class="edge" data-name="TokenSale.claimAirdrop-&gt;TokenSale.AirdropClaimPeriodNotStarted">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M127.23,-624.27C144.52,-663.29 189.28,-751.49 256.43,-794 263.63,-798.56 271.41,-802.38 279.5,-805.59" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="278.09,-808.8 288.68,-808.85 280.43,-802.21 278.09,-808.8" style=""/>
+</g>
+<!-- TokenSale.ZeroBalance -->
+<g id="node56" class="node" pointer-events="visible" data-name="TokenSale.ZeroBalance">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="401" cy="-605" rx="60.23" ry="18" style=""/>
+<text text-anchor="middle" x="401" y="-600.8" font-family="Times,serif" font-size="14.00" style="">ZeroBalance</text>
+</g>
+<!-- TokenSale.claimAirdrop&#45;&gt;TokenSale.ZeroBalance -->
+<g id="edge61" class="edge" data-name="TokenSale.claimAirdrop-&gt;TokenSale.ZeroBalance">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M182.58,-605C225.42,-605 282.12,-605 326.87,-605" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="326.73,-608.5 336.73,-605 326.73,-601.5 326.73,-608.5" style=""/>
+</g>
+<!-- TokenSale.BeforeClaimFirstPeriod -->
+<g id="node57" class="node" pointer-events="visible" data-name="TokenSale.BeforeClaimFirstPeriod">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="401" cy="-497" rx="103.68" ry="18" style=""/>
+<text text-anchor="middle" x="401" y="-492.8" font-family="Times,serif" font-size="14.00" style="">BeforeClaimFirstPeriod</text>
+</g>
+<!-- TokenSale.claimAirdrop&#45;&gt;TokenSale.BeforeClaimFirstPeriod -->
+<g id="edge62" class="edge" data-name="TokenSale.claimAirdrop-&gt;TokenSale.BeforeClaimFirstPeriod">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M177.02,-597.15C192.12,-593.15 207.72,-587.11 220.43,-578 243.88,-561.2 232.37,-539.91 256.43,-524 266.98,-517.02 278.87,-511.74 291.18,-507.75" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="292.03,-511.15 300.68,-505.02 290.1,-504.42 292.03,-511.15" style=""/>
+</g>
+<!-- TokenSale.AirdropAlreadyClaimed -->
+<g id="node58" class="node" pointer-events="visible" data-name="TokenSale.AirdropAlreadyClaimed">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="401" cy="-767" rx="105.36" ry="18" style=""/>
+<text text-anchor="middle" x="401" y="-762.8" font-family="Times,serif" font-size="14.00" style="">AirdropAlreadyClaimed</text>
+</g>
+<!-- TokenSale.claimAirdrop&#45;&gt;TokenSale.AirdropAlreadyClaimed -->
+<g id="edge63" class="edge" data-name="TokenSale.claimAirdrop-&gt;TokenSale.AirdropAlreadyClaimed">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M132.38,-623.78C154.38,-653.61 201.64,-711.36 256.43,-740 268.31,-746.21 281.39,-751 294.69,-754.7" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="293.44,-758 303.99,-757.06 295.16,-751.21 293.44,-758" style=""/>
+</g>
+<!-- IERC20.transfer -->
+<g id="node69" class="node" pointer-events="visible" data-name="IERC20.transfer">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="401" cy="-34" rx="40.55" ry="18" style=""/>
+<text text-anchor="middle" x="401" y="-29.8" font-family="Times,serif" font-size="14.00" style="">transfer</text>
+</g>
+<!-- TokenSale.claimAirdrop&#45;&gt;IERC20.transfer -->
+<g id="edge64" class="edge" data-name="TokenSale.claimAirdrop-&gt;IERC20.transfer">
+
+<path fill="none" stroke="white" stroke-width="2" d="M181.2,-600.91C196.13,-596.91 210.59,-589.92 220.43,-578 293.72,-489.16 179.87,-147.03 256.43,-61 278.71,-35.97 316.23,-29.58 347.33,-29.26" style=""/>
+<polygon fill="white" stroke="white" stroke-width="2" points="347.13,-32.76 357.18,-29.42 347.23,-25.76 347.13,-32.76" style=""/>
+</g>
+<!-- TokenSale.claimSeedsale -->
+<g id="node26" class="node" pointer-events="visible" data-name="TokenSale.claimSeedsale">
+
+<ellipse fill="#ffbdb9" stroke="#ffbdb9" stroke-width="3" cx="118.22" cy="-551" rx="66.04" ry="18" style=""/>
+<text text-anchor="middle" x="118.22" y="-546.8" font-family="Times,serif" font-size="14.00" style="">claimSeedsale</text>
+</g>
+<!-- TokenSale.claimSeedsale&#45;&gt;TokenSale.InvalidPeriod -->
+<g id="edge65" class="edge" data-name="TokenSale.claimSeedsale-&gt;TokenSale.InvalidPeriod">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M185.4,-551C226.78,-551 280.23,-551 323.43,-551" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="323.16,-554.5 333.16,-551 323.16,-547.5 323.16,-554.5" style=""/>
+</g>
+<!-- TokenSale.claimSeedsale&#45;&gt;TokenSale.ZeroBalance -->
+<g id="edge67" class="edge" data-name="TokenSale.claimSeedsale-&gt;TokenSale.ZeroBalance">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M173.95,-561.88C199.07,-566.84 229.25,-572.77 256.43,-578 282.2,-582.96 310.59,-588.32 335.28,-592.95" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="334.36,-596.34 344.84,-594.74 335.65,-589.46 334.36,-596.34" style=""/>
+</g>
+<!-- TokenSale.claimSeedsale&#45;&gt;TokenSale.BeforeClaimFirstPeriod -->
+<g id="edge68" class="edge" data-name="TokenSale.claimSeedsale-&gt;TokenSale.BeforeClaimFirstPeriod">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M173.95,-540.12C199.07,-535.16 229.25,-529.23 256.43,-524 275.04,-520.42 295.01,-516.63 313.97,-513.06" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="314.42,-516.53 323.6,-511.25 313.12,-509.66 314.42,-516.53" style=""/>
+</g>
+<!-- TokenSale.SeedsaleClaimPeriodNotStarted -->
+<g id="node59" class="node" pointer-events="visible" data-name="TokenSale.SeedsaleClaimPeriodNotStarted">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="401" cy="-713" rx="135.46" ry="18" style=""/>
+<text text-anchor="middle" x="401" y="-708.8" font-family="Times,serif" font-size="14.00" style="">SeedsaleClaimPeriodNotStarted</text>
+</g>
+<!-- TokenSale.claimSeedsale&#45;&gt;TokenSale.SeedsaleClaimPeriodNotStarted -->
+<g id="edge66" class="edge" data-name="TokenSale.claimSeedsale-&gt;TokenSale.SeedsaleClaimPeriodNotStarted">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M181.67,-557.53C195.8,-561.58 209.77,-567.97 220.43,-578 257.29,-612.67 218.31,-652.73 256.43,-686 261.44,-690.37 266.93,-694.13 272.74,-697.35" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="271.03,-700.42 281.56,-701.61 274.08,-694.11 271.03,-700.42" style=""/>
+</g>
+<!-- TokenSale.SeedsaleAlreadyClaimed -->
+<g id="node60" class="node" pointer-events="visible" data-name="TokenSale.SeedsaleAlreadyClaimed">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="401" cy="-659" rx="108.79" ry="18" style=""/>
+<text text-anchor="middle" x="401" y="-654.8" font-family="Times,serif" font-size="14.00" style="">SeedsaleAlreadyClaimed</text>
+</g>
+<!-- TokenSale.claimSeedsale&#45;&gt;TokenSale.SeedsaleAlreadyClaimed -->
+<g id="edge69" class="edge" data-name="TokenSale.claimSeedsale-&gt;TokenSale.SeedsaleAlreadyClaimed">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M178.87,-559.35C193.39,-563.35 208.24,-569.26 220.43,-578 243.88,-594.8 232.37,-616.09 256.43,-632 266.14,-638.42 276.98,-643.41 288.24,-647.27" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="287.11,-650.58 297.69,-650.15 289.15,-643.89 287.11,-650.58" style=""/>
+</g>
+<!-- TokenSale.claimSeedsale&#45;&gt;IERC20.transfer -->
+<g id="edge70" class="edge" data-name="TokenSale.claimSeedsale-&gt;IERC20.transfer">
+
+<path fill="none" stroke="white" stroke-width="2" d="M166.06,-537.32C186.15,-528.98 207.85,-516.14 220.43,-497 273.84,-415.76 191.34,-133.21 256.43,-61 278.87,-36.11 316.39,-29.72 347.45,-29.36" style=""/>
+<polygon fill="white" stroke="white" stroke-width="2" points="347.22,-32.86 357.27,-29.5 347.32,-25.86 347.22,-32.86" style=""/>
+</g>
+<!-- TokenSale.claimPresale -->
+<g id="node27" class="node" pointer-events="visible" data-name="TokenSale.claimPresale">
+
+<ellipse fill="#ffbdb9" stroke="#ffbdb9" stroke-width="3" cx="118.22" cy="-470" rx="60.25" ry="18" style=""/>
+<text text-anchor="middle" x="118.22" y="-465.8" font-family="Times,serif" font-size="14.00" style="">claimPresale</text>
+</g>
+<!-- TokenSale.claimPresale&#45;&gt;TokenSale.InvalidPeriod -->
+<g id="edge71" class="edge" data-name="TokenSale.claimPresale-&gt;TokenSale.InvalidPeriod">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M154.12,-485.86C181.48,-497.77 220.76,-513.73 256.43,-524 279.88,-530.75 305.97,-536.24 329.41,-540.46" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="328.7,-543.89 339.15,-542.16 329.9,-537 328.7,-543.89" style=""/>
+</g>
+<!-- TokenSale.claimPresale&#45;&gt;TokenSale.ZeroBalance -->
+<g id="edge73" class="edge" data-name="TokenSale.claimPresale-&gt;TokenSale.ZeroBalance">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M157.11,-484.81C177.42,-494.01 201.99,-507.28 220.43,-524 241.8,-543.37 232.37,-562.09 256.43,-578 277.05,-591.64 302.79,-598.81 326.75,-602.45" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="326.09,-605.9 336.46,-603.71 326.99,-598.95 326.09,-605.9" style=""/>
+</g>
+<!-- TokenSale.claimPresale&#45;&gt;TokenSale.BeforeClaimFirstPeriod -->
+<g id="edge74" class="edge" data-name="TokenSale.claimPresale-&gt;TokenSale.BeforeClaimFirstPeriod">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M177.05,-475.56C211.02,-478.83 255,-483.06 294.9,-486.89" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="294.39,-490.36 304.68,-487.83 295.06,-483.39 294.39,-490.36" style=""/>
+</g>
+<!-- TokenSale.PresaleClaimPeriodNotStarted -->
+<g id="node61" class="node" pointer-events="visible" data-name="TokenSale.PresaleClaimPeriodNotStarted">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="401" cy="-389" rx="129.66" ry="18" style=""/>
+<text text-anchor="middle" x="401" y="-384.8" font-family="Times,serif" font-size="14.00" style="">PresaleClaimPeriodNotStarted</text>
+</g>
+<!-- TokenSale.claimPresale&#45;&gt;TokenSale.PresaleClaimPeriodNotStarted -->
+<g id="edge72" class="edge" data-name="TokenSale.claimPresale-&gt;TokenSale.PresaleClaimPeriodNotStarted">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M171.3,-460.15C187.51,-456.03 205.14,-450.43 220.43,-443 238.42,-434.26 238.13,-424.06 256.43,-416 266.55,-411.55 277.39,-407.82 288.4,-404.72" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="289.16,-408.14 297.96,-402.23 287.4,-401.36 289.16,-408.14" style=""/>
+</g>
+<!-- TokenSale.PresaleAlreadyClaimed -->
+<g id="node62" class="node" pointer-events="visible" data-name="TokenSale.PresaleAlreadyClaimed">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="401" cy="-443" rx="102.99" ry="18" style=""/>
+<text text-anchor="middle" x="401" y="-438.8" font-family="Times,serif" font-size="14.00" style="">PresaleAlreadyClaimed</text>
+</g>
+<!-- TokenSale.claimPresale&#45;&gt;TokenSale.PresaleAlreadyClaimed -->
+<g id="edge75" class="edge" data-name="TokenSale.claimPresale-&gt;TokenSale.PresaleAlreadyClaimed">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M177.05,-464.44C211.1,-461.16 255.18,-456.93 295.16,-453.08" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="295.34,-456.58 304.96,-452.14 294.67,-449.61 295.34,-456.58" style=""/>
+</g>
+<!-- TokenSale.claimPresale&#45;&gt;IERC20.transfer -->
+<g id="edge76" class="edge" data-name="TokenSale.claimPresale-&gt;IERC20.transfer">
+
+<path fill="none" stroke="white" stroke-width="2" d="M178.63,-466.36C194.39,-462.47 209.92,-455.43 220.43,-443 275.49,-377.9 198.98,-124 256.43,-61 278.94,-36.32 316.28,-29.89 347.24,-29.46" style=""/>
+<polygon fill="white" stroke="white" stroke-width="2" points="346.99,-32.96 357.03,-29.57 347.07,-25.96 346.99,-32.96" style=""/>
+</g>
+<!-- TokenSale.claimPublicsale -->
+<g id="node28" class="node" pointer-events="visible" data-name="TokenSale.claimPublicsale">
+
+<ellipse fill="#ffbdb9" stroke="#ffbdb9" stroke-width="3" cx="118.22" cy="-416" rx="72.36" ry="18" style=""/>
+<text text-anchor="middle" x="118.22" y="-411.8" font-family="Times,serif" font-size="14.00" style="">claimPublicsale</text>
+</g>
+<!-- TokenSale.claimPublicsale&#45;&gt;TokenSale.InvalidPeriod -->
+<g id="edge77" class="edge" data-name="TokenSale.claimPublicsale-&gt;TokenSale.InvalidPeriod">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M184.69,-424.37C197.59,-428.4 210.27,-434.32 220.43,-443 250.4,-468.58 225.53,-499.56 256.43,-524 275.23,-538.87 299.71,-546.44 323.12,-550.07" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="322.61,-553.54 332.97,-551.33 323.49,-546.59 322.61,-553.54" style=""/>
+</g>
+<!-- TokenSale.claimPublicsale&#45;&gt;TokenSale.ZeroBalance -->
+<g id="edge79" class="edge" data-name="TokenSale.claimPublicsale-&gt;TokenSale.ZeroBalance">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M186.31,-423.36C198.95,-427.47 211.11,-433.68 220.43,-443 264.34,-486.91 210.91,-535.76 256.43,-578 275.35,-595.56 301.91,-603.42 327.06,-606.52" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="326.73,-610.01 337.01,-607.46 327.38,-603.04 326.73,-610.01" style=""/>
+</g>
+<!-- TokenSale.claimPublicsale&#45;&gt;TokenSale.BeforeClaimFirstPeriod -->
+<g id="edge80" class="edge" data-name="TokenSale.claimPublicsale-&gt;TokenSale.BeforeClaimFirstPeriod">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M177.6,-427.51C192,-431.44 207.1,-436.52 220.43,-443 238.42,-451.74 238.13,-461.94 256.43,-470 269.85,-475.91 284.53,-480.52 299.22,-484.13" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="298.05,-487.46 308.58,-486.26 299.6,-480.63 298.05,-487.46" style=""/>
+</g>
+<!-- TokenSale.PublicsaleClaimPeriodNotStarted -->
+<g id="node63" class="node" pointer-events="visible" data-name="TokenSale.PublicsaleClaimPeriodNotStarted">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="401" cy="-281" rx="141.27" ry="18" style=""/>
+<text text-anchor="middle" x="401" y="-276.8" font-family="Times,serif" font-size="14.00" style="">PublicsaleClaimPeriodNotStarted</text>
+</g>
+<!-- TokenSale.claimPublicsale&#45;&gt;TokenSale.PublicsaleClaimPeriodNotStarted -->
+<g id="edge78" class="edge" data-name="TokenSale.claimPublicsale-&gt;TokenSale.PublicsaleClaimPeriodNotStarted">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M184.69,-407.63C197.59,-403.6 210.27,-397.68 220.43,-389 250.4,-363.42 225.53,-332.44 256.43,-308 261.52,-303.97 267.03,-300.48 272.82,-297.46" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="273.89,-300.82 281.52,-293.47 270.97,-294.46 273.89,-300.82" style=""/>
+</g>
+<!-- TokenSale.PublicsaleAlreadyClaimed -->
+<g id="node64" class="node" pointer-events="visible" data-name="TokenSale.PublicsaleAlreadyClaimed">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="401" cy="-335" rx="114.6" ry="18" style=""/>
+<text text-anchor="middle" x="401" y="-330.8" font-family="Times,serif" font-size="14.00" style="">PublicsaleAlreadyClaimed</text>
+</g>
+<!-- TokenSale.claimPublicsale&#45;&gt;TokenSale.PublicsaleAlreadyClaimed -->
+<g id="edge81" class="edge" data-name="TokenSale.claimPublicsale-&gt;TokenSale.PublicsaleAlreadyClaimed">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M177.6,-404.49C192,-400.56 207.1,-395.48 220.43,-389 238.42,-380.26 238.13,-370.06 256.43,-362 268.22,-356.81 280.98,-352.62 293.86,-349.23" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="294.39,-352.71 303.28,-346.94 292.73,-345.9 294.39,-352.71" style=""/>
+</g>
+<!-- TokenSale.claimPublicsale&#45;&gt;IERC20.transfer -->
+<g id="edge82" class="edge" data-name="TokenSale.claimPublicsale-&gt;IERC20.transfer">
+
+<path fill="none" stroke="white" stroke-width="2" d="M187.69,-409.6C200.16,-405.41 211.9,-398.93 220.43,-389 315.99,-277.76 156.78,-168.59 256.43,-61 279.13,-36.5 316.46,-30.06 347.37,-29.58" style=""/>
+<polygon fill="white" stroke="white" stroke-width="2" points="347.1,-33.08 357.14,-29.68 347.17,-26.08 347.1,-33.08" style=""/>
+</g>
+<!-- TokenSale.&lt;Receive Ether&gt; -->
+<g id="node29" class="node" pointer-events="visible" data-name="TokenSale.&lt;Receive Ether&gt;">
+
+<ellipse fill="#ffbdb9" stroke="brown" stroke-width="3" cx="118.22" cy="-362" rx="76.21" ry="18" style=""/>
+<text text-anchor="middle" x="118.22" y="-357.8" font-family="Times,serif" font-size="14.00" style="">&lt;Receive Ether&gt;</text>
+</g>
+<!-- TokenSale.&lt;Fallback&gt; -->
+<g id="node30" class="node" pointer-events="visible" data-name="TokenSale.&lt;Fallback&gt;">
+
+<ellipse fill="#ffbdb9" stroke="brown" stroke-width="3" cx="118.22" cy="-308" rx="55.36" ry="18" style=""/>
+<text text-anchor="middle" x="118.22" y="-303.8" font-family="Times,serif" font-size="14.00" style="">&lt;Fallback&gt;</text>
+</g>
+<!-- key -->
+<g id="node70" class="node" pointer-events="visible" data-name="key">
+
+<polygon fill="#edad56" stroke="none" stroke-width="3" points="183.22,-2596 53.22,-2596 53.22,-2508 183.22,-2508 183.22,-2596" style=""/>
+<text text-anchor="start" x="102.85" y="-2577.4" font-family="Times,serif" font-size="14.00" style="">Internal Call</text>
+<text text-anchor="start" x="98.96" y="-2557.4" font-family="Times,serif" font-size="14.00" style="">External Call</text>
+<text text-anchor="start" x="76.42" y="-2537.4" font-family="Times,serif" font-size="14.00" style="">Defined Contract</text>
+<text text-anchor="start" x="62.82" y="-2517.4" font-family="Times,serif" font-size="14.00" style="">Undefined Contract</text>
+</g>
+<!-- key2 -->
+<g id="node71" class="node" pointer-events="visible" data-name="key2">
+
+<polygon fill="#edad56" stroke="none" stroke-width="3" points="428,-2596 374,-2596 374,-2508 428,-2508 428,-2596" style=""/>
+<text text-anchor="start" x="391" y="-2577.4" font-family="Times,serif" font-size="14.00" style="">   </text>
+<text text-anchor="start" x="391" y="-2557.4" font-family="Times,serif" font-size="14.00" style="">   </text>
+<polygon fill="#445773" stroke="none" points="389,-2532 389,-2552 414,-2552 414,-2532 389,-2532" style=""/>
+<text text-anchor="start" x="391" y="-2537.4" font-family="Times,serif" font-size="14.00" style="">   </text>
+<polygon fill="none" stroke="#e8726d" points="391,-2514 391,-2530 412,-2530 412,-2514 391,-2514" style=""/>
+</g>
+<!-- key&#45;&gt;key2 -->
+<g id="edge83" class="edge" data-name="key-&gt;key2">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M176.22,-2582C265.93,-2582 291.51,-2582 375.22,-2582" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="374.97,-2585.5 384.97,-2582 374.97,-2578.5 374.97,-2585.5" style=""/>
+</g>
+<!-- key&#45;&gt;key2 -->
+<g id="edge84" class="edge" data-name="key-&gt;key2">
+
+<path fill="none" stroke="white" stroke-width="2" d="M176.22,-2562C265.93,-2562 291.51,-2562 375.22,-2562" style=""/>
+<polygon fill="white" stroke="white" stroke-width="2" points="374.97,-2565.5 384.97,-2562 374.97,-2558.5 374.97,-2565.5" style=""/>
+</g>
+</g>
+</svg>

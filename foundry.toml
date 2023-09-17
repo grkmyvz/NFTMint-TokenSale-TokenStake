@@ -4,4 +4,6 @@ out = "out"
 libs = ["lib"]
 solc = "0.8.9"
 
+gas_reports = ["NFTName", "TokenSale"]
+
 # See more config options https://github.com/foundry-rs/foundry/tree/master/config
