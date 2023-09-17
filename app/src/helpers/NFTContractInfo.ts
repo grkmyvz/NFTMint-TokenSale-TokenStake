@@ -1,4 +1,4 @@
-export const nftContractAddress = "0x54f7fFb37a43DDabBDd0b3271a010C9f401068Ae";
+export const nftContractAddress = "0x2736eFa972030Ea19C3ceDDEfd361797bEa28996";
 export const nftContractAbi = [
   {
     inputs: [],
@@ -12,17 +12,12 @@ export const nftContractAbi = [
   },
   {
     inputs: [],
-    name: "FreeMintFinished",
+    name: "FreeMintClosed",
     type: "error",
   },
   {
     inputs: [],
     name: "FreeMintLimitExceeded",
-    type: "error",
-  },
-  {
-    inputs: [],
-    name: "FreeMintNotStarted",
     type: "error",
   },
   {
@@ -47,22 +42,7 @@ export const nftContractAbi = [
   },
   {
     inputs: [],
-    name: "InvalidFreeMintTime",
-    type: "error",
-  },
-  {
-    inputs: [],
-    name: "InvalidPublicMintTime",
-    type: "error",
-  },
-  {
-    inputs: [],
-    name: "InvalidWhitelistMintTime",
-    type: "error",
-  },
-  {
-    inputs: [],
-    name: "MintingStopped",
+    name: "InvalidPrice",
     type: "error",
   },
   {
@@ -72,27 +52,22 @@ export const nftContractAbi = [
   },
   {
     inputs: [],
+    name: "PublicMintClosed",
+    type: "error",
+  },
+  {
+    inputs: [],
     name: "PublicMintLimitExceeded",
     type: "error",
   },
   {
     inputs: [],
-    name: "PublicMintNotStarted",
-    type: "error",
-  },
-  {
-    inputs: [],
-    name: "WhitelistMintFinished",
+    name: "WhitelistMintClosed",
     type: "error",
   },
   {
     inputs: [],
     name: "WhitelistMintLimitExceeded",
-    type: "error",
-  },
-  {
-    inputs: [],
-    name: "WhitelistMintNotStarted",
     type: "error",
   },
   {
@@ -160,19 +135,6 @@ export const nftContractAbi = [
     inputs: [
       {
         indexed: false,
-        internalType: "bool",
-        name: "_status",
-        type: "bool",
-      },
-    ],
-    name: "ChangedMintStatus",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
         internalType: "uint256",
         name: "_whitelistPrice",
         type: "uint256",
@@ -193,35 +155,11 @@ export const nftContractAbi = [
       {
         indexed: false,
         internalType: "uint256",
-        name: "_freeStart",
-        type: "uint256",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "_freeStop",
-        type: "uint256",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "_whitelistStart",
-        type: "uint256",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "_whitelistStop",
-        type: "uint256",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "_publicStart",
+        name: "_timestamp",
         type: "uint256",
       },
     ],
-    name: "ChangedTimes",
+    name: "FreeMintStarted",
     type: "event",
   },
   {
@@ -323,6 +261,19 @@ export const nftContractAbi = [
     anonymous: false,
     inputs: [
       {
+        indexed: false,
+        internalType: "uint256",
+        name: "_timestamp",
+        type: "uint256",
+      },
+    ],
+    name: "PublicMintStarted",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
         indexed: true,
         internalType: "address",
         name: "from",
@@ -342,6 +293,19 @@ export const nftContractAbi = [
       },
     ],
     name: "Transfer",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "_timestamp",
+        type: "uint256",
+      },
+    ],
+    name: "WhitelistMintStarted",
     type: "event",
   },
   {
@@ -401,51 +365,12 @@ export const nftContractAbi = [
   },
   {
     inputs: [],
-    name: "FREE_START",
-    outputs: [
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "FREE_STOP",
-    outputs: [
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
     name: "MAX_SUPPLY",
     outputs: [
       {
         internalType: "uint256",
         name: "",
         type: "uint256",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "MINT_STATUS",
-    outputs: [
-      {
-        internalType: "bool",
-        name: "",
-        type: "bool",
       },
     ],
     stateMutability: "view",
@@ -479,19 +404,6 @@ export const nftContractAbi = [
   },
   {
     inputs: [],
-    name: "PUBLIC_START",
-    outputs: [
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
     name: "WHITELIST_PER_WALLET",
     outputs: [
       {
@@ -506,32 +418,6 @@ export const nftContractAbi = [
   {
     inputs: [],
     name: "WHITELIST_PRICE",
-    outputs: [
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "WHITELIST_START",
-    outputs: [
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "WHITELIST_STOP",
     outputs: [
       {
         internalType: "uint256",
@@ -673,6 +559,19 @@ export const nftContractAbi = [
     type: "function",
   },
   {
+    inputs: [],
+    name: "isFreeMintStarted",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
     inputs: [
       {
         internalType: "uint256",
@@ -681,6 +580,32 @@ export const nftContractAbi = [
       },
     ],
     name: "isMinted",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "isPublicMintStarted",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "isWhitelistMintStarted",
     outputs: [
       {
         internalType: "bool",
@@ -885,19 +810,6 @@ export const nftContractAbi = [
   {
     inputs: [
       {
-        internalType: "bool",
-        name: "_status",
-        type: "bool",
-      },
-    ],
-    name: "setMintStatus",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
         internalType: "uint256",
         name: "_whitelistPrice",
         type: "uint256",
@@ -916,45 +828,33 @@ export const nftContractAbi = [
   {
     inputs: [
       {
-        internalType: "uint256",
-        name: "_freeStart",
-        type: "uint256",
-      },
-      {
-        internalType: "uint256",
-        name: "_freeStop",
-        type: "uint256",
-      },
-      {
-        internalType: "uint256",
-        name: "_whitelistStart",
-        type: "uint256",
-      },
-      {
-        internalType: "uint256",
-        name: "_whitelistStop",
-        type: "uint256",
-      },
-      {
-        internalType: "uint256",
-        name: "_publicStart",
-        type: "uint256",
-      },
-    ],
-    name: "setTimes",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
         internalType: "bytes32",
         name: "_merkleRootHash",
         type: "bytes32",
       },
     ],
     name: "setWhitelistRoot",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "startFreeMint",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "startPublicMint",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "startWhitelistMint",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",

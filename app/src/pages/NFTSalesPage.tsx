@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { publicClient, walletClient } from "../helpers/clients";
 import { nftContractAddress, nftContractAbi } from "../helpers/NFTContractInfo";
-import { formatTimeDiff } from "../helpers/calculeteTime";
 import { checkProof } from "../helpers/proofs";
 import { createMulticall } from "../helpers/createMulticall";
 
@@ -13,17 +12,14 @@ export default function NFTSalesPage() {
     symbol: "",
     totalSupply: 0,
     maxSupply: 0,
-    freeStart: 0,
-    freeStop: 0,
     freePerWallet: 0,
-    whitelistStart: 0,
-    whitelistStop: 0,
     whitelistPerWallet: 0,
     whitelistPrice: 0,
-    publicStart: 0,
     publicPerWallet: 0,
     publicPrice: 0,
-    mintStatus: false,
+    isFreeMintStarted: false,
+    isWhitelistMintStarted: false,
+    isPublicMintStarted: false,
   });
   const [freeMintAmount, setFreeMintAmount] = useState(1);
   const [whitelistMintAmount, setWhitelistMintAmount] = useState(1);
@@ -42,34 +38,28 @@ export default function NFTSalesPage() {
       symbol,
       totalSupply,
       maxSupply,
-      freeStart,
-      freeStop,
       freePerWallet,
-      whitelistStart,
-      whitelistStop,
       whitelistPerWallet,
       whitelistPrice,
-      publicStart,
       publicPerWallet,
       publicPrice,
-      mintStatus,
+      isFreeMintStarted,
+      isWhitelistMintStarted,
+      isPublicMintStarted,
     ] = await publicClient.multicall({
       contracts: createMulticall(contractParams, [
         "name",
         "symbol",
         "totalSupply",
         "MAX_SUPPLY",
-        "FREE_START",
-        "FREE_STOP",
         "FREE_PER_WALLET",
-        "WHITELIST_START",
-        "WHITELIST_STOP",
         "WHITELIST_PER_WALLET",
         "WHITELIST_PRICE",
-        "PUBLIC_START",
         "PUBLIC_PER_WALLET",
         "PUBLIC_PRICE",
-        "MINT_STATUS",
+        "isFreeMintStarted",
+        "isWhitelistMintStarted",
+        "isPublicMintStarted",
       ]),
     });
 
@@ -78,17 +68,14 @@ export default function NFTSalesPage() {
       symbol: symbol.result as string,
       totalSupply: Number(totalSupply.result),
       maxSupply: Number(maxSupply.result),
-      freeStart: Number(freeStart.result),
-      freeStop: Number(freeStop.result),
       freePerWallet: Number(freePerWallet.result),
-      whitelistStart: Number(whitelistStart.result),
-      whitelistStop: Number(whitelistStop.result),
       whitelistPerWallet: Number(whitelistPerWallet.result),
       whitelistPrice: Number(whitelistPrice.result),
-      publicStart: Number(publicStart.result),
       publicPerWallet: Number(publicPerWallet.result),
       publicPrice: Number(publicPrice.result),
-      mintStatus: mintStatus.result as boolean,
+      isFreeMintStarted: isFreeMintStarted.result as boolean,
+      isWhitelistMintStarted: isWhitelistMintStarted.result as boolean,
+      isPublicMintStarted: isPublicMintStarted.result as boolean,
     });
   }
 
@@ -177,12 +164,10 @@ export default function NFTSalesPage() {
       <List
         listParams={[
           {
-            listName: "Free Start",
-            listValue: formatTimeDiff(nftContractVariables.freeStart),
-          },
-          {
-            listName: "Free Stop",
-            listValue: formatTimeDiff(nftContractVariables.freeStop),
+            listName: "Is Free Mint Started",
+            listValue: nftContractVariables.isFreeMintStarted
+              ? "Open"
+              : "Close",
           },
           {
             listName: "Free Per Wallet",
@@ -197,12 +182,10 @@ export default function NFTSalesPage() {
       <List
         listParams={[
           {
-            listName: "Whitelist Start",
-            listValue: formatTimeDiff(nftContractVariables.whitelistStart),
-          },
-          {
-            listName: "Whitelist Stop",
-            listValue: formatTimeDiff(nftContractVariables.whitelistStop),
+            listName: "Is Whitelist Mint Started",
+            listValue: nftContractVariables.isWhitelistMintStarted
+              ? "Open"
+              : "Close",
           },
           {
             listName: "Whitelist Per Wallet",
@@ -220,12 +203,10 @@ export default function NFTSalesPage() {
       <List
         listParams={[
           {
-            listName: "Public Start",
-            listValue: formatTimeDiff(nftContractVariables.publicStart),
-          },
-          {
-            listName: "Public Stop",
-            listValue: nftContractVariables.mintStatus ? "Complated" : "Open",
+            listName: "Is Public Mint Started",
+            listValue: nftContractVariables.isPublicMintStarted
+              ? "Open"
+              : "Close",
           },
           {
             listName: "Public Per Wallet",

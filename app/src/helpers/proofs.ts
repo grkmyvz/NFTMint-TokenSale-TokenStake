@@ -5,7 +5,6 @@ import nftWhitelistProofsJson from "../proofs/nft-whitelist-proofs.json";
 import tokenAirdropProofsJson from "../proofs/token-airdrop-proofs.json";
 import tokenSeedsaleProofsJson from "../proofs/token-seedsale-proofs.json";
 import tokenPresaleProofsJson from "../proofs/token-presale-proofs.json";
-import tokenPublicsaleProofsJson from "../proofs/token-publicsale-proofs.json";
 import { Hex, Proof, ProofList } from "./types";
 
 function getProofs(listName: string): ProofList | null {
@@ -20,8 +19,6 @@ function getProofs(listName: string): ProofList | null {
       return tokenSeedsaleProofsJson as ProofList;
     case "token-presale":
       return tokenPresaleProofsJson as ProofList;
-    case "token-publicsale":
-      return tokenPublicsaleProofsJson as ProofList;
     default:
       return null;
   }

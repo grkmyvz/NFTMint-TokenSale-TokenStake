@@ -5,9 +5,6 @@ import "../../src/NFTContract.sol";
 import {BaseSetup} from "./BaseSetup.t.sol";
 
 contract setPrices is BaseSetup {
-    // Defined in NFTContract.sol (If you change it, you need to change it here too)
-    event ChangedPrices(uint256 _whitelistPrice, uint256 _publicPrice);
-
     function test_ShouldBeSuccess_setPrices() public {
         vm.prank(users.owner);
         vm.expectEmit(address(nftContract));
@@ -24,25 +21,32 @@ contract setPrices is BaseSetup {
         nftContract.setPrices(1 ether, 2 ether);
     }
 
-    function test_Revert_InvalidAmount1_setPrice() public {
+    function test_Revert_InvalidPrice1_setPrice() public {
         vm.prank(users.owner);
-        vm.expectRevert(NFTName.InvalidAmount.selector);
+        vm.expectRevert(NFTName.InvalidPrice.selector);
         nftContract.setPrices(0, 2 ether);
 
         vm.prank(users.owner);
-        vm.expectRevert(NFTName.InvalidAmount.selector);
+        vm.expectRevert(NFTName.InvalidPrice.selector);
         nftContract.setPrices(1 ether, 0);
     }
 
-    function test_Revert_InvalidAmount2_setPrice() public {
+    function test_Revert_InvalidPrice2_setPrice() public {
         vm.prank(users.owner);
-        vm.expectRevert(NFTName.InvalidAmount.selector);
+        vm.expectRevert(NFTName.InvalidPrice.selector);
         nftContract.setPrices(2 ether, 1 ether);
     }
 
-    function test_Revert_CanNotChangePrice_setPrices() public {
-        vm.warp(6);
-        vm.prank(users.owner);
+    function test_Revert_CanNotChangePrice1_setPrices() public {
+        vm.startPrank(users.owner);
+        nftContract.startWhitelistMint();
+        vm.expectRevert(NFTName.CanNotChangePrice.selector);
+        nftContract.setPrices(1 ether, 2 ether);
+    }
+
+    function test_Revert_CanNotChangePrice2_setPrices() public {
+        vm.startPrank(users.owner);
+        nftContract.startPublicMint();
         vm.expectRevert(NFTName.CanNotChangePrice.selector);
         nftContract.setPrices(1 ether, 2 ether);
     }

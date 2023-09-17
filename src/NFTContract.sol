@@ -1,7 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.9;
 
-// This is Foundry version
+// Please change the name of the contract and the name of the token.
+// Search for "Change This" in the code and change it.
+
 import "../lib/openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "../lib/openzeppelin-contracts/contracts/access/Ownable.sol";
 import "../lib/openzeppelin-contracts/contracts/utils/Counters.sol";
@@ -10,23 +12,22 @@ import "../lib/openzeppelin-contracts/contracts/utils/cryptography/MerkleProof.s
 import "../lib/openzeppelin-contracts/contracts/security/ReentrancyGuard.sol";
 
 /**
- * @title NFTName
- * @dev This is the main contract for the NFTName project.
+ * @title NFTName //Change This and Remove Comment Line -> (NFTName)//
+ * @dev This is the main contract for the NFTName project. //Change This and Remove Comment Line -> (NFTName)//
  * @author --. --- .-. -.- . -- / -.-- .- ...- ..- --..
  */
-contract NFTName is ERC721Enumerable, Ownable, ReentrancyGuard {
+/*//Change This and Remove Comment Line -> (NFTName)//*/ contract NFTName is
+    ERC721Enumerable,
+    Ownable,
+    ReentrancyGuard
+{
     ///////////////////////////
     // Errors
     ///////////////////////////
-    error FreeMintNotStarted();
-    error FreeMintFinished();
-    error WhitelistMintNotStarted();
-    error WhitelistMintFinished();
-    error PublicMintNotStarted();
-    error MintingStopped();
-    error InvalidFreeMintTime();
-    error InvalidWhitelistMintTime();
-    error InvalidPublicMintTime();
+    error FreeMintClosed();
+    error WhitelistMintClosed();
+    error PublicMintClosed();
+    error InvalidPrice();
     error CanNotChangePrice();
     error InvalidAddress();
     error InvalidAmount();
@@ -50,23 +51,20 @@ contract NFTName is ERC721Enumerable, Ownable, ReentrancyGuard {
     ///////////////////////////
     // THIS VARIBALES CAN BE CHANGED //
     uint256 public MAX_SUPPLY = 1000; // Maximum number of tokens that can be minted.
-    uint256 public FREE_START = 2; // Timestamp for the start of the free stage.
-    uint256 public FREE_STOP = 4; // Timestamp for the end of the free stage.
     uint256 public FREE_PER_WALLET = 2; // Maximum number of tokens that can be minted per wallet during the free stage.
-    uint256 public WHITELIST_START = 5; // Timestamp for the start of the whitelist stage.
-    uint256 public WHITELIST_STOP = 8; // Timestamp for the end of the whitelist stage.
     uint256 public WHITELIST_PER_WALLET = 10; // Maximum number of tokens that can be minted per wallet during the whitelist stage.
     uint256 public WHITELIST_PRICE = 0.1 ether; // Price of each token during the whitelist stage.
-    uint256 public PUBLIC_START = 9; // Timestamp for the start of the public sale stage.
     uint256 public PUBLIC_PER_WALLET = 5; // Maximum number of tokens that can be minted per wallet during the public sale stage.
     uint256 public PUBLIC_PRICE = 0.2 ether; // Price of each token during the public sale stage.
     string public BASE_URL = "https://localhost/"; // Base URL for token metadata.
     // THIS VARIBALES CAN BE CHANGED //
 
-    bool public MINT_STATUS;
-
     bytes32 public freeMerkleRoot;
     bytes32 public whitelistMerkleRoot;
+
+    bool public isFreeMintStarted;
+    bool public isWhitelistMintStarted;
+    bool public isPublicMintStarted;
 
     mapping(address => uint256) private _freeClaimed;
     mapping(address => uint256) private _whitelistClaimed;
@@ -77,15 +75,10 @@ contract NFTName is ERC721Enumerable, Ownable, ReentrancyGuard {
     ///////////////////////////
     // Events
     ///////////////////////////
-    event ChangedTimes(
-        uint256 _freeStart,
-        uint256 _freeStop,
-        uint256 _whitelistStart,
-        uint256 _whitelistStop,
-        uint256 _publicStart
-    );
-    event ChangedMintStatus(bool _status);
     event ChangedPrices(uint256 _whitelistPrice, uint256 _publicPrice);
+    event FreeMintStarted(uint256 _timestamp);
+    event WhitelistMintStarted(uint256 _timestamp);
+    event PublicMintStarted(uint256 _timestamp);
     event MintedForOwner(address indexed _to, uint256 _qty);
     event MintedForFree(address indexed _to, uint256 _qty);
     event MintedForWhitelist(address indexed _to, uint256 _qty);
@@ -95,37 +88,6 @@ contract NFTName is ERC721Enumerable, Ownable, ReentrancyGuard {
     ///////////////////////////
     // Modifiers
     ///////////////////////////
-    modifier isFreeStart() {
-        if (block.timestamp < FREE_START) {
-            revert FreeMintNotStarted();
-        } else if (block.timestamp > FREE_STOP) {
-            revert FreeMintFinished();
-        } else if (MINT_STATUS) {
-            revert MintingStopped();
-        }
-        _;
-    }
-
-    modifier isWhitelistStart() {
-        if (block.timestamp < WHITELIST_START) {
-            revert WhitelistMintNotStarted();
-        } else if (block.timestamp > WHITELIST_STOP) {
-            revert WhitelistMintFinished();
-        } else if (MINT_STATUS) {
-            revert MintingStopped();
-        }
-        _;
-    }
-
-    modifier isPublicStart() {
-        if (block.timestamp < PUBLIC_START) {
-            revert PublicMintNotStarted();
-        } else if (MINT_STATUS) {
-            revert MintingStopped();
-        }
-        _;
-    }
-
     modifier checkZeroAmount(uint256 _amount) {
         if (_amount <= 0) {
             revert InvalidAmount();
@@ -143,24 +105,24 @@ contract NFTName is ERC721Enumerable, Ownable, ReentrancyGuard {
     ///////////////////////////
     // Functions
     ///////////////////////////
-    // Change this name and symbol
-    constructor() ERC721("Token Name2", "TNS2") {
-        if (
-            block.timestamp > FREE_START ||
-            FREE_START >= FREE_STOP ||
-            FREE_START > WHITELIST_START
-        ) {
-            revert InvalidFreeMintTime();
-        }
-        if (
-            WHITELIST_START >= WHITELIST_STOP || WHITELIST_STOP > PUBLIC_START
-        ) {
-            revert InvalidWhitelistMintTime();
-        }
-        if (WHITELIST_PRICE <= 0 || PUBLIC_PRICE <= 0) {
-            revert InvalidAmount();
+    constructor()
+        ERC721(
+            "NFT Name",
+            "NFTS"
+        ) /*//Change This and Remove Comment Line -> (NFT Name - NFTS)//*/
+    {
+        if (WHITELIST_PRICE == 0 || PUBLIC_PRICE == 0) {
+            revert InvalidPrice();
         }
         if (WHITELIST_PRICE > PUBLIC_PRICE) {
+            revert InvalidPrice();
+        }
+        if (
+            MAX_SUPPLY == 0 ||
+            FREE_PER_WALLET == 0 ||
+            WHITELIST_PER_WALLET == 0 ||
+            PUBLIC_PER_WALLET == 0
+        ) {
             revert InvalidAmount();
         }
     }
@@ -267,55 +229,41 @@ contract NFTName is ERC721Enumerable, Ownable, ReentrancyGuard {
     }
 
     /**
+     * @dev startFreeMint is a function to start the free mint.
+     * emit FreeMintStarted is an event that is emitted when the free mint is started.
+     */
+    function startFreeMint() external onlyOwner {
+        isFreeMintStarted = true;
+
+        emit FreeMintStarted(block.timestamp);
+    }
+
+    /**
+     * @dev startWhitelistMint is a function to start the whitelist mint.
+     * emit WhitelistMintStarted is an event that is emitted when the whitelist mint is started.
+     */
+    function startWhitelistMint() external onlyOwner {
+        isWhitelistMintStarted = true;
+
+        emit WhitelistMintStarted(block.timestamp);
+    }
+
+    /**
+     * @dev startPublicMint is a function to start the public mint.
+     * emit PublicMintStarted is an event that is emitted when the public mint is started.
+     */
+    function startPublicMint() external onlyOwner {
+        isPublicMintStarted = true;
+
+        emit PublicMintStarted(block.timestamp);
+    }
+
+    /**
      * @dev setBaseUrl is a function to set the base URL.
      * @param _url is a base URL.
      */
     function setBaseUrl(string memory _url) external onlyOwner {
         BASE_URL = _url;
-    }
-
-    /**
-     * @dev setTimes is a function to set the times.
-     * @param _freeStart is a timestamp for the start of the free stage.
-     * @param _freeStop is a timestamp for the end of the free stage.
-     * @param _whitelistStart is a timestamp for the start of the whitelist stage.
-     * @param _whitelistStop is a timestamp for the end of the whitelist stage.
-     * @param _publicStart is a timestamp for the start of the public sale stage.
-     * emit ChangedTimes is an event that is emitted when the times are changed.
-     */
-    function setTimes(
-        uint256 _freeStart,
-        uint256 _freeStop,
-        uint256 _whitelistStart,
-        uint256 _whitelistStop,
-        uint256 _publicStart
-    ) external onlyOwner {
-        if (
-            block.timestamp > _freeStart ||
-            _freeStart >= _freeStop ||
-            _freeStop > _whitelistStart
-        ) {
-            revert InvalidFreeMintTime();
-        }
-        if (
-            _whitelistStart >= _whitelistStop || _whitelistStop > _publicStart
-        ) {
-            revert InvalidWhitelistMintTime();
-        }
-
-        FREE_START = _freeStart;
-        FREE_STOP = _freeStop;
-        WHITELIST_START = _whitelistStart;
-        WHITELIST_STOP = _whitelistStop;
-        PUBLIC_START = _publicStart;
-
-        emit ChangedTimes(
-            _freeStart,
-            _freeStop,
-            _whitelistStart,
-            _whitelistStop,
-            _publicStart
-        );
     }
 
     /**
@@ -328,15 +276,13 @@ contract NFTName is ERC721Enumerable, Ownable, ReentrancyGuard {
         uint256 _whitelistPrice,
         uint256 _publicPrice
     ) external onlyOwner {
-        if (_whitelistPrice <= 0 || _publicPrice <= 0) {
-            revert InvalidAmount();
+        if (_whitelistPrice == 0 || _publicPrice == 0) {
+            revert InvalidPrice();
         }
         if (_whitelistPrice > _publicPrice) {
-            revert InvalidAmount();
+            revert InvalidPrice();
         }
-        if (
-            block.timestamp > WHITELIST_START || block.timestamp > PUBLIC_START
-        ) {
+        if (isWhitelistMintStarted || isPublicMintStarted) {
             revert CanNotChangePrice();
         }
 
@@ -347,19 +293,9 @@ contract NFTName is ERC721Enumerable, Ownable, ReentrancyGuard {
     }
 
     /**
-     * @dev setMintStatus is a function to set the mint status.
-     * @param _status is a mint status.
-     * emit ChangedMintStatus is an event that is emitted when the mint status is changed.
-     */
-    function setMintStatus(bool _status) external onlyOwner {
-        MINT_STATUS = _status;
-
-        emit ChangedMintStatus(_status);
-    }
-
-    /**
      * @dev ownerMint is a function to mint tokens by owner.
      * @param _qty is a quantity of tokens to mint.
+     * emit MintedForOwner is an event that is emitted when the tokens are minted by owner.
      */
     function ownerMint(
         uint256 _qty
@@ -398,13 +334,10 @@ contract NFTName is ERC721Enumerable, Ownable, ReentrancyGuard {
     function freeMint(
         bytes32[] calldata _merkleProof,
         uint256 _qty
-    )
-        external
-        nonReentrant
-        isFreeStart
-        checkZeroAmount(_qty)
-        checkMaxSupply(_qty)
-    {
+    ) external nonReentrant checkZeroAmount(_qty) checkMaxSupply(_qty) {
+        if (!isFreeMintStarted) {
+            revert FreeMintClosed();
+        }
         if (!_verifyFreelist(_merkleProof)) {
             revert HaveNotEligible();
         }
@@ -431,14 +364,10 @@ contract NFTName is ERC721Enumerable, Ownable, ReentrancyGuard {
     function whitelistMint(
         bytes32[] calldata _merkleProof,
         uint256 _qty
-    )
-        external
-        payable
-        nonReentrant
-        isWhitelistStart
-        checkZeroAmount(_qty)
-        checkMaxSupply(_qty)
-    {
+    ) external payable nonReentrant checkZeroAmount(_qty) checkMaxSupply(_qty) {
+        if (!isWhitelistMintStarted) {
+            revert WhitelistMintClosed();
+        }
         if (!_verifyWhitelist(_merkleProof)) {
             revert HaveNotEligible();
         }
@@ -466,14 +395,10 @@ contract NFTName is ERC721Enumerable, Ownable, ReentrancyGuard {
      */
     function publicMint(
         uint256 _qty
-    )
-        external
-        payable
-        nonReentrant
-        isPublicStart
-        checkZeroAmount(_qty)
-        checkMaxSupply(_qty)
-    {
+    ) external payable nonReentrant checkZeroAmount(_qty) checkMaxSupply(_qty) {
+        if (!isPublicMintStarted) {
+            revert PublicMintClosed();
+        }
         if ((_publicClaimed[msg.sender] + _qty) > PUBLIC_PER_WALLET) {
             revert PublicMintLimitExceeded();
         }

@@ -38,6 +38,35 @@ contract BaseSetup is Test {
         _;
     }
 
+    modifier activeFreeMint() {
+        vm.prank(users.owner);
+        nftContract.startFreeMint();
+        _;
+    }
+
+    // Defined in NFTContract.sol (If you change it, you need to change it here too)
+    event ChangedPrices(uint256 _whitelistPrice, uint256 _publicPrice);
+    event FreeMintStarted(uint256 _timestamp);
+    event WhitelistMintStarted(uint256 _timestamp);
+    event PublicMintStarted(uint256 _timestamp);
+    event MintedForOwner(address indexed _to, uint256 _qty);
+    event MintedForFree(address indexed _to, uint256 _qty);
+    event MintedForWhitelist(address indexed _to, uint256 _qty);
+    event MintedForPublic(address indexed _to, uint256 _qty);
+    event Withdraw(address indexed _to, uint256 _amount, bytes _data);
+
+    modifier activeWhitelistMint() {
+        vm.prank(users.owner);
+        nftContract.startWhitelistMint();
+        _;
+    }
+
+    modifier activePublicMint() {
+        vm.prank(users.owner);
+        nftContract.startPublicMint();
+        _;
+    }
+
     constructor() {}
 
     function setUp() public {

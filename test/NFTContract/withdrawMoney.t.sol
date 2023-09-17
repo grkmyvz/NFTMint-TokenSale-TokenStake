@@ -4,11 +4,10 @@ pragma solidity ^0.8.9;
 import {BaseSetup} from "./BaseSetup.t.sol";
 
 contract withdrawMoney is BaseSetup {
-    function test_ShouldBeSuccess_withdrawMoney() public {
+    function test_ShouldBeSuccess_withdrawMoney() public activePublicMint {
         uint256 publicMintQty = nftContract.PUBLIC_PER_WALLET();
         uint256 publicPrice = nftContract.PUBLIC_PRICE();
 
-        vm.warp(nftContract.PUBLIC_START());
         vm.prank(users.publicMinter);
         nftContract.publicMint{value: publicPrice * publicMintQty}(
             publicMintQty
