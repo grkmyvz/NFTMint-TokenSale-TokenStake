@@ -59,7 +59,7 @@ source .env
 Deploy the contract to the network using the following command:
 
 ```bash
-forge script script/DSSFactory.s.sol:DSSFactoryScript --rpc-url $AVALANCHE_FUJI_RPC_URL --broadcast -vvvv
+forge script script/<CONTRACT_SCRIPT_FILE>.s.sol:<SCRIPT_NAME> --rpc-url $AVALANCHE_FUJI_RPC_URL --broadcast -vvvv
 ```
 
 5. To verify a contract, use the following command:
