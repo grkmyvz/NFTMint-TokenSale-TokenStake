@@ -1,6 +1,6 @@
 # NFTMint-TokenSale-TokenStake Contracts and Demo Web Page Repositories
 
-Welcome to the My Smart Contract repository! This repository contains three smart contracts developed using Foundry, a library for testing smart contracts. Additionally, it includes a web3 integration with an "app" folder and a tool for generating Merkle tree hashes for wallets used in these contracts, located in the "merkletree-tool" folder with JavaScript code.
+Welcome to the NFTMint-TokenSale-TokenStake repository! This repository contains three smart contracts developed using Foundry, a library for testing smart contracts. Additionally, it includes a web3 integration with an "app" folder and a tool for generating Merkle tree hashes for wallets used in these contracts, located in the "merkletree-tool" folder with JavaScript code.
 
 ## Smart Contracts
 
