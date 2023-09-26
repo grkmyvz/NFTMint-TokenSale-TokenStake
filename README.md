@@ -65,7 +65,7 @@ forge script script/<CONTRACT_SCRIPT_FILE>.s.sol:<SCRIPT_NAME> --rpc-url $AVALAN
 5. To verify a contract, use the following command:
 
 ```bash
-forge verify-contract --chain-id 43113 --watch <CONTRACT-ADDRESS> DSSFactory
+forge verify-contract --chain-id 43113 --watch <CONTRACT-ADDRESS> <CONTRACT_NAME>
 ```
 
 6. For the contracts requiring Merkle roots, update the appropriate JSON file in the "merkletree-tool" folder with the required wallet addresses. While in the "merkletree-root" directory, execute the following commands:
